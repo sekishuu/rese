@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マイページ - Rese</title>
-</head>
-<body>
-    <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #ccc;">
-        <h1>Rese</h1>
-    </header>
-    <main style="display: flex; padding: 20px;">
+@extends('layouts.app')
+
+@section('title', 'マイページ')
+
+@section('content')
+    <div style="display: flex;">
         <div style="flex: 2; margin-right: 20px;">
             <h2>予約状況</h2>
             <div id="reservations">
@@ -41,6 +35,5 @@
                 @endforeach
             </div>
         </div>
-    </main>
-</body>
-</html>
+    </div>
+@endsection

@@ -60,3 +60,5 @@ php artisan make:request RegisterRequest
 exit
 php artisan make:request LoginRequest
 exit
+php artisan make:controller FavoriteController
+exit

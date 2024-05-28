@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $shop->shop_name }} - 詳細表示</title>
-</head>
-<body>
-    <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #ccc;">
-        <h1>Rese</h1>
-    </header>
+@extends('layouts.app')
+
+@section('title', $shop->shop_name . ' - 詳細表示')
+
+@section('content')
     <main style="display: flex; padding: 20px;">
         <div style="flex: 3; margin-right: 20px;">
             <h2>{{ $shop->shop_name }}</h2>
@@ -51,19 +45,6 @@
             </form>
         </div>
     </main>
-    <script>
-        document.getElementById('reserve_date').addEventListener('change', function() {
-            document.getElementById('selected_date').innerText = this.value;
-        });
-
-        document.getElementById('reserve_time').addEventListener('change', function() {
-            document.getElementById('selected_time').innerText = this.value;
-        });
-
-        document.getElementById('number_of_people').addEventListener('change', function() {
-            document.getElementById('selected_people').innerText = this.value;
-        });
-    </script>
-</body>
-</html>
+    <script src="{{ asset('js/shop_detail.js') }}"></script>
+@endsection
 
