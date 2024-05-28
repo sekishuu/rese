@@ -60,10 +60,6 @@ class User extends Authenticatable
         return $this->user_type === 'general';
     }
 
-    /**
-     * リレーションの定義
-     */
-
     // ユーザーが持つレビューを取得
     public function reviews()
     {

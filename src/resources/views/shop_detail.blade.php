@@ -18,6 +18,9 @@
                 <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                 <label for="reserve_date">日付</label>
                 <input type="date" id="reserve_date" name="reserve_date" >
+                @error('reserve_date')
+                    <div>{{ $message }}</div>
+                @enderror
                 
                 <label for="reserve_time">時間</label>
                 <select id="reserve_time" name="reserve_time" required>
@@ -26,6 +29,9 @@
                         <option value="{{ sprintf('%02d:30:00', $i) }}">{{ sprintf('%02d:30', $i) }}</option>
                     @endfor
                 </select>
+                @error('reserve_time')
+                    <div>{{ $message }}</div>
+                @enderror
                 
                 <label for="number_of_people">人数</label>
                 <select id="number_of_people" name="number_of_people" required>
@@ -33,6 +39,9 @@
                         <option value="{{ $i }}">{{ $i }}人</option>
                     @endfor
                 </select>
+                @error('number_of_people')
+                    <div>{{ $message }}</div>
+                @enderror
                 
                 <div style="margin-top: 20px;">
                     <p>店名: {{ $shop->shop_name }}</p>

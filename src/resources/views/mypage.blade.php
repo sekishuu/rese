@@ -15,6 +15,11 @@
                         <p>予約年月日: {{ $reservation->reserve_date }}</p>
                         <p>予約時間: {{ $reservation->reserve_time }}</p>
                         <p>予約人数: {{ $reservation->number_of_people }}人</p>
+                        <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">削除</button>
+                        </form>
                     </div>
                 @endforeach
             </div>

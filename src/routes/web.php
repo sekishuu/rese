@@ -22,8 +22,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [ShopController::class, 'index']);
     Route::get('/shops/{shop}', [ShopController::class, 'show'])->name('shops.show');
     Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
+    Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
     });
+    
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/thanks', function () {
@@ -38,3 +40,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
 // お気に入り削除
 Route::delete('/favorites/{shop}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
+
+Route::get('/done', function () {
+    return view('done');
+})->name('done');
