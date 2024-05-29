@@ -23,9 +23,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/shops/{shop}', [ShopController::class, 'show'])->name('shops.show');
     Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
     Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
+    Route::post('/reservations/{reservation}', [ReservationController::class, 'update'])->name('reservations.update');
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
     });
-    
+
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/thanks', function () {

@@ -2,6 +2,10 @@
 
 @section('title', 'マイページ')
 
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
+@endsection
+
 @section('content')
     <div style="display: flex;">
         <div style="flex: 2; margin-right: 20px;">
@@ -20,6 +24,39 @@
                             @method('DELETE')
                             <button type="submit">削除</button>
                         </form>
+                        <!-- 予約変更ボタン -->
+                        <a href="#modal-{{ $reservation->id }}" class="button">予約変更</a>
+                    </div>
+                        <!-- モーダルウィンドウ -->
+                    <div class="modal" id="modal-{{ $reservation->id }}">
+                        <a href="#!" class="modal-overlay"></a>
+                        <div class="modal-content">
+                            <form action="{{ route('reservations.update', $reservation->id) }}" method="POST">
+                                @csrf
+                                <label for="reserve_date-{{ $reservation->id }}">日付</label>
+                                <input type="date" id="reserve_date-{{ $reservation->id }}" name="reserve_date" value="{{ $reservation->reserve_date }}" required>
+
+                                <label for="reserve_time-{{ $reservation->id }}">時間</label>
+                                <select id="reserve_time-{{ $reservation->id }}" name="reserve_time" required>
+                                    @for ($i = 0; $i < 24; $i++)
+                                        <option value="{{ sprintf('%02d:00:00', $i) }}" @if($reservation->reserve_time == sprintf('%02d:00:00', $i)) selected @endif>{{ sprintf('%02d:00', $i) }}</option>
+                                        <option value="{{ sprintf('%02d:30:00', $i) }}" @if($reservation->reserve_time == sprintf('%02d:30:00', $i)) selected @endif>{{ sprintf('%02d:30', $i) }}</option>
+                                    @endfor
+                                </select>
+
+                                <label for="number_of_people-{{ $reservation->id }}">人数</label>
+                                <select id="number_of_people-{{ $reservation->id }}" name="number_of_people" required>
+                                    @for ($i = 1; $i <= 10; $i++)
+                                        <option value="{{ $i }}" @if($reservation->number_of_people == $i) selected @endif>{{ $i }}人</option>
+                                    @endfor
+                                </select>
+
+                                <div style="margin-top: 20px;">
+                                    <a href="#!" class="modal-close button">キャンセル</a>
+                                    <button type="submit">この内容で変更する</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 @endforeach
             </div>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Rese')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('styles')
 </head>
 <body>
     <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #ccc;">
