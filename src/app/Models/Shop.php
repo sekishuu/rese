@@ -22,6 +22,7 @@ class Shop extends Model
         'shop_image',
         'area_id',
         'genre_id',
+        'user_id',
     ];
 
     /**
@@ -67,5 +68,13 @@ class Shop extends Model
     public function reservations()
     {
         return $this->hasMany(Reservation::class);
+    }
+    /**
+     * リレーションの定義
+     * 店舗のユーザーを取得
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

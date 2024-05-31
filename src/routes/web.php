@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +46,7 @@ Route::delete('/favorites/{shop}', [FavoriteController::class, 'destroy'])->name
 Route::get('/done', function () {
     return view('done');
 })->name('done');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+});

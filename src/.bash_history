@@ -62,3 +62,9 @@ php artisan make:request LoginRequest
 exit
 php artisan make:controller FavoriteController
 exit
+php artisan make:migration add_user_id_to_shops_table --table=shops
+exit
+php artisan migrate
+exit
+php artisan make:controller AdminController
+exit

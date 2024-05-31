@@ -27,7 +27,7 @@
                         <!-- 予約変更ボタン -->
                         <a href="#modal-{{ $reservation->id }}" class="button">予約変更</a>
                     </div>
-                        <!-- モーダルウィンドウ -->
+                    <!-- モーダルウィンドウ -->
                     <div class="modal" id="modal-{{ $reservation->id }}">
                         <a href="#!" class="modal-overlay"></a>
                         <div class="modal-content">
