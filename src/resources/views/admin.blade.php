@@ -41,10 +41,41 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->user_type }}</td>
                                     <td>
-                                        <button>編集</button>
-                                        <button>削除</button>
+                                        <a href="#modal-edit-user-{{ $user->id }}" class="button">編集</a>
+                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit">削除</button>
+                                        </form>
                                     </td>
                                 </tr>
+                                <!-- ユーザー編集モーダル -->
+                                <div class="modal" id="modal-edit-user-{{ $user->id }}">
+                                    <a href="#" class="modal-overlay"></a>
+                                    <div class="modal-content">
+                                        <form action="{{ route('users.update', $user->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <label for="name">Name</label>
+                                            <input type="text" id="name" name="name" value="{{ $user->name }}" required>
+
+                                            <label for="email">Email</label>
+                                            <input type="email" id="email" name="email" value="{{ $user->email }}" required>
+
+                                            <label for="user_type">User Type</label>
+                                            <select id="user_type" name="user_type" required>
+                                                <option value="general" {{ $user->user_type == 'general' ? 'selected' : '' }}>General</option>
+                                                <option value="shop_owner" {{ $user->user_type == 'shop_owner' ? 'selected' : '' }}>Shop Owner</option>
+                                                <option value="admin" {{ $user->user_type == 'admin' ? 'selected' : '' }}>Admin</option>
+                                            </select>
+
+                                            <div style="margin-top: 20px;">
+                                                <a href="#" class="modal-close button">キャンセル</a>
+                                                <button type="submit">この内容で変更する</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             @endforeach
                         </tbody>
                     </table>
@@ -57,7 +88,7 @@
                                 <th>Shop Name</th>
                                 <th>Area</th>
                                 <th>Genre</th>
-                                <th>User</th>
+                                <th>Shop Owner</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -70,10 +101,52 @@
                                     <td>{{ $shop->genre->genre_name }}</td>
                                     <td>{{ $shop->user ? $shop->user->name : 'N/A' }}</td>
                                     <td>
-                                        <button>編集</button>
-                                        <button>削除</button>
+                                        <a href="#modal-edit-shop-{{ $shop->id }}" class="button">編集</a>
+                                        <form action="{{ route('shops.destroy', $shop->id) }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit">削除</button>
+                                        </form>
                                     </td>
                                 </tr>
+                                <!-- 店舗編集モーダル -->
+                                <div class="modal" id="modal-edit-shop-{{ $shop->id }}">
+                                    <a href="#" class="modal-overlay"></a>
+                                    <div class="modal-content">
+                                        <form action="{{ route('shops.update', $shop->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <label for="shop_name">Shop Name</label>
+                                            <input type="text" id="shop_name" name="shop_name" value="{{ $shop->shop_name }}" required>
+
+                                            <label for="area_id">Area</label>
+                                            <select id="area_id" name="area_id" required>
+                                                @foreach ($areas as $area)
+                                                    <option value="{{ $area->id }}" {{ $shop->area_id == $area->id ? 'selected' : '' }}>{{ $area->area_name }}</option>
+                                                @endforeach
+                                            </select>
+
+                                            <label for="genre_id">Genre</label>
+                                            <select id="genre_id" name="genre_id" required>
+                                                @foreach ($genres as $genre)
+                                                    <option value="{{ $genre->id }}" {{ $shop->genre_id == $genre->id ? 'selected' : '' }}>{{ $genre->genre_name }}</option>
+                                                @endforeach
+                                            </select>
+
+                                            <label for="user_id">User</label>
+                                            <select id="user_id" name="user_id" required>
+                                                @foreach ($users as $user)
+                                                    <option value="{{ $user->id }}" {{ $shop->user_id == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                                                @endforeach
+                                            </select>
+
+                                            <div style="margin-top: 20px;">
+                                                <a href="#" class="modal-close button">キャンセル</a>
+                                                <button type="submit">この内容で変更する</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             @endforeach
                         </tbody>
                     </table>
@@ -93,10 +166,35 @@
                                     <td>{{ $area->id }}</td>
                                     <td>{{ $area->area_name }}</td>
                                     <td>
-                                        <button>編集</button>
-                                        <button>削除</button>
+                                        <a href="#modal-edit-area-{{ $area->id }}" class="button">編集</a>
+                                        <form action="{{ route('areas.destroy', $area->id) }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit">削除</button>
+                                        </form>
                                     </td>
                                 </tr>
+                                <!-- エリア編集モーダル -->
+                                <div class="modal" id="modal-edit-area-{{ $area->id }}">
+                                    <a href="#" class="modal-overlay"></a>
+                                    <div class="modal-content">
+                                        <form action="{{ route('areas.update', $area->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <label for="area_name">Area Name</label>
+                                            <select id="area_name" name="area_name" required>
+                                                @foreach ($areas as $a)
+                                                    <option value="{{ $a->id }}" {{ $area->id == $a->id ? 'selected' : '' }}>{{ $a->area_name }}</option>
+                                                @endforeach
+                                            </select>
+
+                                            <div style="margin-top: 20px;">
+                                                <a href="#" class="modal-close button">キャンセル</a>
+                                                <button type="submit">この内容で変更する</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             @endforeach
                         </tbody>
                     </table>
@@ -116,10 +214,35 @@
                                     <td>{{ $genre->id }}</td>
                                     <td>{{ $genre->genre_name }}</td>
                                     <td>
-                                        <button>編集</button>
-                                        <button>削除</button>
+                                        <a href="#modal-edit-genre-{{ $genre->id }}" class="button">編集</a>
+                                        <form action="{{ route('genres.destroy', $genre->id) }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit">削除</button>
+                                        </form>
                                     </td>
                                 </tr>
+                                <!-- ジャンル編集モーダル -->
+                                <div class="modal" id="modal-edit-genre-{{ $genre->id }}">
+                                    <a href="#" class="modal-overlay"></a>
+                                    <div class="modal-content">
+                                        <form action="{{ route('genres.update', $genre->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <label for="genre_name">Genre Name</label>
+                                            <select id="genre_name" name="genre_name" required>
+                                                @foreach ($genres as $g)
+                                                    <option value="{{ $g->id }}" {{ $genre->id == $g->id ? 'selected' : '' }}>{{ $g->genre_name }}</option>
+                                                @endforeach
+                                            </select>
+
+                                            <div style="margin-top: 20px;">
+                                                <a href="#" class="modal-close button">キャンセル</a>
+                                                <button type="submit">この内容で変更する</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             @endforeach
                         </tbody>
                     </table>

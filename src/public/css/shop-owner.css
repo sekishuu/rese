@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.shop-owner-container {
+    width: 90%;
+    margin: 20px auto;
+}
+
+h1,
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.registered-shops,
+.reservations {
+    width: 48%;
+}
+
+.shop-info,
+.reservation-info {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.shop-image {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.shop-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.shop-actions button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.shop-actions button:hover {
+    background-color: #0056b3;
+}

@@ -62,7 +62,7 @@
             </div>
         </div>
         <div style="flex: 1;">
-            <h2>ブックマークした店舗</h2>
+            <h2>お気に入り店舗</h2>
             <div id="bookmarks">
                 <!-- ブックマークした店舗情報の表示 -->
                 @foreach ($favorites as $favorite)

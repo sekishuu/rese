@@ -33,6 +33,28 @@ class ShopController extends Controller
     }
     public function show(Shop $shop)
     {
-        return view('shop_detail', compact('shop'));
+        return view('shop-detail', compact('shop'));
     }
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'shop_name' => 'required|string|max:255',
+        'area_id' => 'required|exists:areas,id',
+        'genre_id' => 'required|exists:genres,id',
+        'user_id' => 'required|exists:users,id',
+    ]);
+
+    $shop = Shop::findOrFail($id);
+    $shop->update($request->all());
+
+    return redirect()->route('admin.index')->with('success', 'Shop updated successfully.');
+}
+
+public function destroy($id)
+{
+    $shop = Shop::findOrFail($id);
+    $shop->delete();
+
+    return redirect()->route('admin.index')->with('success', 'Shop deleted successfully.');
+}
 }

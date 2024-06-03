@@ -54,6 +54,6 @@
             </form>
         </div>
     </main>
-    <script src="{{ asset('js/shop_detail.js') }}"></script>
+    <script src="{{ asset('js/shop-detail.js') }}"></script>
 @endsection
 

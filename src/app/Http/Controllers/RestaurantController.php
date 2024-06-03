@@ -23,6 +23,6 @@ class RestaurantController extends Controller
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id consequat lorem. Donec consectetur feugiat velit, sit amet tristique orci dapibus in.',
         ];
 
-        return view('shop_detail', compact('shop'));
+        return view('shop-detail', compact('shop'));
     }
 }

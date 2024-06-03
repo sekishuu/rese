@@ -68,3 +68,9 @@ php artisan migrate
 exit
 php artisan make:controller AdminController
 exit
+php artisan make:controller UserController
+php artisan make:controller AreaController
+php artisan make:controller GenreController
+exit
+php artisan make:controller ShopOwnerController
+exit

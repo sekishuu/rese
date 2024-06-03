@@ -8,6 +8,10 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AreaController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\ShopOwnerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,4 +53,12 @@ Route::get('/done', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::resource('users', UserController::class)->only(['update', 'destroy']);
+    Route::resource('shops', ShopController::class)->only(['update', 'destroy']);
+    Route::resource('areas', AreaController::class)->only(['update', 'destroy']);
+    Route::resource('genres', GenreController::class)->only(['update', 'destroy']);
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/shop-owner', [ShopOwnerController::class, 'index'])->name('shop-owner.index');
 });
