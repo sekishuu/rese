@@ -26,4 +26,15 @@ class GenreController extends Controller
 
         return redirect()->route('admin.index')->with('success', 'Genre deleted successfully.');
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'genre_name' => 'required|string|max:255',
+        ]);
+
+        Genre::create($request->all());
+
+        return redirect()->route('admin.index')->with('success', 'Genre created successfully.');
+    }
 }

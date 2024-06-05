@@ -26,4 +26,15 @@ class AreaController extends Controller
 
         return redirect()->route('admin.index')->with('success', 'Area deleted successfully.');
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'area_name' => 'required|string|max:255',
+        ]);
+
+        Area::create($request->all());
+
+        return redirect()->route('admin.index')->with('success', 'Area created successfully.');
+    }
 }

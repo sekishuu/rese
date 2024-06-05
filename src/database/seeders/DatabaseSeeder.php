@@ -22,11 +22,12 @@ class DatabaseSeeder extends Seeder
     {
 
         User::factory()->count(5)->create();
-        Area::factory()->count(5)->create();
         Genre::factory()->count(5)->create();
         Shop::factory()->count(5)->create();
         Favorite::factory()->count(5)->create();
         Reservation::factory()->count(5)->create();
         Review::factory()->count(5)->create();
+
+        $this->call(AreasTableSeeder::class);
     }
 }

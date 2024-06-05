@@ -74,3 +74,8 @@ php artisan make:controller GenreController
 exit
 php artisan make:controller ShopOwnerController
 exit
+php artisan make:seeder AreasTableSeeder
+exit
+php artisan db:seed
+php artisan db:seed
+exit

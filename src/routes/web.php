@@ -54,11 +54,19 @@ Route::get('/done', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::resource('users', UserController::class)->only(['update', 'destroy']);
-    Route::resource('shops', ShopController::class)->only(['update', 'destroy']);
+    Route::resource('admin-shops', ShopController::class)->only(['update', 'destroy']);
     Route::resource('areas', AreaController::class)->only(['update', 'destroy']);
     Route::resource('genres', GenreController::class)->only(['update', 'destroy']);
+
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::post('/admin-shops', [ShopController::class, 'store'])->name('admin.shops.store');
+    Route::post('/areas', [AreaController::class, 'store'])->name('areas.store');
+    Route::post('/genres', [GenreController::class, 'store'])->name('genres.store');
 });
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/shop-owner', [ShopOwnerController::class, 'index'])->name('shop-owner.index');
+    Route::post('/shop-owner-shops', [ShopOwnerController::class, 'store'])->name('shop-owner.shops.store');
+    Route::put('/shop-owner-shops/{shop}', [ShopOwnerController::class, 'update'])->name('shop-owner.shops.update');
+    Route::delete('/shop-owner-shops/{shop}', [ShopOwnerController::class, 'destroy'])->name('shop-owner.shops.destroy');
 });

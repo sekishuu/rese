@@ -28,4 +28,17 @@ class UserController extends Controller
 
         return redirect()->route('admin.index')->with('success', 'User deleted successfully.');
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'user_type' => 'required|string',
+        ]);
+
+        User::create($request->all());
+
+        return redirect()->route('admin.index')->with('success', 'User created successfully.');
+    }
 }
