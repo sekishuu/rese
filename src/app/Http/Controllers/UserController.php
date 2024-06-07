@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -29,7 +30,7 @@ class UserController extends Controller
         return redirect()->route('admin.index')->with('success', 'User deleted successfully.');
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',

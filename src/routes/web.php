@@ -12,6 +12,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\ShopOwnerController;
+use App\Http\Requests\CustomEmailVerificationRequest;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,3 +72,18 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/shop-owner-shops/{shop}', [ShopOwnerController::class, 'update'])->name('shop-owner.shops.update');
     Route::delete('/shop-owner-shops/{shop}', [ShopOwnerController::class, 'destroy'])->name('shop-owner.shops.destroy');
 });
+
+// メール認証機能
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (CustomEmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/thanks');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with('message', '確認メールを再送しました。');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');

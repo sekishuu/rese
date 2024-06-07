@@ -81,3 +81,11 @@ php artisan db:seed
 exit
 php artisan storage:link
 exit
+php artisan make:request UserRequest
+php artisan make:request ShopOwnerRequest
+php artisan make:request ShopRequest
+php artisan make:request ReservationRequest
+php artisan make:request GenreRequest
+php artisan make:request AreaRequest
+php artisan make:request RegisterRequest
+exit
