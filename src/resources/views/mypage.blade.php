@@ -67,7 +67,7 @@
                 <!-- ブックマークした店舗情報の表示 -->
                 @foreach ($favorites as $favorite)
                     <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
-                        <img src="{{ $favorite->shop->shop_image }}" alt="{{ $favorite->shop->shop_name }}" style="width: 100px; height: 100px;">
+                        <img src="{{ asset('storage/shop_images/' . $favorite->shop->shop_image) }}" alt="{{ $favorite->shop->shop_name }}" style="width: 100px; height: 100px;">
                         <h3>{{ $favorite->shop->shop_name }}</h3>
                         <p>エリア: {{ $favorite->shop->area->area_name }}</p>
                         <p>ジャンル: {{ $favorite->shop->genre->genre_name }}</p>

@@ -23,7 +23,7 @@
             <!-- 飲食店舗のリストをここに表示 -->
             @foreach ($shops as $shop)
                 <div class="shop-item" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
-                    <img src="{{ $shop->shop_image }}" alt="{{ $shop->shop_name }}" style="width: 100px; height: 100px;">
+                    <img src="{{ asset('storage/shop_images/' . $shop->shop_image) }}" alt="{{ $shop->shop_name }}" class="shop-image" style="width: 100px; height: 100px;">
                     <h2>{{ $shop->shop_name }}</h2>
                     <p>エリア: {{ $shop->area->area_name }}</p>
                     <p>ジャンル: {{ $shop->genre->genre_name }}</p>

@@ -21,7 +21,7 @@ use Carbon\Carbon;
             </div>
             @foreach ($shops as $shop)
                 <div class="shop-info">
-                    <img src="{{ $shop->shop_image }}" alt="{{ $shop->shop_name }}" class="shop-image">
+                    <img src="{{ asset('storage/shop_images/' . $shop->shop_image) }}" alt="{{ $shop->shop_name }}" class="shop-image">
                     <h3>{{ $shop->shop_name }}</h3>
                     <p>エリア: {{ $shop->area->area_name }}</p>
                     <p>ジャンル: {{ $shop->genre->genre_name }}</p>
@@ -40,7 +40,7 @@ use Carbon\Carbon;
                 <div class="modal" id="modal-edit-shop-{{ $shop->id }}">
                     <a href="#" class="modal-overlay"></a>
                     <div class="modal-content">
-                        <form action="{{ route('shop-owner.shops.update', $shop->id) }}" method="POST">
+                        <form action="{{ route('shop-owner.shops.update', $shop->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <label for="shop_name">店舗名</label>
@@ -95,7 +95,7 @@ use Carbon\Carbon;
 <div class="modal" id="modal-add-shop">
     <a href="#" class="modal-overlay"></a>
     <div class="modal-content">
-        <form action="{{ route('shop-owner.shops.store') }}" method="POST">
+        <form action="{{ route('shop-owner.shops.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <label for="shop_name">店舗名</label>
             <input type="text" id="shop_name" name="shop_name" required>

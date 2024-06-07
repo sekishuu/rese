@@ -6,7 +6,8 @@
     <main style="display: flex; padding: 20px;">
         <div style="flex: 3; margin-right: 20px;">
             <h2>{{ $shop->shop_name }}</h2>
-            <img src="{{ $shop->shop_image }}" alt="{{ $shop->shop_name }}" style="width: 300px; height: 300px;">
+            <img src="{{ asset('storage/shop_images/' . $shop->shop_image) }}" alt="{{ $shop->shop_name }}" class="shop-image" style="width: 300px; height: 300px;">
+
             <p>エリア: {{ $shop->area->area_name }}</p>
             <p>ジャンル: {{ $shop->genre->genre_name }}</p>
             <p>{{ $shop->shop_info }}</p>

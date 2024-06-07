@@ -76,5 +76,4 @@ class ShopOwnerController extends Controller
 
         return redirect()->route('shop-owner.index')->with('success', 'Shop deleted successfully.');
     }
-    
 }

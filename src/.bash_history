@@ -79,3 +79,5 @@ exit
 php artisan db:seed
 php artisan db:seed
 exit
+php artisan storage:link
+exit
