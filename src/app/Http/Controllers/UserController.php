@@ -4,20 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\User\StoreUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 
 class UserController extends Controller
 {
-    public function update(UserRequest $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,'.$id,
-            'user_type' => 'required|string|in:general,shop_owner,admin',
-        ]);
+        $validated = $request->validated();
 
         $user = User::findOrFail($id);
-        $user->update($request->all());
+        $user->update($validated);
 
         return redirect()->route('admin.index')->with('success', 'User updated successfully.');
     }
@@ -30,15 +27,11 @@ class UserController extends Controller
         return redirect()->route('admin.index')->with('success', 'User deleted successfully.');
     }
 
-    public function store(UserRequest $request)
+    public function store(StoreUserRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'user_type' => 'required|string',
-        ]);
+        $validated = $request->validated();
 
-        User::create($request->all());
+        User::create($validated);
 
         return redirect()->route('admin.index')->with('success', 'User created successfully.');
     }

@@ -89,3 +89,22 @@ php artisan make:request GenreRequest
 php artisan make:request AreaRequest
 php artisan make:request RegisterRequest
 exit
+php artisan make:request UpdateUserRequest
+php artisan make:request StoreUserRequest
+exit
+php artisan make:request StoreShopOwnerRequest
+php artisan make:request UpdateShopOwnerRequest
+exit
+php artisan make:request StoreShopRequest
+php artisan make:request UpdateShopRequest
+exit
+php artisan make:request StoreReservationRequest
+php artisan make:request UpdateReservationRequest
+exit
+php artisan make:request StoreGenreRequest
+php artisan make:request UpdateGenreRequest
+exit
+php artisan make:request StoreAreaRequest
+php artisan make:request UpdateAreaRequest
+exiit
+exit

@@ -8,6 +8,8 @@ use App\Models\Shop;
 use App\Models\Reservation;
 use App\Models\Area;
 use App\Models\Genre;
+use App\Http\Requests\ShopOwner\StoreShopOwnerRequest;
+use App\Http\Requests\ShopOwner\UpdateShopOwnerRequest;
 
 class ShopOwnerController extends Controller
 {
@@ -23,17 +25,11 @@ class ShopOwnerController extends Controller
         return view('shop-owner', compact('shops', 'reservations', 'areas', 'genres'));
     }
 
-    public function store(Request $request)
+    public function store(StoreShopOwnerRequest $request)
     {
-        $request->validate([
-            'shop_name' => 'required|string|max:255',
-            'shop_info' => 'required|string',
-            'area_id' => 'required|exists:areas,id',
-            'genre_id' => 'required|exists:genres,id',
-            'shop_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        $validated = $request->validated();
 
-        $shop = new Shop($request->all());
+        $shop = new Shop($validated);
         $shop->user_id = auth()->id();
 
         if ($request->hasFile('shop_image')) {
@@ -46,18 +42,12 @@ class ShopOwnerController extends Controller
         return redirect()->route('shop-owner.index')->with('success', 'Shop created successfully.');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateShopOwnerRequest $request, $id)
     {
-        $request->validate([
-            'shop_name' => 'required|string|max:255',
-            'shop_info' => 'required|string',
-            'area_id' => 'required|exists:areas,id',
-            'genre_id' => 'required|exists:genres,id',
-            'shop_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        $validated = $request->validated();
 
         $shop = Shop::findOrFail($id);
-        $shop->fill($request->all());
+        $shop->fill($validated);
 
         if ($request->hasFile('shop_image')) {
             $filePath = $request->file('shop_image')->store('public/shop_images');

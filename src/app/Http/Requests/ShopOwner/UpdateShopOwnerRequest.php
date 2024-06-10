@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GenreRequest extends FormRequest
+class UpdateShopOwnerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class GenreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class GenreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'shop_name' => 'required|string|max:255',
+            'shop_info' => 'required|string',
+            'area_id' => 'required|exists:areas,id',
+            'genre_id' => 'required|exists:genres,id',
+            'shop_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 }

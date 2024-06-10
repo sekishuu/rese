@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Area;
+use App\Http\Requests\Area\StoreAreaRequest;
+use App\Http\Requests\Area\UpdateAreaRequest;
 
 class AreaController extends Controller
 {
-    public function update(Request $request, $id)
+    public function update(UpdateAreaRequest $request, $id)
     {
-        $request->validate([
-            'area_name' => 'required|string|max:255',
-        ]);
+        $validated = $request->validated();
 
         $area = Area::findOrFail($id);
-        $area->update($request->all());
+        $area->update($validated);
 
         return redirect()->route('admin.index')->with('success', 'Area updated successfully.');
     }
@@ -27,13 +27,11 @@ class AreaController extends Controller
         return redirect()->route('admin.index')->with('success', 'Area deleted successfully.');
     }
 
-    public function store(Request $request)
+    public function store(StoreAreaRequest $request)
     {
-        $request->validate([
-            'area_name' => 'required|string|max:255',
-        ]);
+        $validated = $request->validated();
 
-        Area::create($request->all());
+        Area::create($validated);
 
         return redirect()->route('admin.index')->with('success', 'Area created successfully.');
     }

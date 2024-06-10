@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Genre;
+use App\Http\Requests\Genre\StoreGenreRequest;
+use App\Http\Requests\Genre\UpdateGenreRequest;
 
 class GenreController extends Controller
 {
-    public function update(Request $request, $id)
+    public function update(UpdateGenreRequest $request, $id)
     {
-        $request->validate([
-            'genre_name' => 'required|string|max:255',
-        ]);
+        $validated = $request->validated();
 
         $genre = Genre::findOrFail($id);
-        $genre->update($request->all());
+        $genre->update($validated);
 
         return redirect()->route('admin.index')->with('success', 'Genre updated successfully.');
     }
@@ -27,13 +27,11 @@ class GenreController extends Controller
         return redirect()->route('admin.index')->with('success', 'Genre deleted successfully.');
     }
 
-    public function store(Request $request)
+    public function store(StoreGenreRequest $request)
     {
-        $request->validate([
-            'genre_name' => 'required|string|max:255',
-        ]);
+        $validated = $request->validated();
 
-        Genre::create($request->all());
+        Genre::create($validated);
 
         return redirect()->route('admin.index')->with('success', 'Genre created successfully.');
     }

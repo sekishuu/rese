@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Genre;
+use App\Http\Requests\Shop\StoreShopRequest;
+use App\Http\Requests\Shop\UpdateShopRequest;
 
 class ShopController extends Controller
 {
@@ -37,18 +39,13 @@ class ShopController extends Controller
             return view('shop-detail', compact('shop'));
         }
 
-    public function update(Request $request, $id)
+    public function update(UpdateShopRequest $request, $id)
         {
 
-        $request->validate([
-            'shop_name' => 'required|string|max:255',
-            'area_id' => 'required|exists:areas,id',
-            'genre_id' => 'required|exists:genres,id',
-            'user_id' => 'required|exists:users,id',
-        ]);
+        $validated = $request->validated();
 
         $shop = Shop::findOrFail($id);
-        $shop->update($request->all());
+        $shop->update($validated);
 
         return redirect()->route('admin.index');
         }
@@ -61,16 +58,11 @@ class ShopController extends Controller
             return redirect()->route('admin.index');
         }
 
-    public function store(Request $request)
+    public function store(StoreShopRequest $request)
         {
-            $request->validate([
-                'shop_name' => 'required|string|max:255',
-                'area_id' => 'required|exists:areas,id',
-                'genre_id' => 'required|exists:genres,id',
-                'user_id' => 'required|exists:users,id',
-            ]);
+            $validated = $request->validated();
 
-            Shop::create($request->all());
+            Shop::create($validated);
 
             return redirect()->route('admin.index');
         }
