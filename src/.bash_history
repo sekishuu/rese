@@ -108,3 +108,5 @@ php artisan make:request StoreAreaRequest
 php artisan make:request UpdateAreaRequest
 exiit
 exit
+grep -r "class LoginRequest" app/Http/Requests
+exit
