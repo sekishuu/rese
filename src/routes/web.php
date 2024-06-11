@@ -12,7 +12,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\ShopOwnerController;
-use App\Http\Requests\CustomEmailVerificationRequest;
+use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Http\Controllers\ShopOwnerNotificationController;
 use Illuminate\Http\Request;
 
 /*
@@ -71,6 +72,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/shop-owner-shops', [ShopOwnerController::class, 'store'])->name('shop-owner.shops.store');
     Route::put('/shop-owner-shops/{shop}', [ShopOwnerController::class, 'update'])->name('shop-owner.shops.update');
     Route::delete('/shop-owner-shops/{shop}', [ShopOwnerController::class, 'destroy'])->name('shop-owner.shops.destroy');
+    Route::post('/shop-owner/send-notification', [ShopOwnerNotificationController::class, 'sendNotification'])->name('shop-owner.send-notification');
 });
 
 // メール認証機能

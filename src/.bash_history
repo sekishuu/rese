@@ -112,3 +112,9 @@ grep -r "class LoginRequest" app/Http/Requests
 exit
 php artisan make:controller Auth/EmailVerificationController
 exit
+php artisan make:controller ShopOwnerNotificationController
+exit
+php artisan make:mail ShopOwnerNotification
+exit
+php artisan make:controller ShopOwnerNotificationController
+exit
