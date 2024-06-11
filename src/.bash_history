@@ -110,3 +110,5 @@ exiit
 exit
 grep -r "class LoginRequest" app/Http/Requests
 exit
+php artisan make:controller Auth/EmailVerificationController
+exit
