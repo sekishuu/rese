@@ -16,7 +16,9 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     curl \
-    libxml2-dev
+    libxml2-dev \
+    cron \
+    procps
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -28,9 +30,18 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 COPY . /var/www
 
+COPY ./docker/php/laravel-cron /etc/cron.d/laravel-cron
+
+RUN mkdir -p /var/run/cron && chmod 777 /var/run/cron && touch /var/run/cron/crond.pid
+
+RUN chmod 0644 /etc/cron.d/laravel-cron
+
+RUN crontab /etc/cron.d/laravel-cron
+
+USER root
+
 COPY --chown=www-data:www-data . /var/www
 
-USER www-data
-
 EXPOSE 9000
-CMD ["php-fpm"]
+
+CMD ["sh", "-c", "cron -f & php-fpm"]

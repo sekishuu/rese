@@ -118,3 +118,34 @@ php artisan make:mail ShopOwnerNotification
 exit
 php artisan make:controller ShopOwnerNotificationController
 exit
+php artisan config:clear
+php artisan cache:clear
+php artisan route:clear
+php artisan view:clear
+exit
+cp .env.example .env
+exit
+php artisan key:generate
+php artisan config:clear
+php artisan cache:clear
+php artisan route:clear
+php artisan view:clear
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+exit
+php artisan config:clear
+php artisan cache:clear
+php artisan route:clear
+php artisan view:clear
+exit
+php artisan make:mail ReservationNotification
+exit
+php artisan make:command SendReservationNotifications
+exit
+php artisan notifications:send
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+crontab -l
+exit
