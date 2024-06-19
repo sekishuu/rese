@@ -169,8 +169,8 @@
 
                                     <label for="user_id">User</label>
                                     <select id="user_id" name="user_id" required>
-                                        @foreach ($users as $user)
-                                        <option value="{{ $user->id }}" {{ $shop->user_id == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                                        @foreach ($shopOwners as $shopOwner)
+                                        <option value="{{ $shopOwner->id }}" {{ $shop->user_id == $shopOwner->id ? 'selected' : '' }}>{{ $shopOwner->name }}</option>
                                         @endforeach
                                     </select>
 
@@ -209,8 +209,8 @@
 
                             <label for="user_id">User</label>
                             <select id="user_id" name="user_id" required>
-                                @foreach ($users as $user)
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @foreach ($shopOwners as $shopOwner)
+                                <option value="{{ $shopOwner->id }}">{{ $shopOwner->name }}</option>
                                 @endforeach
                             </select>
 
