@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Reservation;
 use App\Models\Favorite;
+use App\Models\Review;
+use Carbon\Carbon;
 
 
 class MypageController extends Controller
@@ -16,6 +18,20 @@ class MypageController extends Controller
         $reservations = $user->reservations()->with('shop')->get();
         $favorites = $user->favorites()->with('shop')->get();
 
-        return view('mypage', compact('reservations', 'favorites'));
+         // 来店済み店舗の取得
+        $pastReservations = $user->reservations()
+            ->with('shop')
+            ->where('reserve_date', '<', Carbon::today())
+            ->get();
+
+        $shopIds = $pastReservations->pluck('shop_id')->toArray();
+
+        $reviews = Review::where('user_id', $user->id)
+            ->whereIn('shop_id', $shopIds)
+            ->get()
+            ->keyBy('shop_id');
+
+        return view('mypage', compact('reservations', 'favorites', 'pastReservations', 'reviews'));
+    
     }
 }

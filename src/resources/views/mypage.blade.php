@@ -7,8 +7,14 @@
 @endsection
 
 @section('content')
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div style="display: flex;">
-        <div style="flex: 2; margin-right: 20px;">
+        <div style="flex: 1; margin-right: 20px;">
             <h2>予約状況</h2>
             <div id="reservations">
                 <!-- 予約情報の表示 -->
@@ -33,6 +39,7 @@
                         <div class="modal-content">
                             <form action="{{ route('reservations.update', $reservation->id) }}" method="POST">
                                 @csrf
+                                @method('PUT')
                                 <label for="reserve_date-{{ $reservation->id }}">日付</label>
                                 <input type="date" id="reserve_date-{{ $reservation->id }}" name="reserve_date" value="{{ $reservation->reserve_date }}" required>
 
@@ -56,6 +63,80 @@
                                     <button type="submit">この内容で変更する</button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div style="flex: 1; margin-right: 20px;">
+            <h2>来店済み店舗</h2>
+            <div id="past-reservations">
+                <!-- 来店済み店舗情報の表示 -->
+                @foreach ($pastReservations as $reservation)
+                    @php
+                        $review = $reviews->get($reservation->shop_id);
+                        $rating = $review ? $review->evaluation : 0;
+                    @endphp
+                    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+                        <p>店舗名: {{ $reservation->shop->shop_name }}</p>
+                        <p>予約年月日: {{ $reservation->reserve_date }}</p>
+                        <p>予約時間: {{ $reservation->reserve_time }}</p>
+                        <p>予約人数: {{ $reservation->number_of_people }}人</p>
+                        <p>評価: 
+                            @if ($rating > 0)
+                                <div class="star-rating" style="--rating: {{ $rating }};">
+                                    <span></span>
+                                </div>
+                            @else
+                                評価なし
+                            @endif
+                        </p>
+                        <p>コメント: {{ $review->comment ?? 'コメントなし' }}</p>
+                        <a href="#modal-review-{{ $reservation->id }}" class="button">評価とコメントを編集</a>
+                    </div>
+                    <!-- モーダルウィンドウ -->
+                    <div class="modal" id="modal-review-{{ $reservation->id }}">
+                        <a href="#!" class="modal-overlay"></a>
+                        <div class="modal-content">
+                            @if ($review)
+                                <form action="{{ route('reviews.update', $review->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <label for="evaluation-{{ $reservation->id }}">評価</label>
+                                    <select id="evaluation-{{ $reservation->id }}" name="evaluation" required>
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            <option value="{{ $i }}" @if($review->evaluation == $i) selected @endif>{{ str_repeat('★', $i) }}</option>
+                                        @endfor
+                                    </select>
+
+                                    <label for="comment-{{ $reservation->id }}">コメント</label>
+                                    <textarea id="comment-{{ $reservation->id }}" name="comment" rows="4">{{ $review->comment }}</textarea>
+
+                                    <div style="margin-top: 20px;">
+                                        <a href="#!" class="modal-close button">キャンセル</a>
+                                        <button type="submit">この内容で保存する</button>
+                                    </div>
+                                </form>
+                            @else
+                                <form action="{{ route('reviews.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="shop_id" value="{{ $reservation->shop_id }}">
+                                    <label for="evaluation-{{ $reservation->id }}">評価</label>
+                                    <select id="evaluation-{{ $reservation->id }}" name="evaluation" required>
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            <option value="{{ $i }}">{{ str_repeat('★', $i) }}</option>
+                                        @endfor
+                                    </select>
+
+                                    <label for="comment-{{ $reservation->id }}">コメント</label>
+                                    <textarea id="comment-{{ $reservation->id }}" name="comment" rows="4"></textarea>
+
+                                    <div style="margin-top: 20px;">
+                                        <a href="#!" class="modal-close button">キャンセル</a>
+                                        <button type="submit">この内容で保存する</button>
+                                    </div>
+                                </form>
+                            @endif
                         </div>
                     </div>
                 @endforeach

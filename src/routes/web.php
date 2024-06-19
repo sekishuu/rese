@@ -14,6 +14,7 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\ShopOwnerController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\ShopOwnerNotificationController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Http\Request;
 
 /*
@@ -33,6 +34,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
     Route::post('/reservations/{reservation}', [ReservationController::class, 'update'])->name('reservations.update');
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::put('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
     });
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');

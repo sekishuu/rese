@@ -51,4 +51,17 @@ class ReservationController extends Controller
 
         return redirect()->route('mypage')->with('success', '予約が変更されました');
     }
+
+    public function index()
+    {
+        $user = Auth::user();
+        $pastReservations = $user->reservations()
+            ->with('shop')
+            ->where('reserve_date', '<', Carbon::today())
+            ->get();
+
+        // ReviewControllerに渡すためにcompactします
+        return compact('pastReservations');
+    }
+
 }

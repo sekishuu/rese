@@ -28,17 +28,20 @@ RUN docker-php-ext-install gd
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+RUN mkdir -p /var/www/storage /var/www/bootstrap/cache
+
 COPY . /var/www
+
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
 COPY ./docker/php/laravel-cron /etc/cron.d/laravel-cron
 
-RUN mkdir -p /var/run/cron && chmod 777 /var/run/cron && touch /var/run/cron/crond.pid
-
 RUN chmod 0644 /etc/cron.d/laravel-cron
 
-RUN crontab /etc/cron.d/laravel-cron
+RUN mkdir -p /var/run/cron && chmod 777 /var/run/cron && touch /var/run/cron/crond.pid
 
-USER root
+RUN crontab /etc/cron.d/laravel-cron
 
 COPY --chown=www-data:www-data . /var/www
 

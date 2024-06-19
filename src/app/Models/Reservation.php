@@ -39,4 +39,10 @@ class Reservation extends Model
     {
         return $this->belongsTo(Shop::class);
     }
+
+    public function review()
+    {
+        return $this->hasOne(Review::class, 'shop_id', 'shop_id')->where('user_id', $this->user_id);
+    }
+
 }
