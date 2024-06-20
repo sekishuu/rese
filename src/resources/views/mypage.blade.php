@@ -25,6 +25,7 @@
                         <p>予約年月日: {{ $reservation->reserve_date }}</p>
                         <p>予約時間: {{ $reservation->reserve_time }}</p>
                         <p>予約人数: {{ $reservation->number_of_people }}人</p>
+                        
                         <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')
@@ -32,6 +33,8 @@
                         </form>
                         <!-- 予約変更ボタン -->
                         <a href="#modal-{{ $reservation->id }}" class="button">予約変更</a>
+                        <br>
+                        <a href="{{ route('reservations.qrcode', $reservation->id) }}" class="button">チェックインQRコードを表示</a>
                     </div>
                     <!-- モーダルウィンドウ -->
                     <div class="modal" id="modal-{{ $reservation->id }}">

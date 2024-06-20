@@ -18,7 +18,9 @@ RUN apt-get update && apt-get install -y \
     curl \
     libxml2-dev \
     cron \
-    procps
+    procps \
+    libcurl4-openssl-dev \
+    libxslt1-dev
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
