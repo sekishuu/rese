@@ -20,6 +20,11 @@
                 <li style="margin-right: 10px;"><a href="{{ url('/') }}">Home</a></li>
                 @auth
                     <li style="margin-right: 10px;"><a href="{{ route('mypage') }}">Mypage</a></li>
+                    @if(Auth::user()->user_type == 'shop_owner')
+                        <li style="margin-right: 10px;"><a href="{{ route('shop-owner.index') }}">Shop Owner Page</a></li>
+                    @elseif(Auth::user()->user_type == 'admin')
+                        <li style="margin-right: 10px;"><a href="{{ route('admin.index') }}">Admin Page</a></li>
+                    @endif
                     <li>
                         <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                             @csrf
