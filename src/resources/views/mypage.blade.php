@@ -96,6 +96,7 @@
                         </p>
                         <p>コメント: {{ $review->comment ?? 'コメントなし' }}</p>
                         <a href="#modal-review-{{ $reservation->id }}" class="button">評価とコメントを編集</a>
+                        <a href="{{ route('payments.show', $reservation->id) }}" class="button" style="float: right;">お支払い</a>
                     </div>
                     <!-- モーダルウィンドウ -->
                     <div class="modal" id="modal-review-{{ $reservation->id }}">

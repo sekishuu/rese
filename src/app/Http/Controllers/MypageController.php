@@ -21,7 +21,7 @@ class MypageController extends Controller
          // 来店済み店舗の取得
         $pastReservations = $user->reservations()
             ->with('shop')
-            ->where('reserve_date', '<', Carbon::today())
+            ->where('visit', true)
             ->get();
 
         $shopIds = $pastReservations->pluck('shop_id')->toArray();

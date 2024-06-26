@@ -28,6 +28,11 @@ use Carbon\Carbon;
                     <p>{{ $shop->shop_info }}</p>
                     <div class="shop-actions">
                         <a href="#modal-edit-shop-{{ $shop->id }}" class="button">編集</a>
+                        @if($shop->stripe_account_id)
+                            <a href="{{ route('stripe.accountLogin', ['shop' => $shop->id]) }}" class="button">Stripeログイン</a>
+                        @else
+                            <a href="{{ route('stripe.createLink', ['shop' => $shop->id]) }}" class="button">Stripeアカウント作成</a>
+                        @endif
                         <form action="{{ route('shop-owner.shops.destroy', $shop->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

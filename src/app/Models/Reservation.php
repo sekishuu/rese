@@ -20,6 +20,7 @@ class Reservation extends Model
         'reserve_date',
         'reserve_time',
         'number_of_people',
+        'visit',
     ];
 
     /**

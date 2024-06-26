@@ -16,6 +16,8 @@ use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\ShopOwnerNotificationController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ReservationCheckinController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\StripeAccountController;
 use Illuminate\Http\Request;
 
 /*
@@ -33,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/shops/{shop}', [ShopController::class, 'show'])->name('shops.show');
     Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
     Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
-    Route::post('/reservations/{reservation}', [ReservationController::class, 'update'])->name('reservations.update');
+    Route::put('/reservations/{reservation}', [ReservationController::class, 'update'])->name('reservations.update');
     Route::get('/reservations/checkin/{id}', [ReservationCheckinController::class, 'checkin'])->name('reservations.checkin')
             ->middleware('shop_owner');
     Route::get('/reservations/qrcode/{id}', [ReservationCheckinController::class, 'generateQrCode'])->name('reservations.qrcode');
@@ -41,6 +43,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
     Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
     Route::put('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
+    Route::get('/payments/{reservation}', [PaymentController::class, 'show'])->name('payments.show');
+    Route::post('/create-payment-intent/{shop}', [PaymentController::class, 'createPaymentIntent'])->name('stripe.createPaymentIntent');
+    Route::post('/payment/{shop}', [PaymentController::class, 'handlePost'])->name('stripe.payment');
+    Route::get('/create-stripe-account-link/{shop}', [StripeAccountController::class, 'createLink'])->name('stripe.createLink');
+    Route::get('/stripe-account-created/{shop}', [StripeAccountController::class, 'accountCreated'])->name('stripe.accountCreated');
+    Route::get('/stripe-account-login/{shop}', [StripeAccountController::class, 'accountLogin'])->name('stripe.accountLogin');
 });
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');

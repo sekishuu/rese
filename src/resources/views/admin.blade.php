@@ -102,6 +102,9 @@
                                 <option value="admin">Admin</option>
                             </select>
 
+                            <!-- 管理者専用画面からのリクエストを示す隠しフィールド -->
+                            <input type="hidden" name="is_admin_request" value="true">
+                            
                             <div style="margin-top: 20px;">
                                 <a href="#" class="modal-close button">キャンセル</a>
                                 <button type="submit">この内容で新規登録する</button>
