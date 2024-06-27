@@ -254,7 +254,7 @@
                         </tr>
                         <!-- エリア編集モーダル -->
                         <div class="modal" id="modal-edit-area-{{ $area->id }}">
-                            <a href="#" class="modal-overlay"></a>
+                            <a href="#close" class="modal-overlay"></a>
                             <div class="modal-content">
                                 <form action="{{ route('areas.update', $area->id) }}" method="POST">
                                     @csrf
