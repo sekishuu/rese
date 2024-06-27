@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.favorite-btn').forEach(button => {
         button.addEventListener('click', function () {
             const shopId = this.getAttribute('data-shop-id');
-            const isFavorite = this.innerText === 'お気に入り解除';
+            const heartIcon = this.querySelector('.heart');
+            const isFavorite = heartIcon.classList.contains('active');
 
             if (isFavorite) {
                 fetch(`/favorites/${shopId}`, {
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            this.innerText = 'お気に入り追加';
+                            heartIcon.classList.remove('active');
                         }
                     });
             } else {
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            this.innerText = 'お気に入り解除';
+                            heartIcon.classList.add('active');
                         }
                     });
             }
