@@ -1,18 +1,117 @@
-/* index.css */
+.main-search-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -4.6vw;
+    margin-bottom: 0.7vw;
+}
 
 /* 検索フォームのスタイル */
+.search-container {
+    display: flex;
+    justify-content: center;
+    width: 40vw;
+    height: 1.5vw;
+    margin-bottom: 2vh;
+    background: #fff;
+    padding: 1vh 0.5vw;
+    border-radius: 0.5vw;
+    box-shadow: 0.2vw 0.2vw 0.2vw 0 #9e9e9e;
+}
+
 .search-form {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
 }
 
-.search-form select,
-.search-form input[type="text"],
-.search-form button {
-    margin-right: 10px;
-    padding: 10px;
-    font-size: 16px;
+.select-box {
+    position: relative;
+    width: 8vw;
+}
+
+.select-box select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: none;
+    border: none;
+    padding: 1vh 0 1vh 0.4vw;
+    width: 100%;
+    font-size: 1vw;
+    cursor: pointer;
+    border-radius: 0.5vw;
+    background: #fff;
+}
+
+.select-box:after {
+    content: '▼';
+    position: absolute;
+    right: 0.3vw;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1vw;
+    color: #ccc;
+    pointer-events: none;
+}
+
+.search-box {
+    position: relative;
+    z-index: 1;
+}
+
+.search-box input {
+    padding: 1vh 0.5vw;
+    width: 17vw;
+    font-size: 1vw;
+    border: none;
+    border-radius: 0.5vw;
+    background: #fff;
+}
+
+.separator {
+    width: 0.1vw;
+    height: 3vh;
+    background-color: #ccc;
+    margin: 0 1vw;
+}
+
+.search-button {
+    position: relative;
+    width: 2vw;
+    height: 4vh;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 2;
+}
+
+.search-button:before,
+.search-button:after {
+    content: '';
+    position: absolute;
+    background-color: #fffefe;
+}
+
+.search-button::before {
+    position: absolute;
+    content: '';
+    width: 0.6vw;
+    height: 0.6vw;
+    top: calc(50% - 0.4vw);
+    left: calc(50% - 1vw);
+    border-radius: 2vw;
+    box-shadow: 0 0 0 0.2vw #ccc;
+}
+
+.search-button::after {
+    position: absolute;
+    content: '';
+    width: 0.6vw;
+    height: 0.2vw;
+    top: calc(50% + 0.4vw);
+    left: calc(28%);
+    border-top: solid 0.2vw #ccc;
+    transform: rotate(45deg);
 }
 
 .search-form button {
@@ -31,11 +130,11 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0.2vw 0.2vw 0.2vw 0 #9e9e9e;
     text-align: center;
     max-width: 23vw;
     /* カードの最大幅を設定 */
-    height: 40vh;
+    height: 19vw;
     /* カードの高さを統一 */
     display: flex;
     flex-direction: column;
@@ -46,7 +145,7 @@
 
 .shop-image {
     width: 100%;
-    height: 21vh;
+    height: 10vw;
     /* 画像の高さを統一 */
     border-radius: 8px 8px 0 0;
     object-fit: contain;
@@ -56,19 +155,25 @@
 .shop-details {
     padding: 1vh 1vw;
     /* 内容の余白を設定 */
-    height: 18vh;
+    height: 10vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-
+.shop-name {
+    display: flex;
+    flex-direction: row;
+}
 .shop-item h2 {
     font-size: 1.1vw;
     /* フォントサイズを比率で設定 */
-    margin: 1vh 0;
+    margin: 0.1vw 0;
     
 }
-
+.area-genre-name{
+    display: flex;
+    flex-direction: row;
+}
 .shop-item p {
     font-size: 0.8vw;
     /* フォントサイズを比率で設定 */
@@ -80,7 +185,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1vh 0;
+    margin: 0.1vw 0;
+    padding:0 0.5vw 0 0;
 }
 
 .heart {
@@ -107,7 +213,7 @@
 
 .detail-link {
     display: inline-block;
-    padding: 1vh 2vw;
+    padding: 0.5vw 1vw;
     /* パディングを比率で設定 */
     background-color: #007bff;
     color: #fff;
@@ -122,3 +228,109 @@
     background-color: #0056b3;
 }
 
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .shop-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-form {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .search-container {
+        width: 100%;
+        height: auto;
+        padding: 0.1vw 10vw 0.1vw 4vw;
+    }
+
+    .select-box {
+        position: relative;
+        width: 20vw;
+    }
+
+    .select-box select {
+        font-size: 2vw;
+        width: 18vw;
+        padding: 0.1vw 1vw;
+        margin: 0 1vw;
+    }
+
+    
+    .search-box input {
+        font-size: 2vw;
+        width: 18vw;
+        padding: 0.1vw 1vw;
+        margin: 0 3vw 0 0;
+    }
+
+    .select-box:after {
+        font-size: 1.2vw;
+        right: 1.6vw;
+    }
+
+    .separator {
+        height: 3vw;
+        margin: 0 2vw;
+    }
+
+    .search-button {
+        width: 4vw;
+        height: 4vw;
+    }
+
+    .search-button::before {
+        width: 1.1vw;
+        height: 1.1vw;
+        top: calc(50% - 0.75vw);
+        left: calc(50% - 0.75vw);
+        box-shadow: 0 0 0 0.3vw #ccc;
+    }
+
+    .search-button::after {
+        width: 1vw;
+        height: 0.5vw;
+        top: calc(50% + 0.5vw);
+        left: calc(50%);
+        border-top: solid 0.4vw #ccc;
+    }
+
+    .shop-item {
+        max-width: 45vw;
+        height: auto;
+    }
+
+    .shop-image {
+        height: 20vw;
+    }
+
+    .shop-details {
+        padding: 2.5vw 2.5vw;
+    }
+
+    .shop-item h2 {
+        font-size: 1.8vw;
+    }
+
+    .shop-item p {
+        font-size: 1.2vw;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 3vw;
+        margin: 0.1vw 0;
+        padding: 0 0.5vw 0 0;
+    }
+    .heart {
+        font-size: 4vw;
+    }
+
+    .detail-link {
+        padding: 1vw 3vw;
+        font-size: 1vw;
+    }
+}

@@ -10,26 +10,25 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+    padding: 2vh;
     position: relative;
 }
 
 .header h1 {
     color: #0350e0;
-    margin-right: 35px;
+    margin: 0 3vw 0 1vw;
     display: inline;
 }
 
 .greeting {
     font-weight: bold;
     /* 文字を太くする */
-    font-size: 1.2em;
-    /* 文字サイズを大きくする */
+    font-size: 1.5vw;
+    /* 文字サイズを比率で設定 */
     color: #333;
     /* 暗い灰色でおしゃれに */
     display: inline;
-    margin-left: 10px;
+    margin-left: 0.5vw;
     /* スペースを追加 */
 }
 
@@ -39,10 +38,22 @@ body {
     position: relative;
 }
 
+.menu-button-container {
+    background-color: #002fff;
+    padding: 0.7vw;
+    border-radius: 0.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.2vw;
+    height: 1.1vw;
+    box-shadow: 0.2vw 0.2vw 0.2vw 0 #777777;
+}
+
 .cp_hmenuac03 {
     position: relative;
-    width: 40px;
-    height: 30px;
+    width: 4vw;
+    height: 1.5vw;
     cursor: pointer;
     z-index: 1100;
 }
@@ -51,35 +62,38 @@ body {
 .cp_hmenuac03:before,
 .cp_hmenuac03:after {
     display: block;
-    height: 5px;
+    height: 0.5vh;
     content: '';
     transition: all 0.2s ease-in-out;
-    border-radius: 5px;
-    background-color:#0350e0;
+    border-radius: 0.5vh;
+    background-color: #002fff;
     position: absolute;
     left: 0;
 }
 
 .cp_hmenuac03 .cp_bar {
-    width: 30px;
+    width: 1.5vw;
+    height: 0.15vw;
     top: 50%;
     transform: translateY(-50%);
 }
 
 .cp_hmenuac03:before {
-    width: 25px;
-    top: 0;
+    width: 1vw;
+    height: 0.15vw;
+    top: 10%;
 }
 
 .cp_hmenuac03:after {
-    width: 20px;
-    bottom: 0;
+    width: 0.5vw;
+    height: 0.15vw;
+    bottom: 10%;
 }
 
 .menu-toggle:not(:checked)+.header .cp_hmenuac03 .cp_bar,
 .menu-toggle:not(:checked)+.header .cp_hmenuac03:before,
 .menu-toggle:not(:checked)+.header .cp_hmenuac03:after {
-    background-color:#0350e0;
+    background-color: #ffffff;
 }
 
 .menu-toggle:checked+.header .cp_hmenuac03 .cp_bar {
@@ -87,21 +101,21 @@ body {
 }
 
 .menu-toggle:checked+.header .cp_hmenuac03:before {
-    transform: translateY(12px) rotate(45deg);
-    width: 40px;
+    transform: translateY(1.1vh) rotate(45deg);
+    width: 2vw;
 }
 
 .menu-toggle:checked+.header .cp_hmenuac03:after {
-    transform: translateY(-12px) rotate(-45deg);
-    width: 40px;
+    transform: translateY(-1.1vh) rotate(-45deg);
+    width: 2vw;
 }
 
 .user-greeting span {
-    margin-left: 10px;
+    margin-left: 2vw;
 }
 
 .main-content {
-    padding: 20px;
+    padding: 2vh;
 }
 
 /* Modal Styles */
@@ -132,10 +146,10 @@ body {
 
 .modal-content {
     background: #fff;
-    padding: 20px;
-    border-radius: 5px;
+    padding: 2vh;
+    border-radius: 0.5vw;
     width: 90%;
-    max-width: 500px;
+    max-width: 50vw;
     position: relative;
     text-align: center;
     z-index: 1050;
@@ -147,13 +161,13 @@ body {
 }
 
 .modal-nav ul li {
-    margin: 20px 0;
+    margin: 2vh 0;
 }
 
 .modal-nav ul li a {
     color: blue;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 3vh;
 }
 
 .modal-nav ul li a:hover {

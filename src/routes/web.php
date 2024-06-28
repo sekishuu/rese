@@ -32,7 +32,7 @@ use Illuminate\Http\Request;
 */
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [ShopController::class, 'index']);
-    Route::get('/shops/{shop}', [ShopController::class, 'show'])->name('shops.show');
+    Route::get('/detail/{shop}', [ShopController::class, 'show'])->name('shops.show');
     Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
     Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
     Route::put('/reservations/{reservation}', [ReservationController::class, 'update'])->name('reservations.update');

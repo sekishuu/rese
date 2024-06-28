@@ -3,29 +3,45 @@
 @section('title', '飲食店一覧')
 
 @section('content')
-    <form action="/" method="GET" class="search-form">
-        <select name="area">
-            <option value="">エリアを選択</option>
-            @foreach ($areas as $area)
-                <option value="{{ $area->id }}">{{ $area->area_name }}</option>
-            @endforeach
-        </select>
-        <select name="genre">
-            <option value="">ジャンルを選択</option>
-            @foreach ($genres as $genre)
-                <option value="{{ $genre->id }}">{{ $genre->genre_name }}</option>
-            @endforeach
-        </select>
-        <input type="text" name="keyword" placeholder="キーワード検索">
-        <button type="submit">検索</button>
-    </form>
+<div class="main-search-container">    
+    <div class="search-container">
+        <form action="/" method="GET" class="search-form">
+            <div class="select-box">
+                <select name="area" id="area-select">
+                    <option value="">All area </option>
+                    @foreach ($areas as $area)
+                        <option value="{{ $area->id }}">{{ $area->area_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="separator"></div>
+            <div class="select-box">
+                <select name="genre" id="genre-select">
+                    <option value="">All genre</option>
+                    @foreach ($genres as $genre)
+                        <option value="{{ $genre->id }}">{{ $genre->genre_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="separator"></div>
+            <button type="submit" class="search-button"></button>
+            <div class="search-box">
+                <input type="text" name="keyword" placeholder="Search ...">
+            </div>
+        </form>
+    </div>
+</div>    
     <div class="shop-list">
         @foreach ($shops as $shop)
             <div class="shop-item">
                 <img src="{{ asset('storage/shop_images/' . $shop->shop_image) }}" alt="{{ $shop->shop_name }}" class="shop-image">
                 <div class="shop-details">
-                    <h2>{{ $shop->shop_name }}</h2>
-                    <p>#{{ $shop->area->area_name }} #{{ $shop->genre->genre_name }}</p>
+                    <div class="shop-name">
+                        <h2>{{ $shop->shop_name }}</h2>
+                    </div>
+                    <div class="area-genre-name">
+                        <p>#{{ $shop->area->area_name }}   #{{ $shop->genre->genre_name }}</p>
+                    </div>
                     <div class="button-container">
                         <a href="{{ route('shops.show', $shop->id) }}" class="detail-link">詳しくみる</a>
                         <button class="favorite-btn" data-shop-id="{{ $shop->id }}">
