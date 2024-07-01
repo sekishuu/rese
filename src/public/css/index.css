@@ -11,7 +11,7 @@
     justify-content: center;
     width: 40vw;
     height: 1.5vw;
-    margin-bottom: 2vh;
+    margin-bottom: 2.5vw;
     background: #fff;
     padding: 1vh 0.5vw;
     border-radius: 0.5vw;
@@ -134,7 +134,7 @@
     text-align: center;
     max-width: 23vw;
     /* カードの最大幅を設定 */
-    height: 19vw;
+    height: 23.4vw;
     /* カードの高さを統一 */
     display: flex;
     flex-direction: column;
@@ -143,13 +143,15 @@
     /* カードの内容がはみ出ないように設定 */
 }
 
+.image-container {
+    border-radius: 8px 8px 0 0;
+    height: 12vw;
+}
+
 .shop-image {
     width: 100%;
-    height: 10vw;
+    height: 100%;
     /* 画像の高さを統一 */
-    border-radius: 8px 8px 0 0;
-    object-fit: contain;
-    /* 画像全体を表示 */
 }
 
 .shop-details {
@@ -239,10 +241,21 @@
         width: 100%;
         justify-content: center;
     }
+
+    .main-search-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: -3.5vw;
+        margin-bottom: 0.7vw;
+    }
+
     .search-container {
         width: 100%;
         height: auto;
-        padding: 0.1vw 10vw 0.1vw 4vw;
+        margin-top: 1vw;
+        margin-bottom: 2.5vw;
+        width: 80vw;
+        padding: 0.1vw 5vw 0.1vw 2vw;
     }
 
     .select-box {
@@ -298,11 +311,18 @@
 
     .shop-item {
         max-width: 45vw;
-        height: auto;
+        height: 40vw;
+    }
+
+    .image-container {
+        border-radius: 8px 8px 0 0;
+        height: 25vw;
     }
 
     .shop-image {
-        height: 20vw;
+        width: 100%;
+        height: 100%;
+        /* 画像の高さを統一 */
     }
 
     .shop-details {

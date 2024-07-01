@@ -28,7 +28,7 @@ class UpdateShopOwnerRequest extends FormRequest
             'shop_info' => 'required|string',
             'area_id' => 'required|exists:areas,id',
             'genre_id' => 'required|exists:genres,id',
-            'shop_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'shop_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240',
         ];
     }
 }

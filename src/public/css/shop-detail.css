@@ -1,0 +1,266 @@
+/* General Styles */
+.shop-detail-main {
+    display: flex;
+    justify-content: space-between;
+    padding: 2vw 0 0 0;
+}
+
+.shop-detail-left {
+    width: 40vw;
+    margin-right: 2vw;
+}
+
+.shop-info {
+    max-height: 5vw;
+    /* 必要に応じて高さを調整 */
+    overflow-y: auto;
+    /* 縦スクロールを許可 */
+    padding-right: 1vw;
+    /* スクロールバーが重ならないように右にパディング */
+}
+
+.shop-detail-right {
+    width: 40vw;
+    background-color: #007bff;
+    border-radius: 0.5vw;
+    color: #fff;
+    margin-top: -6.5vw;
+    height: 45vw;
+}
+
+.detail-body {
+    padding: 2vw;
+}
+
+.back-button-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1vw;
+}
+
+.back-button {
+    display: inline-block;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 0.5vw;
+    background-color: #fff;
+    box-shadow: 0.2vw 0.2vw 0.2vw 0 #9e9e9e;
+    text-align: center;
+    line-height: 2vw;
+    margin-right: 1vw;
+    text-decoration: none;
+    color: #000;
+    font-size: 1.5vw;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #e0e0e0;
+    box-shadow: 0.2vw 0.2vw 0.4vw 0 #9e9e9e;
+}
+
+.shop-image {
+    width: auto;
+    height: 25vw;
+    border-radius: 0.5vw;
+    margin-bottom: 1vw;
+}
+
+.shop-detail-right h3 {
+    margin: 0.5vw 0 1vw 0;
+    font-size: 1.5vw;
+}
+
+.shop-detail-right label {
+    display: block;
+    margin-bottom: 0.5vw;
+    font-size: 1vw;
+}
+
+.reserve-date input {
+    width: 20vw;
+    padding: 0.5vw;
+    margin-bottom: 1vw;
+    border-radius: 0.5vw;
+    border: none;
+    font-size: 1vw;
+}
+
+.reserve-time select {
+    width: 100%;
+    padding: 0.5vw;
+    margin-bottom: 1vw;
+    border-radius: 0.5vw;
+    border: none;
+    font-size: 1vw;
+}
+
+.number-of-people select {
+    width: 100%;
+    padding: 0.5vw;
+    margin-bottom: 1vw;
+    border-radius: 0.5vw;
+    border: none;
+    font-size: 1vw;
+}
+
+.reservation-summary {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 1vw;
+    border-radius: 0.5vw;
+    margin-top: 2vw;
+    font-size: 1vw;
+}
+
+.reserve-button {
+    display: block;
+    width: 100%;
+    margin-top: 9.1vw;
+    padding: 1vw;
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    font-size: 1.2vw;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 0 0 0.5vw 0.5vw;
+}
+
+.reserve-button:hover {
+    background-color: #004494;
+}
+
+/* モーダルのスタイル */
+.shop-detail-modal {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 背景を若干透けさせる */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: visibility 0s, opacity 0.5s;
+    z-index: 9999;
+    /* モーダルを前面に表示 */
+}
+
+.shop-detail-modal:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.shop-detail-modal .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    /* 角を丸くする */
+    width: 80vw;
+    /* カードの幅を調整 */
+    max-width: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* カードに影を付ける */
+    position: relative;
+    z-index: 10000;
+    /* モーダルコンテンツを前面に表示 */
+    text-align: center;
+}
+
+.shop-detail-modal .modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    /* モーダルの背面表示を確保 */
+}
+
+.shop-detail-modal .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 10001;
+    /* モーダルの閉じるボタンの前面表示を確保 */
+}
+
+.modal-reserve-date input {
+    font-size: 2vw;
+    border-radius: 0.5vw;
+    border: none;
+}
+
+.modal-reserve-time select {
+    font-size: 2vw;
+    border-radius: 0.5vw;
+    border: none;
+}
+
+.modal-number-of-people select {
+    font-size: 2vw;
+    border-radius: 0.5vw;
+    border: none;
+}
+
+.modal-reservation-summary {
+    font-size: 2vw;
+    border-radius: 0.5vw;
+    border: none;
+}
+
+.reserve-button-mobile {
+    display: none;
+}
+
+/* ブレイクポイントのスタイル */
+@media (max-width: 768px) {
+    .shop-detail-main {
+        flex-direction: column;
+    }
+
+    .shop-detail-left,
+    .shop-detail-right {
+        width: 100%;
+    }
+
+    .shop-detail-right {
+        display: none;
+    }
+
+    .reserve-button-mobile {
+        display: block;
+        background-color: #007bff;
+        color: #fff;
+        padding: 1vw 2vw;
+        border: none;
+        border-radius: 0.5vw;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 2vw;
+        margin-top: 1vw;
+    }
+
+    .reserve-button {
+        font-size: 2vw;
+    }
+
+    .shop-image {
+        width: auto;
+        height: 55vw;
+        border-radius: 0.5vw;
+        margin-bottom: 1vw;
+    }
+
+    .shop-info {
+        max-height: 20vw;
+        overflow-y: auto;
+        padding-right: 1vw;
+    }
+
+}

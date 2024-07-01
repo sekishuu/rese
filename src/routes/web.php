@@ -31,7 +31,7 @@ use Illuminate\Http\Request;
 |
 */
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [ShopController::class, 'index']);
+    Route::get('/', [ShopController::class, 'index'])->name('home');
     Route::get('/detail/{shop}', [ShopController::class, 'show'])->name('shops.show');
     Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
     Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
