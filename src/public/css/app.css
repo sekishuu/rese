@@ -102,12 +102,12 @@ body {
 }
 
 .menu-toggle:checked+.header .cp_hmenuac03:before {
-    transform: translateY(1.1vh) rotate(45deg);
+    transform: translateY(0.55vw) rotate(45deg);
     width: 2vw;
 }
 
 .menu-toggle:checked+.header .cp_hmenuac03:after {
-    transform: translateY(-1.1vh) rotate(-45deg);
+    transform: translateY(-0.55vw) rotate(-45deg);
     width: 2vw;
 }
 

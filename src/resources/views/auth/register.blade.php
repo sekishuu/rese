@@ -3,34 +3,42 @@
 @section('title', '会員登録')
 
 @section('content')
-        <h2>会員登録</h2>
+<div class="register-container">
+    <div class="register-card">
+        <h2>Registration</h2>
         <form action="/register" method="POST">
             @csrf
-            <div>
-                <label for="username">Username</label>
+            <div class="input-group">
+                <label for="username"><i class="fas fa-user"></i> Username</label>
                 <input type="text" id="username" name="username" value="{{ old('username') }}" required>
                 @error('username')
-                    <div>{{ $message }}</div>
+                    <div class="error-message">{{ $message }}</div>
                 @enderror
             </div>
-            <div>
-                <label for="email">Email</label>
+            <div class="input-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email</label>
                 <input type="email" id="email" name="email" value="{{ old('email') }}" required>
                 @error('email')
-                    <div>{{ $message }}</div>
+                    <div class="error-message">{{ $message }}</div>
                 @enderror
             </div>
-            <div>
-                <label for="password">Password</label>
+            <div class="input-group">
+                <label for="password"><i class="fas fa-lock"></i> Password</label>
                 <input type="password" id="password" name="password" required>
                 @error('password')
-                    <div>{{ $message }}</div>
+                    <div class="error-message">{{ $message }}</div>
                 @enderror
             </div>
-            <div>
-                <label for="password_confirmation">Confirm Password</label>
+            <div class="input-group">
+                <label for="password_confirmation"><i class="fas fa-lock"></i> Confirm Password</label>
                 <input type="password" id="password_confirmation" name="password_confirmation" required>
             </div>
-            <button type="submit">登録</button>
+            <button type="submit" class="register-button">登録</button>
         </form>
+    </div>
+</div>
+@endsection
+
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 @endsection

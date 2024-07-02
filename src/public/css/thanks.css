@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.thanks-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin-top: 5vw;
+}
+
+.thanks-card {
+    background-color: #fff;
+    border-radius: 0.5vw;
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
+    padding: 2vw;
+    text-align: center;
+    max-width: 80vw;
+    width: 40vw;
+}
+
+.thanks-card h2 {
+    font-size: 1.5vw;
+    margin-bottom: 1vw;
+}
+
+.thanks-card h3 {
+    font-size: 1.2vw;
+    margin-bottom: 2vw;
+}
+
+.login-button {
+    display: inline-block;
+    padding: 0.8vw 2vw;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 0.5vw;
+    font-size: 1vw;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}

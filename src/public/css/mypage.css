@@ -1,4 +1,270 @@
-.modal {
+.mypage-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2vw 0;
+}
+
+.reservation-visited-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.mypage-section {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.mypage-section:last-child {
+    margin-right: 0;
+}
+
+.mypage-section-favorites {
+    width: 40vw;
+    margin-left: 3vw;
+}
+
+.mypage-section-favorites h2 {
+    font-size: 2vw;
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+.mypage-section h2 {
+    font-size: 2vw;
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+.reservation-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #007bff;
+    box-shadow: 0.2vw 0.2vw 0.2vw 0 #9e9e9e;
+    text-align: center;
+    max-width: 29vw;
+    height: 23vw;
+    padding: 2vw 1.3vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 0.5vw;
+}
+
+.reservation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rsv-destroy-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2vw;
+    height: 2vw;
+    background-color: #007bff;
+    color: white;
+    border: 0.1vw solid white;
+    border-radius: 50%;
+    font-size: 1.3vw;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.reservation-card img {
+    width: 100%;
+    height: 10vw;
+    border-radius: 10px 10px 0 0;
+}
+
+.reservation-card h3 {
+    display: flex;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    color: white;
+    font-weight: bold;
+}
+
+.reservation-card p {
+    display: flex;
+    margin: 0;
+    font-size: 1.5vw;
+    color: white;
+    font-weight: bold;
+}
+
+.edit-qrcode-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reserve-edit-button a {
+    display: inline-block;
+    padding: 0.5vw 0.5vw;
+    background-color: #0056b3;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    font-size: 0.9vw;
+    font-weight: bold;
+}
+
+.qrcode-button a {
+    display: inline-block;
+    padding: 0.5vw 0.5vw;
+    background-color: #0056b3;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    font-size: 0.9vw;
+    font-weight: bold;
+}
+
+.reservation-card a:hover {
+    background-color: #004494;
+}
+
+.visited-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0.2vw 0.2vw 0.2vw 0 #9e9e9e;
+    text-align: center;
+    max-width: 29vw;
+    height: 23vw;
+    padding: 2vw 1.7vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 0.5vw;
+}
+
+.visited-card p {
+    display: flex;
+    font-size: 1.2vw;
+    font-weight: bold;
+    margin: 0;
+}
+.review-comment p {
+    font-size: 1vw;
+    font-weight: normal;
+    height: 5vw;
+    overflow-y: auto;
+    padding: 0 1vw 0 0;
+}
+
+.visited-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.visited-buttons a {
+    display: inline-block;
+    padding: 0.5vw 0.5vw;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    font-size: 1vw;
+    font-weight: bold;
+}
+
+.visited-buttons a:hover {
+    background-color: #0056b3;
+}
+
+.favorites-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0.2vw 0.2vw 0.2vw 0 #9e9e9e;
+    text-align: center;
+    max-width: 29vw;
+    height: 27vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.shop-image {
+    width: 100%;
+    height: 100%;
+}
+
+.image-container {
+    height: 12vw;
+}
+
+.title-container h3 {
+    font-size: 1.3vw;
+    margin: 0;
+}
+
+.info-tags p {
+    font-size: 1vw;
+    margin: 0;
+}
+.info-shop-info p{
+    font-size: 1.1vw;
+    margin: 0;
+    height: 5vw;
+    overflow-y: auto;
+    padding: 0 1vw 0 0.5vw;
+}
+.link-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5vw 0;
+    padding: 0 1vw;
+}
+.detail-link {
+    display: inline-block;
+    padding: 0.5vw 1vw;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    font-size: 0.8vw;
+    font-weight: bold;
+}
+
+.heart {
+    font-size: 2vw;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.heart.active {
+    color: #ff4081;
+}
+
+.favorite-btn {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.bookmarks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5vw;
+}
+
+.mypage-modal {
     visibility: hidden;
     opacity: 0;
     position: fixed;
@@ -12,33 +278,31 @@
     align-items: center;
     transition: visibility 0s, opacity 0.5s;
     z-index: 9999;
-    /* ここでモーダルの前面表示を確保 */
 }
 
-.modal:target {
+.mypage-modal:target {
     visibility: visible;
     opacity: 1;
 }
 
-.modal-content {
+.mypage-modal-content {
     background-color: #fff;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 80%;
     max-width: 500px;
     position: relative;
     z-index: 10000;
-    /* ここでモーダルコンテンツの前面表示を確保 */
 }
 
-.modal-overlay {
+.mypage-modal-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 9998;
-    /* モーダルの背面表示を確保 */
+    cursor: pointer;
 }
 
 .modal-close {
@@ -47,28 +311,28 @@
     right: 10px;
     cursor: pointer;
     z-index: 10001;
-    /* モーダルの閉じるボタンの前面表示を確保 */
 }
 
-.button {
-    cursor: pointer;
-    color: blue;
-    text-decoration: underline;
-    z-index: 1;
-}
 
 /* 星評価のスタイル */
+.rating-container {
+    display: flex;
+}
+
 .star-rating {
-    font-size: 1.5rem;
+    font-size: 2vw;
     color: #ccc;
     /* デフォルトは灰色 */
     position: relative;
     display: inline-block;
-    letter-spacing: 3px;
+    line-height: 1;
+    margin-left: 0.5rem;
 }
 
 .star-rating span::before {
     content: '★★★★★';
+    position: relative;
+    z-index: 1;
 }
 
 .star-rating span::after {
@@ -77,9 +341,122 @@
     left: 0;
     top: 0;
     color: #ffd700;
-    /* ゴールド */
     overflow: hidden;
     width: calc(var(--rating) * 20%);
+    z-index: 2;
+}
+
+/* モーダルボタン */
+.modal-toggle-favorites-button {
+    display: none;
+    margin-bottom: 1vw;
+    padding: 1vw 2vw;
+    margin: 0 18vw 0 8vw;
+    font-size: 2vw;
+    font-weight: bold;
+    background-color: #5e01c9c2;
+    box-shadow: 0.3vw 0.3vw 0.3vw 0 #9e9e9e;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.modal-toggle-favorites-checkbox {
+    display: none;
+}
+
+.modal-toggle-favorites-checkbox:checked~.mypage-favorites-modal {
+    display: block;
+}
+
+.mypage-favorites-modal {
+    display: none;
+    position: fixed;
     z-index: 1;
-    /* 星評価の前面表示を確保 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mypage-favorites-modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.favorites-modal-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.favorites-modal-header h2 {
+    font-size: 2.3vw;
+}
+
+.modal-close-favorites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3vw;
+    height: 3vw;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 0.2vw solid rgb(0, 0, 0);
+    border-radius: 50%;
+    font-size: 2vw;
+    font-weight: bolder;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* ブレイクポイント以下でのスタイル */
+@media screen and (max-width: 768px) {
+    .mypage-container {
+        flex-direction: column;
+    }
+
+    .mypage-section-favorites {
+        display: none;
+    }
+
+    .modal-toggle-favorites-button {
+        display: block;
+    }
+
+    .bookmarks-grid-modal {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5vw;
+    }
+
+    .favorites-card-modal {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0.2vw 0.2vw 0.2vw 0 #9e9e9e;
+        text-align: center;
+        max-width: 29vw;
+        height: 27vw;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .star-rating span::before {
+        z-index: 0;
+    }
+
+    .star-rating span::after {
+        z-index: 0;
+    }
+
 }
