@@ -32,8 +32,9 @@ class ReservationController extends Controller
         }
 
         $reservation->delete();
+        $previousUrl = url()->previous();
 
-        return redirect()->route('mypage')->with('success', '予約が削除されました');
+        return redirect($previousUrl)->with('success', '予約が削除されました');
     }
 
     public function update(UpdateReservationRequest $request, Reservation $reservation)

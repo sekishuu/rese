@@ -10,8 +10,8 @@
         <p>予約時間: {{ $reservation->reserve_time }}</p>
         <p>予約人数: {{ $reservation->number_of_people }}人</p>
         <!-- 支払いフォームや詳細情報をここに追加 -->
-        <form action="{{ route('stripe.payment', ['shop' => $reservation->shop->id]) }}" method="POST" id="payment-form">
-        @csrf
+        <form action="{{ route('stripe.payment', ['shop' => $reservation->shop->id]) }}" method="POST" id="payment-form" data-payment-intent-url="{{ route('stripe.createPaymentIntent', ['shop' => $reservation->shop->id]) }}">
+            @csrf
             <label for="amount">支払金額:</label>
             <input type="number" name="amount" id="amount" required>
             
@@ -22,46 +22,8 @@
             <button type="submit">支払う</button>
         </form>
 
+        <meta id="stripe-key" content="{{ env('STRIPE_KEY') }}">
         <script src="https://js.stripe.com/v3/"></script>
-        <script>
-            var stripe = Stripe('{{ env('STRIPE_KEY') }}');
-            var elements = stripe.elements();
-
-            var card = elements.create('card');
-            card.mount('#card-element');
-
-            var form = document.getElementById('payment-form');
-            form.addEventListener('submit', async function(event) {
-                event.preventDefault();
-
-                const response = await fetch('{{ route('stripe.createPaymentIntent', ['shop' => $reservation->shop->id]) }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    },
-                    body: JSON.stringify({
-                        amount: document.getElementById('amount').value
-                    })
-                });
-
-                const { client_secret } = await response.json();
-
-                const { error, paymentIntent } = await stripe.confirmCardPayment(client_secret, {
-                    payment_method: {
-                        card: card,
-                        billing_details: {
-                            name: 'お客様の名前'
-                        }
-                    }
-                });
-
-                if (error) {
-                    // エラー処理
-                } else {
-                    // 支払い完了後の処理
-                }
-            });
-        </script>
+        <script src="{{ asset('js/stripe-payment.js') }}"></script>
     </div>
 @endsection

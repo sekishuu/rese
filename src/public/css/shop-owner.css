@@ -7,65 +7,173 @@ body {
     margin: 20px auto;
 }
 
-h1,
-h2 {
+.shop-owner-page-title,
+.shop-owner-section-title {
+    font-size: 2.5vw;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 0;
 }
 
-.content {
+.shop-owner-content {
     display: flex;
     justify-content: space-between;
 }
 
 .registered-shops,
-.reservations {
+.shop-owner-reservations {
     width: 48%;
 }
 
-.section-header {
+.shop-owner-section-header-shops {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin: 0 7vw 1vw 0;
 }
 
-.shop-info,
-.reservation-info {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-}
-
-.shop-image {
-    width: 100%;
-    max-width: 150px;
-    height: auto;
-    object-fit: cover;
-    margin-bottom: 10px;
-}
-
-.shop-actions {
+.shop-owner-section-header-reservation {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 0 1vw 0;
 }
 
-.shop-actions button {
+.shop-owner-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0.2vw 0.2vw 0.2vw 0 #9e9e9e;
+    text-align: center;
+    max-width: 32vw;
+    height: 35vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1vw;
+}
+
+.shop-owner-shop-image {
+    width: 100%;
+    height: 100%;
+}
+
+.shop-owner-image-container {
+    height: 22vw;
+}
+
+.shop-owner-title-container h3 {
+    font-size: 1.3vw;
+    margin: 0;
+}
+
+.shop-owner-info-tags p {
+    font-size: 1vw;
+    margin: 0;
+}
+
+.shop-owner-info-shop-info p {
+    font-size: 1.1vw;
+    margin: 0;
+    height: 5vw;
+    overflow-y: auto;
+    padding: 0 1vw 0 0.5vw;
+}
+
+.shop-owner-link-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5vw 0;
+    padding: 0 1vw;
+}
+
+.shop-owner-reservation-info {
+    padding: 0.7vw 2vw 1.5vw 2.5vw;
+    margin-bottom: 1vw;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #007bff;
+    box-shadow: 0.2vw 0.2vw 0.2vw 0 #9e9e9e;
+    height: 15vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1vw;
+}
+
+.shop-owner-reservation-info p {
+    color: white;
+    font-size: 1.3vw;
+    margin: 0 0 0.2vw 0;
+}
+
+.rsv-destroy-btn {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 0 auto;
+    align-items: center;
+    width: 2vw;
+    height: 2vw;
     background-color: #007bff;
     color: white;
-    border: none;
-    padding: 10px 20px;
+    border: 0.1vw solid white;
+    border-radius: 50%;
+    font-size: 1.3vw;
+    font-weight: bold;
     cursor: pointer;
-    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.shop-actions button:hover {
+.shop-owner-button {
+    display: inline-block;
+    padding: 0.5vw 1.5vw;
+    margin: 0.2vw 0;
+    font-size: 1vw;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    box-shadow: 0.2vw 0.2vw 0.2vw 0 #9e9e9e;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.shop-owner-button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.shop-owner-button-create {
+    margin: 0 1vw 0 0;
+    display: inline-block;
+    padding: 0.5vw 1.5vw;
+    margin: 0.2vw 0;
+    font-size: 1vw;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    box-shadow: 0.2vw 0.2vw 0.2vw 0 #9e9e9e;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.shop-owner-button-create:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 /* モーダルウィンドウのスタイル */
-.modal {
+.shop-owner-modal {
     visibility: hidden;
     opacity: 0;
     position: fixed;
@@ -80,12 +188,12 @@ h2 {
     transition: visibility 0s, opacity 0.5s;
 }
 
-.modal:target {
+.shop-owner-modal:target {
     visibility: visible;
     opacity: 1;
 }
 
-.modal-overlay {
+.shop-owner-modal-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -93,7 +201,7 @@ h2 {
     height: 100%;
 }
 
-.modal-content {
+.shop-owner-modal-content {
     background: #fff;
     padding: 20px;
     border-radius: 5px;
@@ -103,19 +211,13 @@ h2 {
     position: relative;
 }
 
-.modal-close {
+.shop-owner-modal-close {
     position: absolute;
     top: 10px;
     right: 10px;
     cursor: pointer;
 }
 
-.modal-close:hover {
+.shop-owner-modal-close:hover {
     color: #007bff;
-}
-
-.button {
-    cursor: pointer;
-    color: blue;
-    text-decoration: underline;
 }
