@@ -1,27 +1,33 @@
-.done-container {
+.stripe-container {
     display: flex;
     justify-content: center;
     height: 100vh;
     background-color: #f4f4f4;
 }
 
-.done-card {
+.stripe-card {
     background-color: #fff;
     border-radius: 1vw;
     box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
     padding: 3vw;
     margin-top: 5vw;
-    height: 10vw;
+    height: 15vw;
     text-align: center;
 }
 
-.done-title {
+.stripe-title {
     font-size: 1.7vw;
     margin-bottom: 2vw;
     color: #333;
 }
 
-.done-button {
+.stripe-description {
+    font-size: 1.5vw;
+    margin-bottom: 2vw;
+    color: #666;
+}
+
+.stripe-button {
     display: inline-block;
     padding: 0.5vw 2vw;
     background-color: #007bff;
@@ -32,6 +38,6 @@
     transition: background-color 0.3s ease;
 }
 
-.done-button:hover {
+.stripe-button:hover {
     background-color: #0056b3;
 }

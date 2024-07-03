@@ -17,9 +17,9 @@ class ReservationCheckinController extends Controller
     public function generateQrCode($id)
     {
         $url = route('reservations.checkin', ['id' => $id]);
-        $qrCode = QrCode::size(200)->generate($url);
+        $qrCode = QrCode::generate($url);
 
-        return view('generateQrCode', compact('qrCode', 'url'));
+        return view('generate-qr-code', compact('qrCode', 'url'));
     }
     public function updateVisit(Request $request, $id)
     {
