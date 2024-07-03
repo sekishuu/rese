@@ -3,114 +3,144 @@ body {
 }
 
 .admin-container {
-    width: 90%;
-    margin: 20px auto;
+    width: 90vw;
+    margin: 0.5vw auto;
 }
 
-h1,
-h2 {
+.admin-page-title,
+.admin-section-title {
     text-align: center;
-    margin-bottom: 20px;
+    font-size: 2.1vw;
+    margin: 0;
 }
 
-.tabs {
+.admin-tabs {
     position: relative;
-    margin: 2rem 0;
-    background: #fff;
+    margin: 1vw 0;
+    background: #f9f9f9;
     height: auto;
+    border-radius: 1vw;
+    box-shadow: 0 0.8vw 1.6vw rgba(0, 0, 0, 0.1);
 }
 
-.tabs input[type="radio"] {
+.admin-tabs input[type="radio"] {
     display: none;
 }
 
-.tabs ul {
+.admin-tab-list {
     list-style: none;
     padding-left: 0;
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid #ddd;
+    border-bottom: none;
+    border-radius: 1vw 1vw 0 0;
+    overflow: hidden;
+    margin: 0;
 }
 
-.tabs ul li {
+.admin-tab-list li {
     width: 100%;
     text-align: center;
 }
 
-.tabs ul li label {
+.admin-tab-list li label {
     display: block;
-    padding: 10px;
+    padding: 1vw 2vw;
+    font-size: 1.7vw;
     cursor: pointer;
+    background: #0072ec;
+    color: white;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0.7vw 1.1vw rgba(0, 0, 0, 0.226);
 }
 
-.tabs .slider {
+.admin-tab-list li label:hover,
+.admin-tab-list li label:focus {
+    background: #0056b3;
+    box-shadow: 0 0.9vw 1.5vw rgba(0, 0, 0, 0.3);
+}
+
+.admin-slider {
     position: absolute;
-    bottom: 0;
+    top: 0;
     width: 25%;
-    height: 2px;
-    background: #007bff;
+    height: 1vw;
+    background: #ff4081;
     transition: all 0.3s ease;
+    border-radius: 1vw 1vw 1vw 1vw;
 }
 
-#tab1:checked~.content #content1,
-#tab2:checked~.content #content2,
-#tab3:checked~.content #content3,
-#tab4:checked~.content #content4 {
+#admin-tab1:checked~.admin-content #admin-content1,
+#admin-tab2:checked~.admin-content #admin-content2,
+#admin-tab3:checked~.admin-content #admin-content3,
+#admin-tab4:checked~.admin-content #admin-content4 {
     display: block;
 }
 
-.content section {
+.admin-content section {
     display: none;
-    padding: 20px 0;
+    padding: 0.5vw 0;
+    background: #fff;
+    border-radius: 0 0 1vw 1vw;
+    box-shadow: 0 0.8vw 1.6vw rgba(0, 0, 0, 0.1);
 }
 
-.section-header {
+.admin-section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin: 0 6vw;
 }
 
-.table {
+.admin-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 0.5vw;
 }
 
-.table th,
-.table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+.admin-table th {
+    background-color: #259dff;
+    color: white;
+    text-align: center;
+    padding: 1vw 2vw;
+    font-size: 1.5vw;
 }
 
-.table th {
-    background-color: #f2f2f2;
+.admin-table td {
+    padding: 0.2vw 2vw;
+    font-size: 1.3vw;
     text-align: center;
 }
 
-.table td button {
-    margin: 0 5px;
+.admin-table tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
-#tab1:checked~.slider {
+.admin-table tr:hover {
+    background-color: #d9e7ff;
+}
+
+.admin-table button {
+    font-size: 1vw;
+}
+
+#admin-tab1:checked~.admin-slider {
     left: 0;
 }
 
-#tab2:checked~.slider {
+#admin-tab2:checked~.admin-slider {
     left: 25%;
 }
 
-#tab3:checked~.slider {
+#admin-tab3:checked~.admin-slider {
     left: 50%;
 }
 
-#tab4:checked~.slider {
+#admin-tab4:checked~.admin-slider {
     left: 75%;
 }
 
 /* モーダルウィンドウのスタイル */
-.modal {
+.admin-modal {
     visibility: hidden;
     opacity: 0;
     position: fixed;
@@ -125,12 +155,12 @@ h2 {
     transition: visibility 0s, opacity 0.5s;
 }
 
-.modal:target {
+.admin-modal:target {
     visibility: visible;
     opacity: 1;
 }
 
-.modal-overlay {
+.admin-modal-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -138,29 +168,68 @@ h2 {
     height: 100%;
 }
 
-.modal-content {
+.admin-modal-content {
     background: #fff;
-    padding: 20px;
-    border-radius: 5px;
+    padding: 4vw;
+    border-radius: 1vw;
     width: 90%;
-    max-width: 500px;
+    max-width: 80vw;
     z-index: 10;
     position: relative;
 }
 
-.modal-close {
+.admin-modal-close {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 2vw;
+    right: 2vw;
     cursor: pointer;
 }
 
-.modal-close:hover {
+.admin-modal-close:hover {
     color: #007bff;
 }
 
-.button {
+.admin-button {
+    display: inline-block;
+    padding: 0.5vw 1vw;
+    margin: 0.4vw 1vw 0.4vw 0;
+    font-size: 1vw;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    box-shadow: 0.4vw 0.4vw 0.4vw 0 #9e9e9e;
+    border: none;
+    border-radius: 1vw;
+    text-align: center;
+    text-decoration: none;
     cursor: pointer;
-    color: blue;
-    text-decoration: underline;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.admin-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.admin-button-create {
+    margin: 0 2vw 0 0;
+    display: inline-block;
+    padding: 0.5vw 1vw;
+    margin: 0.4vw 0;
+    font-size: 1.2vw;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    box-shadow: 0.4vw 0.4vw 0.4vw 0 #9e9e9e;
+    border: none;
+    border-radius: 1vw;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.admin-button-create:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
 }

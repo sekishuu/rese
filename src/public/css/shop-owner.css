@@ -4,7 +4,7 @@ body {
 
 .shop-owner-container {
     width: 90%;
-    margin: 20px auto;
+    margin: 1vw auto;
 }
 
 .shop-owner-page-title,
@@ -220,4 +220,45 @@ body {
 
 .shop-owner-modal-close:hover {
     color: #007bff;
+}
+
+@media screen and (max-width: 768px) {
+    .shop-owner-content {
+        flex-direction: column;
+    }
+    .shop-owner-section-header-shops {
+        display: flex;
+        justify-content: center;
+        gap: 3vw;
+        margin: 0 0 1vw 0;
+    }
+    .registered-shops {
+        width: 100%;
+        overflow: auto;
+        max-height: 60vw;
+        margin-bottom: 1vw;
+    }
+    .shop-owner-reservations {
+        width: 97%;
+        overflow: auto;
+        max-height: 50vh;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .shop-owner-section-header-reservation {
+        margin: 2vw 0 1vw 0;
+        display: flex;
+        justify-content: center;
+        gap: 3vw;
+    }
+    .shop-owner-reservation-info{
+        width: 28vw;
+    }
+    .shop-owner-cards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
