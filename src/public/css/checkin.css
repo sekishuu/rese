@@ -1,108 +1,110 @@
-/* コンテナのスタイル */
 .checkin-container {
-    padding: 2vw;
-}
-
-/* 予約詳細のスタイル */
-.reservation-details p {
-    font-size: 1.2vw;
-    margin: 1vw 0;
-}
-
-/* モーダルの基本スタイル */
-.checkin-modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5vw;
+    background-color: #f9f9f9;
     height: 100vh;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* モーダルコンテンツのスタイル */
-.checkin-modal-content {
+.checkin-title {
+    font-size: 2vw;
+    margin-bottom: 2vw;
+    color: #333;
+}
+
+.reservation-details {
     background-color: #fff;
-    margin: 10vw auto;
-    padding: 2vw;
-    border: 0.1vw solid #888;
-    width: 80vw;
-    max-width: 40vw;
-    position: relative;
     border-radius: 1vw;
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
+    padding: 3vw;
+    width: 50vw;
+    max-width: 90vw;
+    text-align: left;
 }
 
-/* モーダルを表示するためのチェックボックス */
-.checkin-modal-checkbox {
-    display: none;
+.reservation-detail {
+    font-size: 1.2vw;
+    margin-bottom: 1vw;
+    color: #666;
 }
 
-/* モーダルを表示するスタイル */
-.checkin-modal-checkbox:checked~.checkin-modal {
-    display: block;
-}
-
-/* ボタンのスタイル */
 .checkin-button {
     display: inline-block;
     padding: 1vw 2vw;
-    margin: 1vw;
     background-color: #007bff;
-    color: white;
-    text-align: center;
-    cursor: pointer;
+    color: #fff;
     text-decoration: none;
     border-radius: 0.5vw;
+    font-size: 1.5vw;
+    margin-top: 2vw;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .checkin-button:hover {
     background-color: #0056b3;
 }
 
-/* モーダルの閉じるボタンのスタイル */
+.checkin-modal-checkbox {
+    display: none;
+}
+
+.checkin-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.checkin-modal-checkbox:checked+.checkin-modal {
+    display: block;
+}
+
+.checkin-modal-content {
+    background-color: #fff;
+    margin: 10vw auto;
+    padding: 2vw 3vw;
+    border: 0.1vw solid #888;
+    width: 40vw;
+    max-width: 80vw;
+    border-radius: 1vw;
+    position: relative;
+}
+.visit-status-label {
+    font-size: 1.5vw;
+}
+.visit-status-option {
+    font-size: 1.3vw;
+}
+
 .checkin-modal-close-button {
     position: absolute;
     top: 1vw;
-    right: 1vw;
-    width: 3vw ;
-    height: 3vw;
-    background-color: #ff0000;
-    color: white;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 3vw;
-    font-size: 2vw;
-    font-weight: bold;
+    right: 1.5vw;
+    font-size: 2.5vw;
     cursor: pointer;
-    text-decoration: none;
-
 }
 
-/* フォーム内のラベルとセレクトボックスのスタイル */
-.checkin-modal-content label,
-.checkin-modal-content select {
-    display: block;
-    margin-bottom: 1vw;
-    font-size: 1.2vw;
+.checkin-modal-button-container {
+    margin-top: 2vw;
+    text-align: right;
 }
 
-.checkin-modal-content select {
-    padding: 0.5vw;
-    font-size: 1.2vw;
-}
-
-/* ボタンのスタイル */
 .button {
-    display: inline-block;
     padding: 1vw 2vw;
     background-color: #007bff;
     color: white;
-    text-align: center;
-    cursor: pointer;
-    text-decoration: none;
+    border: none;
     border-radius: 0.5vw;
+    font-size: 1.2vw;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .button:hover {
