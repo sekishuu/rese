@@ -50,25 +50,30 @@
                         <form action="{{ route('reservations.update', $reservation->id) }}" method="POST">
                             @csrf
                             @method('PUT')
-                            <label for="reserve_date-{{ $reservation->id }}">日付</label>
-                            <input type="date" id="reserve_date-{{ $reservation->id }}" name="reserve_date" value="{{ $reservation->reserve_date }}" required>
-                            <label for="reserve_time-{{ $reservation->id }}">時間</label>
-                            <select id="reserve_time-{{ $reservation->id }}" name="reserve_time" required>
-                                @for ($i = 0; $i < 24; $i++)
-                                    <option value="{{ sprintf('%02d:00:00', $i) }}" @if($reservation->reserve_time == sprintf('%02d:00:00', $i)) selected @endif>{{ sprintf('%02d:00', $i) }}</option>
-                                    <option value="{{ sprintf('%02d:30:00', $i) }}" @if($reservation->reserve_time == sprintf('%02d:30', $i)) selected @endif>{{ sprintf('%02d:30', $i) }}</option>
-                                @endfor
-                            </select>
-                            <label for="number_of_people-{{ $reservation->id }}">人数</label>
-                            <select id="number_of_people-{{ $reservation->id }}" name="number_of_people" required>
-                                @for ($i = 1; $i <= 10; $i++)
-                                    <option value="{{ $i }}" @if($reservation->number_of_people == $i) selected @endif>{{ $i }}人</option>
-                                @endfor
-                            </select>
-                            <div style="margin-top: 20px;">
-                                <a href="#!" class="modal-close button">キャンセル</a>
-                                <button type="submit">この内容で変更する</button>
+                            <div class="mypage-modal-date">
+                                <label for="reserve_date-{{ $reservation->id }}">日付</label>
+                                <input type="date" id="reserve_date-{{ $reservation->id }}" name="reserve_date" value="{{ $reservation->reserve_date }}" required>
                             </div>
+                            <div class="mypage-modal-time">
+                                <label for="reserve_time-{{ $reservation->id }}">時間</label>
+                                <select id="reserve_time-{{ $reservation->id }}" name="reserve_time" required>
+                                    @for ($i = 0; $i < 24; $i++)
+                                        <option value="{{ sprintf('%02d:00:00', $i) }}" @if($reservation->reserve_time == sprintf('%02d:00:00', $i)) selected @endif>{{ sprintf('%02d:00', $i) }}</option>
+                                        <option value="{{ sprintf('%02d:30:00', $i) }}" @if($reservation->reserve_time == sprintf('%02d:30', $i)) selected @endif>{{ sprintf('%02d:30', $i) }}</option>
+                                    @endfor
+                                </select>
+                            </div>
+                            <div class="mypage-modal-people">
+                                <label for="number_of_people-{{ $reservation->id }}">人数</label>
+                                <select id="number_of_people-{{ $reservation->id }}" name="number_of_people" required>
+                                    @for ($i = 1; $i <= 10; $i++)
+                                        <option value="{{ $i }}" @if($reservation->number_of_people == $i) selected @endif>{{ $i }}人</option>
+                                    @endfor
+                                </select>
+                            </div>
+                                <a href="#!" class="modal-close button">&times;</a>
+                                <button type="submit">この内容で変更する</button>
+                            
                         </form>
                     </div>
                 </div>
@@ -108,7 +113,7 @@
                 </div>
                 <div class="mypage-modal" id="modal-review-{{ $reservation->id }}">
                     <a href="#!" class="mypage-modal-overlay"></a>
-                    <div class="mypage-modal-content">
+                    <div class="mypage-review-modal-content">
                         @if ($review)
                             <form action="{{ route('reviews.update', $review->id) }}" method="POST">
                                 @csrf
@@ -119,12 +124,12 @@
                                         <option value="{{ $i }}" @if($review->evaluation == $i) selected @endif>{{ str_repeat('★', $i) }}</option>
                                     @endfor
                                 </select>
-                                <label for="comment-{{ $reservation->id }}">コメント</label>
-                                <textarea id="comment-{{ $reservation->id }}" name="comment" rows="4">{{ $review->comment }}</textarea>
-                                <div style="margin-top: 20px;">
-                                    <a href="#!" class="modal-close button">キャンセル</a>
-                                    <button type="submit">この内容で保存する</button>
+                                <div class="review-label-text">
+                                    <label for="comment-{{ $reservation->id }}">コメント</label>
+                                    <textarea id="comment-{{ $reservation->id }}" name="comment" rows="4">{{ $review->comment }}</textarea>
                                 </div>
+                                <a href="#!" class="modal-close button">&times;</a>
+                                <button type="submit">この内容で保存する</button>
                             </form>
                         @else
                             <form action="{{ route('reviews.store') }}" method="POST">

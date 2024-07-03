@@ -79,10 +79,10 @@ use Carbon\Carbon;
                             <label for="shop_image">画像を選択</label>
                             <input type="file" id="shop_image" name="shop_image">
 
-                            <div style="margin-top: 20px;">
+                            
                                 <a href="#" class="shop-owner-modal-close shop-owner-button">キャンセル</a>
                                 <button type="submit" class="shop-owner-button">この内容で更新する</button>
-                            </div>
+                            
                         </form>
                     </div>
                 </div>
@@ -142,10 +142,8 @@ use Carbon\Carbon;
             <label for="shop_image">画像を選択</label>
             <input type="file" id="shop_image" name="shop_image">
 
-            <div style="margin-top: 20px;">
                 <a href="#" class="shop-owner-modal-close shop-owner-button">キャンセル</a>
                 <button type="submit" class="shop-owner-button">この内容で新規登録する</button>
-            </div>
         </form>
     </div>
 </div>
@@ -158,22 +156,19 @@ use Carbon\Carbon;
             @csrf
             <label for="recipients">送信先</label>
             @foreach ($reservations as $reservation)
-                <div>
+                <div class="send-notification-user">
                     <input type="checkbox" id="recipient-{{ $reservation->user->id }}" name="recipients[]" value="{{ $reservation->user->id }}">
                     <label for="recipient-{{ $reservation->user->id }}">{{ $reservation->user->name }}</label>
                 </div>
             @endforeach
 
             <label for="subject">メールタイトル</label>
-            <input type="text" id="subject" name="subject" required>
+            <input type="text" class="shop-owner-modal-mail-title" id="subject" name="subject" required>
 
             <label for="body">メール本文</label>
             <textarea id="body" name="body" required></textarea>
-
-            <div style="margin-top: 20px;">
-                <a href="#" class="shop-owner-modal-close shop-owner-button">キャンセル</a>
-                <button type="submit" class="shop-owner-button">送信</button>
-            </div>
+            <a href="#" class="shop-owner-modal-close shop-owner-button">キャンセル</a>
+            <button type="submit" class="shop-owner-button">送信</button>
         </form>
     </div>
 </div>
