@@ -24,7 +24,7 @@
                     <h3>予約</h3>
                     <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                     <div class="reserve-date">
-                        <input type="date" id="reserve_date" name="reserve_date">
+                        <input type="date" id="reserve_date" name="reserve_date" min="{{ $today }}">
                         @error('reserve_date')
                             <div>{{ $message }}</div>
                         @enderror
@@ -74,7 +74,7 @@
                     <h3>予約</h3>
                     <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                     <div class="modal-reserve-date">
-                        <input type="date" id="modal_reserve_date" name="reserve_date">
+                        <input type="date" id="modal_reserve_date" name="reserve_date" min="{{ $today }}">
                         @error('reserve_date')
                             <div>{{ $message }}</div>
                         @enderror

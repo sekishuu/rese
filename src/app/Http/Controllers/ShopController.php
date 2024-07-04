@@ -36,7 +36,8 @@ class ShopController extends Controller
 
     public function show(Shop $shop)
         {
-            return view('shop-detail', compact('shop'));
+            $today = date('Y-m-d');
+            return view('shop-detail', compact('shop', 'today'));
         }
 
     public function update(UpdateShopRequest $request, $id)
