@@ -3,7 +3,7 @@
 @section('title', 'Create Stripe Account Link')
 
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/create-stripe-account-link.css') }}">
+<link rel="stylesheet" href="{{ asset('css/create-stripe-account-link.css') }}">
 @endsection
 
 @section('content')

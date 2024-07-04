@@ -36,7 +36,6 @@ class PaymentController extends Controller
 
     public function handlePost(Request $request, $shopId)
     {
-        // 支払い完了後の処理
         return back()->with('success_message', '支払いが完了しました！');
     }
 }

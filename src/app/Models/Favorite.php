@@ -19,19 +19,11 @@ class Favorite extends Model
         'shop_id',
     ];
 
-    /**
-     * リレーションの定義
-     * お気に入りのユーザーを取得
-     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * リレーションの定義
-     * お気に入りの店舗を取得
-     */
     public function shop()
     {
         return $this->belongsTo(Shop::class);

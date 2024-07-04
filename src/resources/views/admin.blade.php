@@ -15,12 +15,28 @@
         <input type="radio" id="admin-tab3" name="admin-tab-control">
         <input type="radio" id="admin-tab4" name="admin-tab-control">
         <ul class="admin-tab-list">
-            <li title="ユーザー"><label for="admin-tab1" role="button"><span>ユーザー</span></label></li>
-            <li title="店舗"><label for="admin-tab2" role="button"><span>店舗</span></label></li>
-            <li title="エリア"><label for="admin-tab3" role="button"><span>エリア</span></label></li>
-            <li title="ジャンル"><label for="admin-tab4" role="button"><span>ジャンル</span></label></li>
+            <li title="ユーザー">
+                <label for="admin-tab1" role="button">
+                    <span>ユーザー</span>
+                </label>
+            </li>
+            <li title="店舗">
+                <label for="admin-tab2" role="button">
+                    <span>店舗</span>
+                </label>
+            </li>
+            <li title="エリア">
+                <label for="admin-tab3" role="button">
+                    <span>エリア</span>
+                </label>
+            </li>
+            <li title="ジャンル">
+                <label for="admin-tab4" role="button">
+                    <span>ジャンル</span>
+                </label>
+            </li>
         </ul>
-        <div class="admin-slider"><div class="admin-indicator"></div></div>
+        <div class="admin-slider"></div>
         <div class="admin-content">
             <section id="admin-content1">
                 <div class="admin-section-header">
@@ -53,7 +69,6 @@
                                 </form>
                             </td>
                         </tr>
-                        <!-- ユーザー編集モーダル -->
                         <div class="admin-modal" id="admin-modal-edit-user-{{ $user->id }}">
                             <a href="#" class="admin-modal-overlay"></a>
                             <div class="admin-modal-content">
@@ -86,7 +101,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                <!-- ユーザー新規追加モーダル -->
                 <div class="admin-modal" id="admin-modal-add-user">
                     <a href="#" class="admin-modal-overlay"></a>
                     <div class="admin-modal-content">
@@ -150,7 +164,6 @@
                                 </form>
                             </td>
                         </tr>
-                        <!-- 店舗編集モーダル -->
                         <div class="admin-modal" id="admin-modal-edit-shop-{{ $shop->id }}">
                             <a href="#" class="admin-modal-overlay"></a>
                             <div class="admin-modal-content">
@@ -195,7 +208,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                <!-- 店舗新規追加モーダル -->
                 <div class="admin-modal" id="admin-modal-add-shop">
                     <a href="#" class="admin-modal-overlay"></a>
                     <div class="admin-modal-content">
@@ -264,7 +276,6 @@
                                 </form>
                             </td>
                         </tr>
-                        <!-- エリア編集モーダル -->
                         <div class="admin-modal" id="admin-modal-edit-area-{{ $area->id }}">
                             <a href="#" class="admin-modal-overlay"></a>
                             <div class="admin-modal-content">
@@ -289,7 +300,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                <!-- エリア新規追加モーダル -->
                 <div class="admin-modal" id="admin-modal-add-area">
                     <a href="#" class="admin-modal-overlay"></a>
                     <div class="admin-modal-content">
@@ -334,7 +344,6 @@
                                 </form>
                             </td>
                         </tr>
-                        <!-- ジャンル編集モーダル -->
                         <div class="admin-modal" id="admin-modal-edit-genre-{{ $genre->id }}">
                             <a href="#" class="admin-modal-overlay"></a>
                             <div class="admin-modal-content">
@@ -359,7 +368,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                <!-- ジャンル新規追加モーダル -->
                 <div class="admin-modal" id="admin-modal-add-genre">
                     <a href="#" class="admin-modal-overlay"></a>
                     <div class="admin-modal-content">

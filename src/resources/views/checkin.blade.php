@@ -17,7 +17,6 @@
             <p class="reservation-detail"><strong>予約時間:</strong> {{ $reservation->reserve_time }}</p>
             <p class="reservation-detail"><strong>予約人数:</strong> {{ $reservation->number_of_people }}</p>
             <p class="reservation-detail"><strong>来店状況:</strong> {{ $reservation->visit ? '来店済み' : '未訪問' }}</p>
-
             <label for="modal-toggle" class="checkin-button">来店状況ステータスの変更</label>
             <input type="checkbox" id="modal-toggle" class="checkin-modal-checkbox">
             <div class="checkin-modal">
@@ -31,7 +30,6 @@
                             <option value="0" {{ !$reservation->visit ? 'selected' : '' }}>未訪問</option>
                             <option value="1" {{ $reservation->visit ? 'selected' : '' }}>来店済み</option>
                         </select>
-
                         <div class="checkin-modal-button-container">
                             <button type="submit" class="button">この内容で変更</button>
                         </div>

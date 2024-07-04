@@ -2,6 +2,10 @@
 
 @section('title', '飲食店一覧')
 
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+@endsection
+
 @section('content')
 <div class="main-search-container">    
     <div class="search-container">
@@ -58,8 +62,4 @@
             </div>
         @endforeach
     </div>
-@endsection
-
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection

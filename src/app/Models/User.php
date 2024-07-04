@@ -43,43 +43,37 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-     // 管理者かどうかをチェックするメソッド
+
     public function isAdmin()
     {
         return $this->user_type === 'admin';
     }
 
-    // 店舗代表者かどうかをチェックするメソッド
     public function isShopOwner()
     {
         return $this->user_type === 'shop_owner';
     }
 
-    // 一般ユーザーかどうかをチェックするメソッド
     public function isGeneralUser()
     {
         return $this->user_type === 'general';
     }
 
-    // ユーザーが持つレビューを取得
     public function reviews()
     {
         return $this->hasMany(Review::class);
     }
 
-    // ユーザーがお気に入りにした店舗を取得
     public function favorites()
     {
         return $this->hasMany(Favorite::class);
     }
 
-    // ユーザーの予約を取得
     public function reservations()
     {
         return $this->hasMany(Reservation::class);
     }
 
-    // ユーザーが作成した店舗を取得
     public function shops()
     {
         return $this->hasMany(Shop::class);

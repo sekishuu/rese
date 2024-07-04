@@ -21,19 +21,11 @@ class Review extends Model
         'comment',
     ];
 
-    /**
-     * リレーションの定義
-     * レビューをしたユーザーを取得
-     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * リレーションの定義
-     * レビューされた店舗を取得
-     */
     public function shop()
     {
         return $this->belongsTo(Shop::class);

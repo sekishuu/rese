@@ -10,6 +10,7 @@ use App\Models\Area;
 use App\Models\Genre;
 use App\Http\Requests\ShopOwner\StoreShopOwnerRequest;
 use App\Http\Requests\ShopOwner\UpdateShopOwnerRequest;
+use Carbon\Carbon;
 
 class ShopOwnerController extends Controller
 {
@@ -18,7 +19,9 @@ class ShopOwnerController extends Controller
         $user = Auth::user();
         $shops = Shop::where('user_id', $user->id)->with('area', 'genre')->get();
         $reservations = Reservation::whereIn('shop_id', $shops->pluck('id'))->with('shop', 'user')->get();
-
+        foreach ($reservations as $reservation) {
+            $reservation->formatted_reserve_time = Carbon::parse($reservation->reserve_time)->format('H:i');
+        }
         $areas = Area::all();
         $genres = Genre::all();
 

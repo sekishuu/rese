@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Genre;
 use App\Http\Requests\Genre\StoreGenreRequest;
 use App\Http\Requests\Genre\UpdateGenreRequest;

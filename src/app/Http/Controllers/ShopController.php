@@ -15,7 +15,6 @@ class ShopController extends Controller
         {
             $query = Shop::query();
 
-            // フィルタリング
             if ($request->has('area') && $request->area != '') {
                 $query->where('area_id', $request->area);
             }

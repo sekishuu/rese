@@ -3,7 +3,7 @@
 @section('title', '支払いページ')
 
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/payment.css') }}">
+<link rel="stylesheet" href="{{ asset('css/payment.css') }}">
 @endsection
 
 @section('content')
@@ -18,14 +18,11 @@
                 @csrf
                 <label for="amount" class="payment-label">支払金額:</label>
                 <input type="number" name="amount" id="amount" class="payment-input" required>
-                
                 <div id="card-element" class="payment-card-element">
                     <!-- A Stripe Element will be inserted here. -->
                 </div>
-
                 <button type="submit" class="payment-button">支払う</button>
             </form>
-
             <meta id="stripe-key" content="{{ env('STRIPE_KEY') }}">
             <script src="https://js.stripe.com/v3/"></script>
             <script src="{{ asset('js/stripe-payment.js') }}"></script>

@@ -12,8 +12,6 @@ class StripeAccountController extends Controller
 {
     public function createLink($shopId)
     {
-       
-
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $shop = Shop::findOrFail($shopId);

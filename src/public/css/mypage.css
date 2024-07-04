@@ -367,7 +367,6 @@
     overflow: auto;
 }
 
-/* 星評価のスタイル */
 .rating-container {
     display: flex;
     margin: 1vw 0;
@@ -376,7 +375,6 @@
 .star-rating {
     font-size: 2vw;
     color: #ccc;
-    /* デフォルトは灰色 */
     position: relative;
     display: inline-block;
     line-height: 1;
@@ -400,9 +398,6 @@
     z-index: 2;
 }
 
-
-
-/* モーダルボタン */
 .modal-toggle-favorites-button {
     display: none;
     margin-bottom: 1vw;
@@ -473,7 +468,6 @@
     transition: background-color 0.3s ease;
 }
 
-/* ブレイクポイント以下でのスタイル */
 @media screen and (max-width: 768px) {
     .mypage-container {
         flex-direction: column;

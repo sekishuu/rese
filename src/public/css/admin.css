@@ -139,7 +139,6 @@ body {
     left: 75%;
 }
 
-/* モーダルウィンドウのスタイル */
 .admin-modal {
     visibility: hidden;
     opacity: 0;

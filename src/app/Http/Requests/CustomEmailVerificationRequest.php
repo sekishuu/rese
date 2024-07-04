@@ -11,7 +11,6 @@ class CustomEmailVerificationRequest extends EmailVerificationRequest
     {
         parent::fulfill();
 
-        // 認証が完了した後にログアウト
         Auth::logout();
     }
 }

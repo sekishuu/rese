@@ -18,10 +18,6 @@ class Area extends Model
         'area_name',
     ];
 
-    /**
-     * リレーションの定義
-     * エリアが持つ店舗を取得
-     */
     public function shops()
     {
         return $this->hasMany(Shop::class);

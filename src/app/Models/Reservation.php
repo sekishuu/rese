@@ -9,7 +9,7 @@ class Reservation extends Model
 {
     use HasFactory;
 
-     /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -23,19 +23,11 @@ class Reservation extends Model
         'visit',
     ];
 
-    /**
-     * リレーションの定義
-     * 予約したユーザーを取得
-     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * リレーションの定義
-     * 予約した店舗を取得
-     */
     public function shop()
     {
         return $this->belongsTo(Shop::class);
@@ -44,6 +36,13 @@ class Reservation extends Model
     public function review()
     {
         return $this->hasOne(Review::class, 'shop_id', 'shop_id')->where('user_id', $this->user_id);
+    }
+
+    public function getReviewAttribute()
+    {
+        return Review::where('shop_id', $this->shop_id)
+            ->where('user_id', $this->user_id)
+            ->first();
     }
 
 }

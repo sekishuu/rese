@@ -18,10 +18,6 @@ class Genre extends Model
         'genre_name',
     ];
 
-    /**
-     * リレーションの定義
-     * ジャンルが持つ店舗を取得
-     */
     public function shops()
     {
         return $this->hasMany(Shop::class);

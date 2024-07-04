@@ -3,7 +3,7 @@
 @section('title', '予約チェックイン QRコード')
 
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/generate-qr-code.css') }}">
+<link rel="stylesheet" href="{{ asset('css/generate-qr-code.css') }}">
 @endsection
 
 @section('content')

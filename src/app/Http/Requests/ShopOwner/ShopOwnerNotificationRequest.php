@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\ShopOwner;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateUserRequest extends FormRequest
+class ShopOwnerNotificationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,12 +23,11 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules()
     {
-        $userId = $this->route('user'); 
-
         return [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $userId,
-            'user_type' => 'required|string|in:general,shop_owner,admin',
+            'recipients' => 'required|array',
+            'recipients.*' => 'exists:users,id',
+            'subject' => 'required|string|max:255',
+            'body' => 'required|string',
         ];
     }
 }

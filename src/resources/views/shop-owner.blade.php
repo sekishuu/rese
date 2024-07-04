@@ -6,10 +6,6 @@
 <link rel="stylesheet" href="{{ asset('css/shop-owner.css') }}">
 @endsection
 
-@php
-use Carbon\Carbon;
-@endphp
-
 @section('content')
 <div class="shop-owner-container">
     <h1 class="shop-owner-page-title">店舗代表者ページ</h1>
@@ -48,8 +44,6 @@ use Carbon\Carbon;
                         </form>
                     </div>
                 </div>
-
-                <!-- 店舗編集モーダル -->
                 <div class="shop-owner-modal" id="modal-edit-shop-{{ $shop->id }}">
                     <a href="#" class="shop-owner-modal-overlay"></a>
                     <div class="shop-owner-modal-content">
@@ -58,31 +52,24 @@ use Carbon\Carbon;
                             @method('PUT')
                             <label for="shop_name">店舗名</label>
                             <input type="text" id="shop_name" name="shop_name" value="{{ $shop->shop_name }}" required>
-
                             <label for="shop_info">店舗情報</label>
                             <textarea id="shop_info" name="shop_info" required>{{ $shop->shop_info }}</textarea>
-
                             <label for="area_id">エリア</label>
                             <select id="area_id" name="area_id" required>
                                 @foreach ($areas as $area)
                                 <option value="{{ $area->id }}" {{ $shop->area_id == $area->id ? 'selected' : '' }}>{{ $area->area_name }}</option>
                                 @endforeach
                             </select>
-
                             <label for="genre_id">ジャンル</label>
                             <select id="genre_id" name="genre_id" required>
                                 @foreach ($genres as $genre)
                                 <option value="{{ $genre->id }}" {{ $shop->genre_id == $genre->id ? 'selected' : '' }}>{{ $genre->genre_name }}</option>
                                 @endforeach
                             </select>
-
                             <label for="shop_image">画像を選択</label>
                             <input type="file" id="shop_image" name="shop_image">
-
-                            
-                                <a href="#" class="shop-owner-modal-close shop-owner-button">キャンセル</a>
-                                <button type="submit" class="shop-owner-button">この内容で更新する</button>
-                            
+                            <a href="#" class="shop-owner-modal-close shop-owner-button">キャンセル</a>
+                            <button type="submit" class="shop-owner-button">この内容で更新する</button>
                         </form>
                     </div>
                 </div>
@@ -105,15 +92,13 @@ use Carbon\Carbon;
                     <p>店舗名: {{ $reservation->shop->shop_name }}</p>
                     <p>予約者名: {{ $reservation->user->name }}</p>
                     <p>予約年月日: {{ $reservation->reserve_date }}</p>
-                    <p>予約時間: {{ Carbon::parse($reservation->reserve_time)->format('H:i') }}</p>
+                    <p>予約時間: {{ $reservation->formatted_reserve_time }}</p>
                     <p>予約人数: {{ $reservation->number_of_people }}人</p>
                 </div>
             @endforeach
         </div>
     </div>
 </div>
-
-<!-- 店舗新規追加モーダル -->
 <div class="shop-owner-modal" id="modal-add-shop">
     <a href="#" class="shop-owner-modal-overlay"></a>
     <div class="shop-owner-modal-content">
@@ -121,34 +106,27 @@ use Carbon\Carbon;
             @csrf
             <label for="shop_name">店舗名</label>
             <input type="text" id="shop_name" name="shop_name" required>
-
             <label for="shop_info">店舗情報</label>
             <textarea id="shop_info" name="shop_info" required></textarea>
-
             <label for="area_id">エリア</label>
             <select id="area_id" name="area_id" required>
                 @foreach ($areas as $area)
                 <option value="{{ $area->id }}">{{ $area->area_name }}</option>
                 @endforeach
             </select>
-
             <label for="genre_id">ジャンル</label>
             <select id="genre_id" name="genre_id" required>
                 @foreach ($genres as $genre)
                 <option value="{{ $genre->id }}">{{ $genre->genre_name }}</option>
                 @endforeach
             </select>
-
             <label for="shop_image">画像を選択</label>
             <input type="file" id="shop_image" name="shop_image">
-
-                <a href="#" class="shop-owner-modal-close shop-owner-button">キャンセル</a>
-                <button type="submit" class="shop-owner-button">この内容で新規登録する</button>
+            <a href="#" class="shop-owner-modal-close shop-owner-button">キャンセル</a>
+            <button type="submit" class="shop-owner-button">この内容で新規登録する</button>
         </form>
     </div>
 </div>
-
-<!-- お知らせメール作成モーダル -->
 <div class="shop-owner-modal" id="modal-send-notification">
     <a href="#" class="shop-owner-modal-overlay"></a>
     <div class="shop-owner-modal-content">
@@ -156,15 +134,13 @@ use Carbon\Carbon;
             @csrf
             <label for="recipients">送信先</label>
             @foreach ($reservations as $reservation)
-                <div class="send-notification-user">
-                    <input type="checkbox" id="recipient-{{ $reservation->user->id }}" name="recipients[]" value="{{ $reservation->user->id }}">
-                    <label for="recipient-{{ $reservation->user->id }}">{{ $reservation->user->name }}</label>
-                </div>
+            <div class="send-notification-user">
+                <input type="checkbox" id="recipient-{{ $reservation->user->id }}" name="recipients[]" value="{{ $reservation->user->id }}">
+                <label for="recipient-{{ $reservation->user->id }}">{{ $reservation->user->name }}</label>
+            </div>
             @endforeach
-
             <label for="subject">メールタイトル</label>
             <input type="text" class="shop-owner-modal-mail-title" id="subject" name="subject" required>
-
             <label for="body">メール本文</label>
             <textarea id="body" name="body" required></textarea>
             <a href="#" class="shop-owner-modal-close shop-owner-button">キャンセル</a>

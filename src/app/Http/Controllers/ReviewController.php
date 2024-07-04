@@ -8,10 +8,8 @@ use App\Models\Review;
 use App\Http\Requests\Review\StoreReviewRequest;
 use App\Http\Requests\Review\UpdateReviewRequest;
 
-
 class ReviewController extends Controller
 {
-
     public function getReviewsForReservations($pastReservations)
     {
         $userId = Auth::id();
@@ -22,7 +20,6 @@ class ReviewController extends Controller
             ->get()
             ->keyBy('shop_id');
 
-        // pastReservationsとreviewsをビューに渡します
         return view('mypage', compact('pastReservations', 'reviews'));
     }
 

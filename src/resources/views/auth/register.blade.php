@@ -2,6 +2,10 @@
 
 @section('title', '会員登録')
 
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/register.css') }}">
+@endsection
+
 @section('content')
 <div class="register-container">
     <div class="register-card">
@@ -37,8 +41,4 @@
         </form>
     </div>
 </div>
-@endsection
-
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 @endsection

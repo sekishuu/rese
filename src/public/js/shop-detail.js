@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // 通常の予約フォーム
     document.getElementById('reserve_date').addEventListener('change', function () {
         document.getElementById('selected_date').innerText = this.value;
     });
@@ -12,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('selected_people').innerText = this.value;
     });
 
-    // モーダル内の予約フォーム
     document.getElementById('modal_reserve_date').addEventListener('change', function () {
         document.getElementById('selected_date_modal').innerText = this.value;
     });

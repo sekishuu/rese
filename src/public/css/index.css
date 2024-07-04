@@ -5,7 +5,6 @@
     margin-bottom: 0.7vw;
 }
 
-/* 検索フォームのスタイル */
 .search-container {
     display: flex;
     justify-content: center;
@@ -118,12 +117,10 @@
     cursor: pointer;
 }
 
-/* ショップリストのスタイル */
 .shop-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2vw;
-    /* gapを比率で設定 */
 }
 
 .shop-item {
@@ -133,14 +130,11 @@
     box-shadow: 0.2vw 0.2vw 0.2vw 0 #9e9e9e;
     text-align: center;
     max-width: 23vw;
-    /* カードの最大幅を設定 */
     height: 23.4vw;
-    /* カードの高さを統一 */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
-    /* カードの内容がはみ出ないように設定 */
 }
 
 .image-container {
@@ -151,12 +145,10 @@
 .shop-image {
     width: 100%;
     height: 100%;
-    /* 画像の高さを統一 */
 }
 
 .shop-details {
     padding: 1vh 1vw;
-    /* 内容の余白を設定 */
     height: 10vw;
     display: flex;
     flex-direction: column;
@@ -168,9 +160,7 @@
 }
 .shop-item h2 {
     font-size: 1.1vw;
-    /* フォントサイズを比率で設定 */
     margin: 0.1vw 0;
-    
 }
 .area-genre-name{
     display: flex;
@@ -178,7 +168,6 @@
 }
 .shop-item p {
     font-size: 0.8vw;
-    /* フォントサイズを比率で設定 */
     color: #555;
     margin: 0.5vh 0 0 0;
 }
@@ -193,44 +182,36 @@
 
 .heart {
     font-size: 2vw;
-    /* ハートの大きさを比率で設定 */
     color: #ccc;
-    /* お気に入りに追加されていない状態の色 */
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
 .heart.active {
     color: #ff4081;
-    /* お気に入りに追加されている状態の色 */
 }
 
 .favorite-btn {
     background: none;
-    /* 背景色をなしにする */
     border: none;
-    /* ボーダーをなしにする */
     padding: 0;
 }
 
 .detail-link {
     display: inline-block;
     padding: 0.5vw 1vw;
-    /* パディングを比率で設定 */
     background-color: #007bff;
     color: #fff;
     text-decoration: none;
     border-radius: 4px;
     transition: background-color 0.3s ease;
     font-size: 0.8vw;
-    /* フォントサイズを比率で設定 */
 }
 
 .detail-link:hover {
     background-color: #0056b3;
 }
 
-/* レスポンシブデザイン */
 @media (max-width: 768px) {
     .shop-list {
         grid-template-columns: repeat(2, 1fr);
@@ -322,7 +303,6 @@
     .shop-image {
         width: 100%;
         height: 100%;
-        /* 画像の高さを統一 */
     }
 
     .shop-details {

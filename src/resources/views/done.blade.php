@@ -3,7 +3,7 @@
 @section('title', '予約完了')
 
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/done.css') }}">
+<link rel="stylesheet" href="{{ asset('css/done.css') }}">
 @endsection
 
 @section('content')

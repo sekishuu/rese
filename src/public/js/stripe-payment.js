@@ -32,10 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         if (error) {
-            // エラー処理
             console.error(error);
         } else {
-            // 支払い完了後の処理
             alert('支払いが完了しました！');
         }
     });

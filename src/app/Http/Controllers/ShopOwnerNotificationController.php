@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ShopOwner\ShopOwnerNotificationRequest;
 use App\Mail\ShopOwnerNotification;
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 
 class ShopOwnerNotificationController extends Controller
 {
-    public function sendNotification(Request $request)
+    public function sendNotification(ShopOwnerNotificationRequest $request)
     {
         $request->validate([
             'recipients' => 'required|array',

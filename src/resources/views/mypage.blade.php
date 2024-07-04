@@ -3,7 +3,7 @@
 @section('title', 'マイページ')
 
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
+<link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
 @endsection
 
 @section('content')
@@ -13,9 +13,7 @@
     </div>
 @endif
 
-<!-- お気に入り店舗モーダル表示ボタン -->
 <label for="modal-toggle-favorites" class="modal-toggle-favorites-button">お気に入り店舗一覧を表示</label>
-
 <div class="mypage-container">
     <div class="reservation-visited-container">
         <div class="mypage-section">
@@ -71,9 +69,8 @@
                                     @endfor
                                 </select>
                             </div>
-                                <a href="#!" class="modal-close button">&times;</a>
-                                <button type="submit">この内容で変更する</button>
-                            
+                            <a href="#!" class="modal-close button">&times;</a>
+                            <button type="submit">この内容で変更する</button>                          
                         </form>
                     </div>
                 </div>
@@ -84,10 +81,6 @@
             <h2>来店済み店舗</h2>
             <div id="past-reservations">
                 @foreach ($pastReservations as $reservation)
-                @php
-                    $review = $reviews->get($reservation->shop_id);
-                    $rating = $review ? $review->evaluation : 0;
-                @endphp
                 <div class="visited-card">
                     <p>店舗名: {{ $reservation->shop->shop_name }}</p>
                     <p>予約年月日: {{ $reservation->reserve_date }}</p>
@@ -95,8 +88,8 @@
                     <p>予約人数: {{ $reservation->number_of_people }}人</p>
                     <div class="rating-container">
                         <p>評価: </p>
-                        @if ($rating > 0)
-                            <div class="star-rating" style="--rating: {{ $rating }};">
+                        @if ($reservation->rating > 0)
+                            <div class="star-rating" style="--rating: {{ $reservation->rating }};">
                                 <span></span>
                             </div>
                         @else
@@ -104,7 +97,7 @@
                         @endif
                     </div>
                     <div class="review-comment">
-                        <p>コメント: {{ $review->comment ?? 'コメントなし' }}</p>
+                        <p>コメント: {{ $reservation->review->comment ?? 'コメントなし' }}</p>
                     </div>    
                     <div class="visited-buttons">
                         <a href="#modal-review-{{ $reservation->id }}" class="button">評価とコメントを編集</a>
@@ -114,19 +107,19 @@
                 <div class="mypage-modal" id="modal-review-{{ $reservation->id }}">
                     <a href="#!" class="mypage-modal-overlay"></a>
                     <div class="mypage-review-modal-content">
-                        @if ($review)
-                            <form action="{{ route('reviews.update', $review->id) }}" method="POST">
+                        @if ($reservation->review)
+                            <form action="{{ route('reviews.update', $reservation->review->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <label for="evaluation-{{ $reservation->id }}">評価</label>
                                 <select id="evaluation-{{ $reservation->id }}" name="evaluation" required>
                                     @for ($i = 1; $i <= 5; $i++)
-                                        <option value="{{ $i }}" @if($review->evaluation == $i) selected @endif>{{ str_repeat('★', $i) }}</option>
+                                        <option value="{{ $i }}" @if($reservation->review->evaluation == $i) selected @endif>{{ str_repeat('★', $i) }}</option>
                                     @endfor
                                 </select>
                                 <div class="review-label-text">
                                     <label for="comment-{{ $reservation->id }}">コメント</label>
-                                    <textarea id="comment-{{ $reservation->id }}" name="comment" rows="4">{{ $review->comment }}</textarea>
+                                    <textarea id="comment-{{ $reservation->id }}" name="comment" rows="4">{{ $reservation->review->comment }}</textarea>
                                 </div>
                                 <a href="#!" class="modal-close button">&times;</a>
                                 <button type="submit">この内容で保存する</button>
@@ -143,10 +136,8 @@
                                 </select>
                                 <label for="comment-{{ $reservation->id }}">コメント</label>
                                 <textarea id="comment-{{ $reservation->id }}" name="comment" rows="4"></textarea>
-                                <div style="margin-top: 20px;">
-                                    <a href="#!" class="modal-close button">キャンセル</a>
-                                    <button type="submit">この内容で保存する</button>
-                                </div>
+                                <a href="#!" class="modal-close button">キャンセル</a>
+                                <button type="submit">この内容で保存する</button>
                             </form>
                         @endif
                     </div>
@@ -184,11 +175,10 @@
             </div>
         </div>
         @endforeach
-    </div>
+        </div>
     </div>
 </div>
 
-<!-- モーダル -->
 <input type="checkbox" id="modal-toggle-favorites" class="modal-toggle-favorites-checkbox">
 <div class="mypage-favorites-modal">
     <div class="mypage-favorites-modal-content">

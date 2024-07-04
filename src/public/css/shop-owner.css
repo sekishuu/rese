@@ -172,7 +172,6 @@ body {
     transform: scale(1.05);
 }
 
-/* モーダルウィンドウのスタイル */
 .shop-owner-modal {
     visibility: hidden;
     opacity: 0;

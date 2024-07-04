@@ -2,6 +2,10 @@
 
 @section('title', '会員登録完了 - Rese')
 
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/thanks.css') }}">
+@endsection
+
 @section('content')
     <div class="thanks-container">
         <div class="thanks-card">
@@ -10,8 +14,4 @@
             <a href="/" class="login-button">ログインする</a>
         </div>
     </div>
-@endsection
-
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('css/thanks.css') }}">
 @endsection
