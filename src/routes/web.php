@@ -18,6 +18,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ReservationCheckinController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StripeAccountController;
+use App\Http\Controllers\DoneController;
 use Illuminate\Http\Request;
 
 /*
@@ -66,9 +67,7 @@ Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites
 // お気に入り削除
 Route::delete('/favorites/{shop}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
 
-Route::get('/done', function () {
-    return view('done');
-})->name('done');
+Route::get('/done', [DoneController::class, 'index'])->name('done');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');

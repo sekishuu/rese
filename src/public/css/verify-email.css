@@ -1,0 +1,41 @@
+.verify-email-container {
+    width: 40vw;
+    margin: 5vw auto;
+    padding: 3vw;
+    background-color: #fff;
+    border-radius: 1vw;
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.verify-email-container h2 {
+    font-size: 2vw;
+    margin-bottom: 2vw;
+}
+
+.verify-email-container p {
+    font-size: 1.2vw;
+    margin-bottom: 2vw;
+}
+
+.message {
+    font-size: 1.2vw;
+    color: #28a745;
+    margin-bottom: 2vw;
+}
+
+.resend-button {
+    display: inline-block;
+    padding: 1vw 2vw;
+    font-size: 1.2vw;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.resend-button:hover {
+    background-color: #0056b3;
+}
