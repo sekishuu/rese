@@ -60,22 +60,25 @@
                                 <form action="{{ route('users.update', $user->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
-                                    <label for="admin-name">Name</label>
-                                    <input type="text" id="admin-name" name="name" value="{{ $user->name }}" required>
-
-                                    <label for="admin-email">Email</label>
-                                    <input type="email" id="admin-email" name="email" value="{{ $user->email }}" required>
-
-                                    <label for="admin-user_type">User Type</label>
-                                    <select id="admin-user_type" name="user_type" required>
-                                        <option value="general" {{ $user->user_type == 'general' ? 'selected' : '' }}>General</option>
-                                        <option value="shop_owner" {{ $user->user_type == 'shop_owner' ? 'selected' : '' }}>Shop Owner</option>
-                                        <option value="admin" {{ $user->user_type == 'admin' ? 'selected' : '' }}>Admin</option>
-                                    </select>
-
-                                    <div style="margin-top: 20px;">
+                                    <div class="admin-form-group">
+                                        <label for="admin-name">Name</label>
+                                        <input type="text" id="admin-name" name="name" value="{{ $user->name }}" required>
+                                    </div>
+                                    <div class="admin-form-group">
+                                        <label for="admin-email">Email</label>
+                                        <input type="email" id="admin-email" name="email" value="{{ $user->email }}" required>
+                                    </div>
+                                    <div class="admin-form-group">
+                                        <label for="admin-user_type">User Type</label>
+                                        <select id="admin-user_type" name="user_type" required>
+                                            <option value="general" {{ $user->user_type == 'general' ? 'selected' : '' }}>General</option>
+                                            <option value="shop_owner" {{ $user->user_type == 'shop_owner' ? 'selected' : '' }}>Shop Owner</option>
+                                            <option value="admin" {{ $user->user_type == 'admin' ? 'selected' : '' }}>Admin</option>
+                                        </select>
+                                    </div>
+                                    <div class="admin-modal-actions">
                                         <a href="#" class="admin-modal-close admin-button">キャンセル</a>
-                                        <button type="submit">この内容で変更する</button>
+                                        <button type="submit" class="admin-button">この内容で変更する</button>
                                     </div>
                                 </form>
                             </div>
@@ -89,25 +92,26 @@
                     <div class="admin-modal-content">
                         <form action="{{ route('users.store') }}" method="POST">
                             @csrf
-                            <label for="admin-name">Name</label>
-                            <input type="text" id="admin-name" name="name" required>
-
-                            <label for="admin-email">Email</label>
-                            <input type="email" id="admin-email" name="email" required>
-
-                            <label for="admin-user_type">User Type</label>
-                            <select id="admin-user_type" name="user_type" required>
-                                <option value="general">General</option>
-                                <option value="shop_owner">Shop Owner</option>
-                                <option value="admin">Admin</option>
-                            </select>
-
-                            <!-- 管理者専用画面からのリクエストを示す隠しフィールド -->
+                             <div class="admin-form-group">
+                                <label for="admin-name">Name</label>
+                                <input type="text" id="admin-name" name="name" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="admin-email">Email</label>
+                                <input type="email" id="admin-email" name="email" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="admin-user_type">User Type</label>
+                                <select id="admin-user_type" name="user_type" required>
+                                    <option value="general">General</option>
+                                    <option value="shop_owner">Shop Owner</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </div>
                             <input type="hidden" name="is_admin_request" value="true">
-                            
-                            <div style="margin-top: 20px;">
+                            <div class="admin-modal-actions">
                                 <a href="#" class="admin-modal-close admin-button">キャンセル</a>
-                                <button type="submit">この内容で新規登録する</button>
+                                <button type="submit" class="admin-button">この内容で新規登録する</button>
                             </div>
                         </form>
                     </div>
@@ -153,33 +157,37 @@
                                 <form action="{{ route('admin-shops.update', $shop->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
-                                    <label for="admin-shop_name">Shop Name</label>
-                                    <input type="text" id="admin-shop_name" name="shop_name" value="{{ $shop->shop_name }}" required>
-
-                                    <label for="admin-area_id">Area</label>
-                                    <select id="admin-area_id" name="area_id" required>
-                                        @foreach ($areas as $area)
-                                        <option value="{{ $area->id }}" {{ $shop->area_id == $area->id ? 'selected' : '' }}>{{ $area->area_name }}</option>
-                                        @endforeach
-                                    </select>
-
-                                    <label for="admin-genre_id">Genre</label>
-                                    <select id="admin-genre_id" name="genre_id" required>
-                                        @foreach ($genres as $genre)
-                                        <option value="{{ $genre->id }}" {{ $shop->genre_id == $genre->id ? 'selected' : '' }}>{{ $genre->genre_name }}</option>
-                                        @endforeach
-                                    </select>
-
-                                    <label for="admin-user_id">User</label>
-                                    <select id="admin-user_id" name="user_id" required>
-                                        @foreach ($shopOwners as $shopOwner)
-                                        <option value="{{ $shopOwner->id }}" {{ $shop->user_id == $shopOwner->id ? 'selected' : '' }}>{{ $shopOwner->name }}</option>
-                                        @endforeach
-                                    </select>
-
-                                    <div style="margin-top: 20px;">
+                                    <div class="admin-form-group">
+                                        <label for="admin-shop_name">Shop Name</label>
+                                        <input type="text" id="admin-shop_name" name="shop_name" value="{{ $shop->shop_name }}" required>
+                                    </div>
+                                    <div class="admin-form-group">
+                                        <label for="admin-area_id">Area</label>
+                                        <select id="admin-area_id" name="area_id" required>
+                                            @foreach ($areas as $area)
+                                            <option value="{{ $area->id }}" {{ $shop->area_id == $area->id ? 'selected' : '' }}>{{ $area->area_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="admin-form-group">
+                                        <label for="admin-genre_id">Genre</label>
+                                        <select id="admin-genre_id" name="genre_id" required>
+                                            @foreach ($genres as $genre)
+                                            <option value="{{ $genre->id }}" {{ $shop->genre_id == $genre->id ? 'selected' : '' }}>{{ $genre->genre_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="admin-form-group">
+                                        <label for="admin-user_id">User</label>
+                                        <select id="admin-user_id" name="user_id" required>
+                                            @foreach ($shopOwners as $shopOwner)
+                                            <option value="{{ $shopOwner->id }}" {{ $shop->user_id == $shopOwner->id ? 'selected' : '' }}>{{ $shopOwner->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="admin-modal-actions">
                                         <a href="#" class="admin-modal-close admin-button">キャンセル</a>
-                                        <button type="submit">この内容で変更する</button>
+                                        <button type="submit" class="admin-button">この内容で変更する</button>
                                     </div>
                                 </form>
                             </div>
@@ -193,33 +201,37 @@
                     <div class="admin-modal-content">
                         <form action="{{ route('admin.shops.store') }}" method="POST">
                             @csrf
-                            <label for="admin-shop_name">Shop Name</label>
-                            <input type="text" id="admin-shop_name" name="shop_name" required>
-
-                            <label for="admin-area_id">Area</label>
-                            <select id="admin-area_id" name="area_id" required>
-                                @foreach ($areas as $area)
-                                <option value="{{ $area->id }}">{{ $area->area_name }}</option>
-                                @endforeach
-                            </select>
-
-                            <label for="admin-genre_id">Genre</label>
-                            <select id="admin-genre_id" name="genre_id" required>
-                                @foreach ($genres as $genre)
-                                <option value="{{ $genre->id }}">{{ $genre->genre_name }}</option>
-                                @endforeach
-                            </select>
-
-                            <label for="admin-user_id">User</label>
-                            <select id="admin-user_id" name="user_id" required>
-                                @foreach ($shopOwners as $shopOwner)
-                                <option value="{{ $shopOwner->id }}">{{ $shopOwner->name }}</option>
-                                @endforeach
-                            </select>
-
-                            <div style="margin-top: 20px;">
+                            <div class="admin-form-group">
+                                <label for="admin-shop_name">Shop Name</label>
+                                <input type="text" id="admin-shop_name" name="shop_name" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="admin-area_id">Area</label>
+                                <select id="admin-area_id" name="area_id" required>
+                                    @foreach ($areas as $area)
+                                    <option value="{{ $area->id }}">{{ $area->area_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="admin-genre_id">Genre</label>
+                                <select id="admin-genre_id" name="genre_id" required>
+                                    @foreach ($genres as $genre)
+                                    <option value="{{ $genre->id }}">{{ $genre->genre_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="admin-user_id">User</label>
+                                <select id="admin-user_id" name="user_id" required>
+                                    @foreach ($shopOwners as $shopOwner)
+                                    <option value="{{ $shopOwner->id }}">{{ $shopOwner->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="admin-modal-actions">
                                 <a href="#" class="admin-modal-close admin-button">キャンセル</a>
-                                <button type="submit">この内容で新規登録する</button>
+                                <button type="submit" class="admin-button">この内容で新規登録する</button>
                             </div>
                         </form>
                     </div>
@@ -259,16 +271,17 @@
                                 <form action="{{ route('areas.update', $area->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
-                                    <label for="admin-area_name">Area Name</label>
-                                    <select id="admin-area_name" name="area_name" required>
-                                        @foreach ($areas as $a)
-                                        <option value="{{ $a->id }}" {{ $area->id == $a->id ? 'selected' : '' }}>{{ $a->area_name }}</option>
-                                        @endforeach
-                                    </select>
-
-                                    <div style="margin-top: 20px;">
+                                    <div class="admin-form-group">
+                                        <label for="admin-area_name">Area Name</label>
+                                        <select id="admin-area_name" name="area_name" required>
+                                            @foreach ($areas as $a)
+                                            <option value="{{ $a->id }}" {{ $area->id == $a->id ? 'selected' : '' }}>{{ $a->area_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="admin-modal-actions">
                                         <a href="#" class="admin-modal-close admin-button">キャンセル</a>
-                                        <button type="submit">この内容で変更する</button>
+                                        <button type="submit" class="admin-button">この内容で変更する</button>
                                     </div>
                                 </form>
                             </div>
@@ -282,12 +295,13 @@
                     <div class="admin-modal-content">
                         <form action="{{ route('areas.store') }}" method="POST">
                             @csrf
-                            <label for="admin-area_name">Area Name</label>
-                            <input type="text" id="admin-area_name" name="area_name" required>
-
-                            <div style="margin-top: 20px;">
+                            <div class="admin-form-group">
+                                <label for="admin-area_name">Area Name</label>
+                                <input type="text" id="admin-area_name" name="area_name" required>
+                            </div>
+                            <div class="admin-modal-actions">
                                 <a href="#" class="admin-modal-close admin-button">キャンセル</a>
-                                <button type="submit">この内容で新規登録する</button>
+                                <button type="submit" class="admin-button">この内容で新規登録する</button>
                             </div>
                         </form>
                     </div>
@@ -327,16 +341,17 @@
                                 <form action="{{ route('genres.update', $genre->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
-                                    <label for="admin-genre_name">Genre Name</label>
-                                    <select id="admin-genre_name" name="genre_name" required>
-                                        @foreach ($genres as $g)
-                                        <option value="{{ $g->id }}" {{ $genre->id == $g->id ? 'selected' : '' }}>{{ $g->genre_name }}</option>
-                                        @endforeach
-                                    </select>
-
-                                    <div style="margin-top: 20px;">
+                                    <div class="admin-form-group">
+                                        <label for="admin-genre_name">Genre Name</label>
+                                        <select id="admin-genre_name" name="genre_name" required>
+                                            @foreach ($genres as $g)
+                                            <option value="{{ $g->id }}" {{ $genre->id == $g->id ? 'selected' : '' }}>{{ $g->genre_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="admin-modal-actions">
                                         <a href="#" class="admin-modal-close admin-button">キャンセル</a>
-                                        <button type="submit">この内容で変更する</button>
+                                        <button type="submit" class="admin-button">この内容で変更する</button>
                                     </div>
                                 </form>
                             </div>
@@ -350,12 +365,13 @@
                     <div class="admin-modal-content">
                         <form action="{{ route('genres.store') }}" method="POST">
                             @csrf
-                            <label for="admin-genre_name">Genre Name</label>
-                            <input type="text" id="admin-genre_name" name="genre_name" required>
-
-                            <div style="margin-top: 20px;">
+                            <div class="admin-form-group">
+                                <label for="admin-genre_name">Genre Name</label>
+                                <input type="text" id="admin-genre_name" name="genre_name" required>
+                            </div>
+                            <div class="admin-modal-actions">
                                 <a href="#" class="admin-modal-close admin-button">キャンセル</a>
-                                <button type="submit">この内容で新規登録する</button>
+                                <button type="submit" class="admin-button">この内容で新規登録する</button>
                             </div>
                         </form>
                     </div>

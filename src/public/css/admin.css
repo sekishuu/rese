@@ -172,10 +172,37 @@ body {
     background: #fff;
     padding: 4vw;
     border-radius: 1vw;
-    width: 90%;
+    width: 60%;
     max-width: 80vw;
     z-index: 10;
     position: relative;
+    font-size: 1.2vw;
+}
+
+.admin-form-group {
+    margin-bottom: 2vw;
+}
+
+.admin-form-group label {
+    display: block;
+    margin-bottom: 0.5vw;
+    font-size: 1.2vw;
+}
+
+.admin-form-group input,
+.admin-form-group select {
+    width: 100%;
+    padding: 0.5vw;
+    font-size: 1.2vw;
+    border: 0.2vw solid #ddd;
+    border-radius: 0.5vw;
+}
+
+.admin-modal-actions {
+    margin-top: 2vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .admin-modal-close {

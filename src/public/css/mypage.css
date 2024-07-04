@@ -275,7 +275,7 @@
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
     transition: visibility 0s, opacity 0.5s;
     z-index: 9999;
 }
@@ -292,10 +292,8 @@
     background-color: #fff;
     padding: 1vw 2vw 2vw 2vw;
     border-radius: 1vw;
-    margin-top: 15vw;
     width: 40vw;
     max-width: 90vw;
-    height: 25vw;
     position: relative;
     z-index: 10000;
 }
@@ -339,10 +337,8 @@
     background-color: #fff;
     padding: 3vw 2vw 2vw 2vw;
     border-radius: 1vw;
-    margin-top: 15vw;
     width: 40vw;
     max-width: 90vw;
-    height: 25vw;
     position: relative;
     z-index: 10000;
 }

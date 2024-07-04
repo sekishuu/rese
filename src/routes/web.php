@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
             ->middleware('shop_owner');
     Route::get('/reservations/qrcode/{id}', [ReservationCheckinController::class, 'generateQrCode'])->name('reservations.qrcode');
     Route::put('/reservations/{id}/update-visit', [ReservationCheckinController::class, 'updateVisit'])->name('reservations.updateVisit');
+    Route::get('/done', [DoneController::class, 'index'])->name('done');
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
     Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
     Route::put('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
@@ -54,10 +55,6 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
-Route::get('/thanks', function () {
-    return view('thanks');
-})->name('thanks');
-
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -67,7 +64,6 @@ Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites
 // お気に入り削除
 Route::delete('/favorites/{shop}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
 
-Route::get('/done', [DoneController::class, 'index'])->name('done');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
