@@ -26,7 +26,7 @@
                     </div>
                     <div class="shop-owner-info-tags">
                         <p>#{{ $shop->area->area_name }}   #{{ $shop->genre->genre_name }}</p>
-                    </div>    
+                    </div>
                     <div class="shop-owner-info-shop-info">
                         <p>{{ $shop->shop_info }}</p>
                     </div>
@@ -82,7 +82,7 @@
                 <h2 class="shop-owner-section-title">予約情報</h2>
                 <a href="#modal-send-notification" class="shop-owner-button">お知らせメール作成</a>
             </div>
-            @foreach ($reservations as $reservation)  
+            @foreach ($reservations as $reservation)
                 <div class="shop-owner-reservation-info">
                     <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" style="display: inline;">
                     @csrf

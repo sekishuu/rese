@@ -37,10 +37,10 @@
                         <div class="reserve-edit-button">
                             <a href="#modal-reserve-{{ $reservation->id }}" class="button">予約変更</a>
                         </div>
-                        <div class="qrcode-button">    
+                        <div class="qrcode-button">
                             <a href="{{ route('reservations.qrcode', $reservation->id) }}" class="button">チェックインQRコードを表示</a>
                         </div>
-                    </div>        
+                    </div>
                 </div>
                 <div class="mypage-modal" id="modal-reserve-{{ $reservation->id }}">
                     <a href="#!" class="mypage-modal-overlay"></a>
@@ -70,7 +70,7 @@
                                 </select>
                             </div>
                             <a href="#!" class="modal-close button">&times;</a>
-                            <button type="submit">この内容で変更する</button>                          
+                            <button type="submit">この内容で変更する</button>
                         </form>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                     </div>
                     <div class="review-comment">
                         <p>コメント: {{ $reservation->review->comment ?? 'コメントなし' }}</p>
-                    </div>    
+                    </div>
                     <div class="visited-buttons">
                         <a href="#modal-review-{{ $reservation->id }}" class="button">評価とコメントを編集</a>
                         <a href="{{ route('payments.show', $reservation->id) }}" class="button" style="float: right;">お支払い</a>
@@ -159,7 +159,7 @@
             </div>
             <div class="info-tags">
                 <p>#{{ $favorite->shop->area->area_name }}   #{{ $favorite->shop->genre->genre_name }}</p>
-            </div>    
+            </div>
             <div class="info-shop-info">
                 <p>{{ $favorite->shop->shop_info }}</p>
             </div>
@@ -185,7 +185,7 @@
         <div class="favorites-modal-header">
             <h2>お気に入り店舗</h2>
             <label for="modal-toggle-favorites" class="modal-close-favorites">&times;</label>
-        </div>    
+        </div>
         <div id="bookmarks-modal" class="bookmarks-grid-modal">
             @foreach ($favorites as $favorite)
             <div class="favorites-card-modal">
@@ -197,7 +197,7 @@
                 </div>
                 <div class="info-tags">
                     <p>#{{ $favorite->shop->area->area_name }}   #{{ $favorite->shop->genre->genre_name }}</p>
-                </div>    
+                </div>
                 <div class="info-shop-info">
                     <p>{{ $favorite->shop->shop_info }}</p>
                 </div>

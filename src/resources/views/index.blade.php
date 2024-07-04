@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="main-search-container">    
+<div class="main-search-container">
     <div class="search-container">
         <form action="/" method="GET" class="search-form">
             <div class="select-box">
@@ -34,7 +34,7 @@
             </div>
         </form>
     </div>
-</div>    
+</div>
     <div class="shop-list">
         @foreach ($shops as $shop)
             <div class="shop-item">

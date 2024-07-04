@@ -20,7 +20,7 @@ class CheckShopOwner
         if (Auth::check() && Auth::user()->user_type == 'shop_owner') {
             return $next($request);
         }
-        
+
         return redirect()->route('login')->with('error', 'アクセス権限がありません。');
     }
 }

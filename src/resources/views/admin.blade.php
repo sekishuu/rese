@@ -106,7 +106,7 @@
                     <div class="admin-modal-content">
                         <form action="{{ route('users.store') }}" method="POST">
                             @csrf
-                             <div class="admin-form-group">
+                            <div class="admin-form-group">
                                 <label for="admin-name">Name</label>
                                 <input type="text" id="admin-name" name="name" required>
                             </div>

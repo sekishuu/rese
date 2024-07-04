@@ -28,6 +28,6 @@ class ReservationCheckinController extends Controller
         $reservation->save();
 
         return redirect()->route('reservations.checkin', ['id' => $id])
-                         ->with('success', '来店状況が更新されました');
+                        ->with('success', '来店状況が更新されました');
     }
 }
