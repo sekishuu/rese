@@ -284,11 +284,7 @@
                                     @method('PUT')
                                     <div class="admin-form-group">
                                         <label for="admin-area_name">Area Name</label>
-                                        <select id="admin-area_name" name="area_name" required>
-                                            @foreach ($areas as $a)
-                                            <option value="{{ $a->id }}" {{ $area->id == $a->id ? 'selected' : '' }}>{{ $a->area_name }}</option>
-                                            @endforeach
-                                        </select>
+                                        <input type="text" id="admin-area_name" name="area_name" value="{{ $area->area_name }}" required>
                                     </div>
                                     <div class="admin-modal-actions">
                                         <a href="#" class="admin-modal-close admin-button">キャンセル</a>
