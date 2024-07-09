@@ -259,3 +259,52 @@ body {
     background-color: #0056b3;
     transform: scale(1.05);
 }
+
+@media screen and (max-width: 768px) {
+    .admin-table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .admin-table {
+            width: 700px;
+            overflow-x: auto;
+        }
+
+        .admin-table th,
+        .admin-table td {
+            white-space: nowrap;
+            padding: 0 1vw;
+            text-align: left;
+            font-size: 2.1vw;
+        }
+
+        .admin-table button {
+            font-size: 2vw;
+        }
+
+        .admin-button {
+            font-size: 2vw;
+        }
+
+        .admin-table th {
+            background-color: #259dff;
+            color: white;
+        }
+
+        .admin-table td {
+            background-color: #fff;
+        }
+
+        .admin-table tr:nth-child(even) td {
+            background-color: #f2f2f2;
+        }
+
+        .admin-table tr:hover td {
+            background-color: #d9e7ff;
+        }
+
+        .admin-table tr {
+            height: 5vw;
+        }
+    }

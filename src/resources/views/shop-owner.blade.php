@@ -25,7 +25,7 @@
                         <h3>{{ $shop->shop_name }}</h3>
                     </div>
                     <div class="shop-owner-info-tags">
-                        <p>#{{ $shop->area->area_name }}   #{{ $shop->genre->genre_name }}</p>
+                        <p>#{{ $shop->area->area_name }} #{{ $shop->genre->genre_name }}</p>
                     </div>
                     <div class="shop-owner-info-shop-info">
                         <p>{{ $shop->shop_info }}</p>
@@ -33,9 +33,9 @@
                     <div class="shop-owner-link-container">
                         <a href="#modal-edit-shop-{{ $shop->id }}" class="shop-owner-button">編集</a>
                         @if($shop->stripe_account_id)
-                            <a href="{{ route('stripe.accountLogin', ['shop' => $shop->id]) }}" class="shop-owner-button">Stripeログイン</a>
+                        <a href="{{ route('stripe.accountLogin', ['shop' => $shop->id]) }}" class="shop-owner-button">Stripeログイン</a>
                         @else
-                            <a href="{{ route('stripe.createLink', ['shop' => $shop->id]) }}" class="shop-owner-button">Stripeアカウント作成</a>
+                        <a href="{{ route('stripe.createLink', ['shop' => $shop->id]) }}" class="shop-owner-button">Stripeアカウント作成</a>
                         @endif
                         <form action="{{ route('shop-owner.shops.destroy', $shop->id) }}" method="POST" style="display:inline;">
                             @csrf
@@ -51,19 +51,19 @@
                             @csrf
                             @method('PUT')
                             <label for="shop_name">店舗名</label>
-                            <input type="text" id="shop_name" name="shop_name" value="{{ $shop->shop_name }}" required>
+                            <input type="text" id="shop_name" name="shop_name" value="{{ $shop->shop_name }}" value="{{ old('shop_name', $shop->shop_name) }}" required>
                             <label for="shop_info">店舗情報</label>
-                            <textarea id="shop_info" name="shop_info" required>{{ $shop->shop_info }}</textarea>
+                            <textarea id="shop_info" name="shop_info" required>{{ old('shop_info', $shop->shop_info) }}</textarea>
                             <label for="area_id">エリア</label>
                             <select id="area_id" name="area_id" required>
                                 @foreach ($areas as $area)
-                                <option value="{{ $area->id }}" {{ $shop->area_id == $area->id ? 'selected' : '' }}>{{ $area->area_name }}</option>
+                                <option value="{{ $area->id }}" {{ old('area_id', $shop->area_id) == $area->id ? 'selected' : '' }}>{{ $area->area_name }}</option>
                                 @endforeach
                             </select>
                             <label for="genre_id">ジャンル</label>
                             <select id="genre_id" name="genre_id" required>
                                 @foreach ($genres as $genre)
-                                <option value="{{ $genre->id }}" {{ $shop->genre_id == $genre->id ? 'selected' : '' }}>{{ $genre->genre_name }}</option>
+                                <option value="{{ $genre->id }}" {{ old('genre_id', $shop->genre_id) == $genre->id ? 'selected' : '' }}>{{ $genre->genre_name }}</option>
                                 @endforeach
                             </select>
                             <label for="shop_image">画像を選択</label>
@@ -83,18 +83,18 @@
                 <a href="#modal-send-notification" class="shop-owner-button">お知らせメール作成</a>
             </div>
             @foreach ($reservations as $reservation)
-                <div class="shop-owner-reservation-info">
-                    <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" style="display: inline;">
+            <div class="shop-owner-reservation-info">
+                <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" style="display: inline;">
                     @csrf
                     @method('DELETE')
-                        <button type="submit" class="rsv-destroy-btn">&times;</button>
-                    </form>
-                    <p>店舗名: {{ $reservation->shop->shop_name }}</p>
-                    <p>予約者名: {{ $reservation->user->name }}</p>
-                    <p>予約年月日: {{ $reservation->reserve_date }}</p>
-                    <p>予約時間: {{ $reservation->formatted_reserve_time }}</p>
-                    <p>予約人数: {{ $reservation->number_of_people }}人</p>
-                </div>
+                    <button type="submit" class="rsv-destroy-btn">&times;</button>
+                </form>
+                <p>店舗名: {{ $reservation->shop->shop_name }}</p>
+                <p>予約者名: {{ $reservation->user->name }}</p>
+                <p>予約年月日: {{ $reservation->reserve_date }}</p>
+                <p>予約時間: {{ $reservation->formatted_reserve_time }}</p>
+                <p>予約人数: {{ $reservation->number_of_people }}人</p>
+            </div>
             @endforeach
         </div>
     </div>
@@ -105,19 +105,19 @@
         <form action="{{ route('shop-owner.shops.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <label for="shop_name">店舗名</label>
-            <input type="text" id="shop_name" name="shop_name" required>
+            <input type="text" id="shop_name" name="shop_name" value="{{ old('shop_name') }}" required>
             <label for="shop_info">店舗情報</label>
-            <textarea id="shop_info" name="shop_info" required></textarea>
+            <textarea id="shop_info" name="shop_info" required>{{ old('shop_info') }}</textarea>
             <label for="area_id">エリア</label>
             <select id="area_id" name="area_id" required>
                 @foreach ($areas as $area)
-                <option value="{{ $area->id }}">{{ $area->area_name }}</option>
+                <option value="{{ $area->id }}" {{ old('area_id') == $area->id ? 'selected' : '' }}>{{ $area->area_name }}</option>
                 @endforeach
             </select>
             <label for="genre_id">ジャンル</label>
             <select id="genre_id" name="genre_id" required>
                 @foreach ($genres as $genre)
-                <option value="{{ $genre->id }}">{{ $genre->genre_name }}</option>
+                <option value="{{ $genre->id }}" {{ old('genre_id') == $genre->id ? 'selected' : '' }}>{{ $genre->genre_name }}</option>
                 @endforeach
             </select>
             <label for="shop_image">画像を選択</label>
@@ -135,14 +135,14 @@
             <label for="recipients">送信先</label>
             @foreach ($reservations as $reservation)
             <div class="send-notification-user">
-                <input type="checkbox" id="recipient-{{ $reservation->user->id }}" name="recipients[]" value="{{ $reservation->user->id }}">
+                <input type="checkbox" id="recipient-{{ $reservation->user->id }}" name="recipients[]" value="{{ $reservation->user->id }}" {{ in_array($reservation->user->id, old('recipients', [])) ? 'checked' : '' }} required>
                 <label for="recipient-{{ $reservation->user->id }}">{{ $reservation->user->name }}</label>
             </div>
             @endforeach
             <label for="subject">メールタイトル</label>
-            <input type="text" class="shop-owner-modal-mail-title" id="subject" name="subject" required>
+            <input type="text" class="shop-owner-modal-mail-title" id="subject" name="subject" value="{{ old('subject') }}" required>
             <label for="body">メール本文</label>
-            <textarea id="body" name="body" required></textarea>
+            <textarea id="body" name="body" required>{{ old('body') }}</textarea>
             <a href="#" class="shop-owner-modal-close shop-owner-button">キャンセル</a>
             <button type="submit" class="shop-owner-button">送信</button>
         </form>

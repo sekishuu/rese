@@ -11,12 +11,6 @@ class ShopOwnerNotificationController extends Controller
 {
     public function sendNotification(ShopOwnerNotificationRequest $request)
     {
-        $request->validate([
-            'recipients' => 'required|array',
-            'recipients.*' => 'exists:users,id',
-            'subject' => 'required|string|max:255',
-            'body' => 'required|string',
-        ]);
 
         $recipients = $request->recipients;
         $subject = $request->subject;
@@ -31,4 +25,5 @@ class ShopOwnerNotificationController extends Controller
 
         return redirect()->route('shop-owner.index')->with('success', 'お知らせメールを送信しました。');
     }
+
 }

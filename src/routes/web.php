@@ -19,7 +19,7 @@ use App\Http\Controllers\ReservationCheckinController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StripeAccountController;
 use App\Http\Controllers\DoneController;
-use Illuminate\Http\Request;
+
 
 /*
 |--------------------------------------------------------------------------

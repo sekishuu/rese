@@ -29,4 +29,23 @@ class StoreReviewRequest extends FormRequest
             'comment' => 'nullable|string|max:255',
         ];
     }
+
+    /**
+     * Get the custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'shop_id.required' => '店舗IDは必須です。',
+            'shop_id.exists' => '選択された店舗は無効です。',
+            'evaluation.required' => '評価は必須です。',
+            'evaluation.integer' => '評価は整数である必要があります。',
+            'evaluation.min' => '評価は1以上である必要があります。',
+            'evaluation.max' => '評価は5以下である必要があります。',
+            'comment.string' => 'コメントは文字列である必要があります。',
+            'comment.max' => 'コメントは最大255文字までです。',
+        ];
+    }
 }

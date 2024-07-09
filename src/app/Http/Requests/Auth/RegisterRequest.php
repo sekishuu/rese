@@ -24,9 +24,32 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:30'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
+        ];
+    }
+
+    /**
+     * Get the custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'username.required' => 'ユーザー名は必須です。',
+            'username.string' => 'ユーザー名は文字列である必要があります。',
+            'username.max' => 'ユーザー名は30文字以内である必要があります。',
+            'email.required' => 'メールアドレスは必須です。',
+            'email.string' => 'メールアドレスは文字列である必要があります。',
+            'email.email' => '有効なメールアドレス形式である必要があります。',
+            'email.max' => 'メールアドレスは255文字以内である必要があります。',
+            'email.unique' => 'このメールアドレスは既に登録されています。',
+            'password.required' => 'パスワードは必須です。',
+            'password.string' => 'パスワードは文字列である必要があります。',
+            'password.min' => 'パスワードは最低4文字以上である必要があります。',
+            'password.confirmed' => 'パスワード確認が一致しません。',
         ];
     }
 }

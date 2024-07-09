@@ -15,7 +15,8 @@
         </div>
         <p class="qr-code-description">このQRコードをお店のスタッフに見せてください</p>
         <div class="qr-code-buttons">
-            <a href="{{ $url }}" target="_blank" class="qr-code-button">リンクを開く</a>
+            <a href="{{ $url }}" target="_blank" class="qr-code-button">リンクを開く(店舗スタッフ用)
+            </a>
             <a href="{{ route('mypage') }}" class="qr-code-button">マイページに戻る</a>
         </div>
     </div>

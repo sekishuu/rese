@@ -27,4 +27,18 @@ class StoreGenreRequest extends FormRequest
             'genre_name' => 'required|string|max:255',
         ];
     }
+
+    /**
+     * Get the custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'genre_name.required' => 'ジャンル名は必須です。',
+            'genre_name.string' => 'ジャンル名は文字列である必要があります。',
+            'genre_name.max' => 'ジャンル名は255文字以内である必要があります。',
+        ];
+    }
 }

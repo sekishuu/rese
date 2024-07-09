@@ -8,9 +8,9 @@
 
 @section('content')
 @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
 @endif
 
 <label for="modal-toggle-favorites" class="modal-toggle-favorites-button">お気に入り店舗一覧を表示</label>
@@ -50,14 +50,14 @@
                             @method('PUT')
                             <div class="mypage-modal-date">
                                 <label for="reserve_date-{{ $reservation->id }}">日付</label>
-                                <input type="date" id="reserve_date-{{ $reservation->id }}" name="reserve_date" value="{{ $reservation->reserve_date }}" required>
+                                <input type="date" id="reserve_date-{{ $reservation->id }}" name="reserve_date" value="{{ old('reserve_date', $reservation->reserve_date) }}" required>
                             </div>
                             <div class="mypage-modal-time">
                                 <label for="reserve_time-{{ $reservation->id }}">時間</label>
                                 <select id="reserve_time-{{ $reservation->id }}" name="reserve_time" required>
                                     @for ($i = 0; $i < 24; $i++)
-                                        <option value="{{ sprintf('%02d:00:00', $i) }}" @if($reservation->reserve_time == sprintf('%02d:00:00', $i)) selected @endif>{{ sprintf('%02d:00', $i) }}</option>
-                                        <option value="{{ sprintf('%02d:30:00', $i) }}" @if($reservation->reserve_time == sprintf('%02d:30', $i)) selected @endif>{{ sprintf('%02d:30', $i) }}</option>
+                                        <option value="{{ sprintf('%02d:00:00', $i) }}" {{ old('reserve_time', $reservation->reserve_time) == sprintf('%02d:00:00', $i) ? 'selected' : '' }}>{{ sprintf('%02d:00', $i) }}</option>
+                                        <option value="{{ sprintf('%02d:30:00', $i) }}" {{ old('reserve_time', $reservation->reserve_time) == sprintf('%02d:30:00', $i) ? 'selected' : '' }}>{{ sprintf('%02d:30', $i) }}</option>
                                     @endfor
                                 </select>
                             </div>
@@ -65,7 +65,7 @@
                                 <label for="number_of_people-{{ $reservation->id }}">人数</label>
                                 <select id="number_of_people-{{ $reservation->id }}" name="number_of_people" required>
                                     @for ($i = 1; $i <= 10; $i++)
-                                        <option value="{{ $i }}" @if($reservation->number_of_people == $i) selected @endif>{{ $i }}人</option>
+                                        <option value="{{ $i }}" {{ old('number_of_people', $reservation->number_of_people) == $i ? 'selected' : '' }}>{{ $i }}人</option>
                                     @endfor
                                 </select>
                             </div>
@@ -89,9 +89,9 @@
                     <div class="rating-container">
                         <p>評価: </p>
                         @if ($reservation->rating > 0)
-                            <div class="star-rating" style="--rating: {{ $reservation->rating }};">
-                                <span></span>
-                            </div>
+                        <div class="star-rating" style="--rating: {{ $reservation->rating }};">
+                            <span></span>
+                        </div>
                         @else
                         <p>評価なし</p>
                         @endif
@@ -108,37 +108,37 @@
                     <a href="#!" class="mypage-modal-overlay"></a>
                     <div class="mypage-review-modal-content">
                         @if ($reservation->review)
-                            <form action="{{ route('reviews.update', $reservation->review->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <label for="evaluation-{{ $reservation->id }}">評価</label>
-                                <select id="evaluation-{{ $reservation->id }}" name="evaluation" required>
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        <option value="{{ $i }}" @if($reservation->review->evaluation == $i) selected @endif>{{ str_repeat('★', $i) }}</option>
-                                    @endfor
-                                </select>
-                                <div class="review-label-text">
-                                    <label for="comment-{{ $reservation->id }}">コメント</label>
-                                    <textarea id="comment-{{ $reservation->id }}" name="comment" rows="4">{{ $reservation->review->comment }}</textarea>
-                                </div>
-                                <a href="#!" class="modal-close button">&times;</a>
-                                <button type="submit">この内容で保存する</button>
-                            </form>
-                        @else
-                            <form action="{{ route('reviews.store') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="shop_id" value="{{ $reservation->shop_id }}">
-                                <label for="evaluation-{{ $reservation->id }}">評価</label>
-                                <select id="evaluation-{{ $reservation->id }}" name="evaluation" required>
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        <option value="{{ $i }}">{{ str_repeat('★', $i) }}</option>
-                                    @endfor
-                                </select>
+                        <form action="{{ route('reviews.update', $reservation->review->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <label for="evaluation-{{ $reservation->id }}">評価</label>
+                            <select id="evaluation-{{ $reservation->id }}" name="evaluation" required>
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <option value="{{ $i }}" {{ old('evaluation', $reservation->review->evaluation) == $i ? 'selected' : '' }}>{{ str_repeat('★', $i) }}</option>
+                                @endfor
+                            </select>
+                            <div class="review-label-text">
                                 <label for="comment-{{ $reservation->id }}">コメント</label>
-                                <textarea id="comment-{{ $reservation->id }}" name="comment" rows="4"></textarea>
-                                <a href="#!" class="modal-close button">キャンセル</a>
-                                <button type="submit">この内容で保存する</button>
-                            </form>
+                                <textarea id="comment-{{ $reservation->id }}" name="comment" rows="4">{{ old('comment', $reservation->review->comment) }}</textarea>
+                            </div>
+                            <a href="#!" class="modal-close button">&times;</a>
+                            <button type="submit">この内容で保存する</button>
+                        </form>
+                        @else
+                        <form action="{{ route('reviews.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="shop_id" value="{{ $reservation->shop_id }}">
+                            <label for="evaluation-{{ $reservation->id }}">評価</label>
+                            <select id="evaluation-{{ $reservation->id }}" name="evaluation" required>
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <option value="{{ $i }}" {{ old('evaluation') == $i ? 'selected' : '' }}>{{ str_repeat('★', $i) }}</option>
+                                @endfor
+                            </select>
+                            <label for="comment-{{ $reservation->id }}">コメント</label>
+                            <textarea id="comment-{{ $reservation->id }}" name="comment" rows="4">{{ old('comment') }}</textarea>
+                            <a href="#!" class="modal-close button">キャンセル</a>
+                            <button type="submit">この内容で保存する</button>
+                        </form>
                         @endif
                     </div>
                 </div>
@@ -149,32 +149,32 @@
     <div class="mypage-section-favorites">
         <h2>お気に入り店舗</h2>
         <div id="bookmarks" class="bookmarks-grid">
-        @foreach ($favorites as $favorite)
-        <div class="favorites-card">
-            <div class="image-container">
-                <img src="{{ asset('storage/shop_images/' . $favorite->shop->shop_image) }}" alt="{{ $favorite->shop->shop_name }}" class="shop-image">
-            </div>
-            <div class="title-container">
-                <h3>{{ $favorite->shop->shop_name }}</h3>
-            </div>
-            <div class="info-tags">
-                <p>#{{ $favorite->shop->area->area_name }}   #{{ $favorite->shop->genre->genre_name }}</p>
-            </div>
-            <div class="info-shop-info">
-                <p>{{ $favorite->shop->shop_info }}</p>
-            </div>
-            <div class="link-container">
-                <a href="{{ route('shops.show', $favorite->shop->id) }}" class="detail-link">詳しくみる</a>
-                <button class="favorite-btn" data-shop-id="{{ $favorite->shop->id }}">
-                    @if(Auth::check() && $favorite->shop->favorites->where('user_id', Auth::id())->isNotEmpty())
+            @foreach ($favorites as $favorite)
+            <div class="favorites-card">
+                <div class="image-container">
+                    <img src="{{ asset('storage/shop_images/' . $favorite->shop->shop_image) }}" alt="{{ $favorite->shop->shop_name }}" class="shop-image">
+                </div>
+                <div class="title-container">
+                    <h3>{{ $favorite->shop->shop_name }}</h3>
+                </div>
+                <div class="info-tags">
+                    <p>#{{ $favorite->shop->area->area_name }} #{{ $favorite->shop->genre->genre_name }}</p>
+                </div>
+                <div class="info-shop-info">
+                    <p>{{ $favorite->shop->shop_info }}</p>
+                </div>
+                <div class="link-container">
+                    <a href="{{ route('shops.show', $favorite->shop->id) }}" class="detail-link">詳しくみる</a>
+                    <button class="favorite-btn" data-shop-id="{{ $favorite->shop->id }}">
+                        @if(Auth::check() && $favorite->shop->favorites->where('user_id', Auth::id())->isNotEmpty())
                         <span class="heart active">&#x2764;</span>
-                    @else
+                        @else
                         <span class="heart">&#x2764;</span>
-                    @endif
-                </button>
+                        @endif
+                    </button>
+                </div>
             </div>
-        </div>
-        @endforeach
+            @endforeach
         </div>
     </div>
 </div>
@@ -196,7 +196,7 @@
                     <h3>{{ $favorite->shop->shop_name }}</h3>
                 </div>
                 <div class="info-tags">
-                    <p>#{{ $favorite->shop->area->area_name }}   #{{ $favorite->shop->genre->genre_name }}</p>
+                    <p>#{{ $favorite->shop->area->area_name }} #{{ $favorite->shop->genre->genre_name }}</p>
                 </div>
                 <div class="info-shop-info">
                     <p>{{ $favorite->shop->shop_info }}</p>
@@ -205,9 +205,9 @@
                     <a href="{{ route('shops.show', $favorite->shop->id) }}" class="detail-link">詳しくみる</a>
                     <button class="favorite-btn" data-shop-id="{{ $favorite->shop->id }}">
                         @if(Auth::check() && $favorite->shop->favorites->where('user_id', Auth::id())->isNotEmpty())
-                            <span class="heart active">&#x2764;</span>
+                        <span class="heart active">&#x2764;</span>
                         @else
-                            <span class="heart">&#x2764;</span>
+                        <span class="heart">&#x2764;</span>
                         @endif
                     </button>
                 </div>

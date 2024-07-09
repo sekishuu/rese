@@ -15,23 +15,14 @@
             <div class="input-group">
                 <label for="username"><i class="fas fa-user"></i> Username</label>
                 <input type="text" id="username" name="username" value="{{ old('username') }}" required>
-                @error('username')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
             </div>
             <div class="input-group">
                 <label for="email"><i class="fas fa-envelope"></i> Email</label>
                 <input type="email" id="email" name="email" value="{{ old('email') }}" required>
-                @error('email')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
             </div>
             <div class="input-group">
                 <label for="password"><i class="fas fa-lock"></i> Password</label>
                 <input type="password" id="password" name="password" required>
-                @error('password')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
             </div>
             <div class="input-group">
                 <label for="password_confirmation"><i class="fas fa-lock"></i> Confirm Password</label>

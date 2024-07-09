@@ -28,4 +28,22 @@ class LoginRequest extends FormRequest
             'password' => 'required|string|min:4',
         ];
     }
+
+    /**
+     * Get the custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'email.required' => 'メールアドレスは必須です。',
+            'email.string' => 'メールアドレスは文字列である必要があります。',
+            'email.email' => '有効なメールアドレス形式である必要があります。',
+            'email.max' => 'メールアドレスは255文字以内である必要があります。',
+            'password.required' => 'パスワードは必須です。',
+            'password.string' => 'パスワードは文字列である必要があります。',
+            'password.min' => 'パスワードは最低4文字以上である必要があります。',
+        ];
+    }
 }

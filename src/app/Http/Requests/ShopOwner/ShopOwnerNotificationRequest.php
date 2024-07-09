@@ -30,4 +30,21 @@ class ShopOwnerNotificationRequest extends FormRequest
             'body' => 'required|string',
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'recipients.required' => '送信先を選択してください。',
+            'subject.required' => 'メールタイトルを入力してください。',
+            'subject.string' => 'メールタイトルは文字列でなければなりません。',
+            'subject.max' => 'メールタイトルは255文字以内でなければなりません。',
+            'body.required' => 'メール本文を入力してください。',
+            'body.string' => 'メール本文は文字列でなければなりません。',
+        ];
+    }
 }

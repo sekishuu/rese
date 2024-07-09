@@ -28,32 +28,23 @@
                 <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                 <div class="reserve-date">
                     <input type="date" id="reserve_date" name="reserve_date" min="{{ $today }}">
-                    @error('reserve_date')
-                        <div>{{ $message }}</div>
-                    @enderror
                 </div>
                 <div class="reserve-time">
                     <select id="reserve_time" name="reserve_time" required>
-                        <option value="" disabled selected>予約時間を選択してください</option>
+                        <option value="" disabled {{ old('reserve_time') ? '' : 'selected' }}>予約時間を選択してください</option>
                         @for ($i = 0; $i < 24; $i++)
-                            <option value="{{ sprintf('%02d:00:00', $i) }}">{{ sprintf('%02d:00', $i) }}</option>
-                            <option value="{{ sprintf('%02d:30:00', $i) }}">{{ sprintf('%02d:30', $i) }}</option>
+                            <option value="{{ sprintf('%02d:00:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:00:00', $i) ? 'selected' : '' }}>{{ sprintf('%02d:00', $i) }}</option>
+                            <option value="{{ sprintf('%02d:30:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:30:00', $i) ? 'selected' : '' }}>{{ sprintf('%02d:30', $i) }}</option>
                         @endfor
                     </select>
-                    @error('reserve_time')
-                        <div>{{ $message }}</div>
-                    @enderror
                 </div>
                 <div class="number-of-people">
                     <select id="number_of_people" name="number_of_people" required>
-                        <option value="" disabled selected>予約人数を選択してください</option>
+                        <option value="" disabled {{ old('number_of_people') ? '' : 'selected' }}>予約人数を選択してください</option>
                         @for ($i = 1; $i <= 10; $i++)
-                            <option value="{{ $i }}">{{ $i }}人</option>
+                            <option value="{{ $i }}" {{ old('number_of_people') == $i ? 'selected' : '' }}>{{ $i }}人</option>
                         @endfor
                     </select>
-                    @error('number_of_people')
-                        <div>{{ $message }}</div>
-                    @enderror
                 </div>
                 <div class="reservation-summary">
                     <p>店名: {{ $shop->shop_name }}</p>
@@ -75,33 +66,24 @@
                 <h3>予約</h3>
                 <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                 <div class="modal-reserve-date">
-                    <input type="date" id="modal_reserve_date" name="reserve_date" min="{{ $today }}">
-                    @error('reserve_date')
-                        <div>{{ $message }}</div>
-                    @enderror
+                    <input type="date" id="modal_reserve_date" name="reserve_date" value="{{ old('reserve_date') }}" min="{{ $today }}">
                 </div>
                 <div class="modal-reserve-time">
                     <select id="modal_reserve_time" name="reserve_time" required>
-                        <option value="" disabled selected>予約時間を選択してください</option>
+                        <option value="" disabled {{ old('reserve_time') ? '' : 'selected' }}>予約時間を選択してください</option>
                         @for ($i = 0; $i < 24; $i++)
-                            <option value="{{ sprintf('%02d:00:00', $i) }}">{{ sprintf('%02d:00', $i) }}</option>
-                            <option value="{{ sprintf('%02d:30:00', $i) }}">{{ sprintf('%02d:30', $i) }}</option>
+                            <option value="{{ sprintf('%02d:00:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:00:00', $i) ? 'selected' : '' }}>{{ sprintf('%02d:00', $i) }}</option>
+                            <option value="{{ sprintf('%02d:30:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:30:00', $i) ? 'selected' : '' }}>{{ sprintf('%02d:30', $i) }}</option>
                         @endfor
                     </select>
-                    @error('reserve_time')
-                        <div>{{ $message }}</div>
-                    @enderror
                 </div>
                 <div class="modal-number-of-people">
                     <select id="modal_number_of_people" name="number_of_people" required>
-                        <option value="" disabled selected>予約人数を選択してください</option>
+                        <option value="" disabled {{ old('number_of_people') ? '' : 'selected' }}>予約人数を選択してください</option>
                         @for ($i = 1; $i <= 10; $i++)
-                            <option value="{{ $i }}">{{ $i }}人</option>
+                            <option value="{{ $i }}" {{ old('number_of_people') == $i ? 'selected' : '' }}>{{ $i }}人</option>
                         @endfor
                     </select>
-                    @error('number_of_people')
-                        <div>{{ $message }}</div>
-                    @enderror
                 </div>
                 <div class="modal-reservation-summary">
                     <p>店名: {{ $shop->shop_name }}</p>
@@ -118,5 +100,3 @@
 
 <script src="{{ asset('js/shop-detail.js') }}"></script>
 @endsection
-
-
