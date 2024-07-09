@@ -16,7 +16,7 @@ class EmailVerificationController extends Controller
     public function verify(CustomEmailVerificationRequest $request)
     {
         $request->fulfill();
-        return view('thanks');
+        return redirect()->route('thanks');
     }
 
     public function resend(Request $request)

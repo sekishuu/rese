@@ -17,15 +17,15 @@ class LoginController extends Controller
     public function login(LoginRequest $request)
     {
         $validated = $request->validated();
-        
+
         $credentials = $request->only('email', 'password');
-        
+
         if (Auth::attempt($credentials)) {
             return redirect()->intended('/');
         }
 
         return redirect()->back()
-            ->withErrors(['email' => 'The provided credentials do not match our records.'])
+            ->withErrors(['email' => __('auth.failed')])
             ->withInput($request->only('email'));
     }
 

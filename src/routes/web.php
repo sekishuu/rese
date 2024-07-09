@@ -19,6 +19,7 @@ use App\Http\Controllers\ReservationCheckinController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StripeAccountController;
 use App\Http\Controllers\DoneController;
+use App\Http\Controllers\ThanksController;
 
 
 /*
@@ -79,6 +80,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/email/verify', [EmailVerificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
+Route::get('/email/verify', [EmailVerificationController::class, 'notice'])->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
 Route::post('/email/verification-notification', [EmailVerificationController::class, 'resend'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+Route::get('/thanks', [ThanksController::class, 'index'])->name('thanks');
