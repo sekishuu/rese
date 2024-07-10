@@ -119,5 +119,5 @@
 - 一般ユーザー：ippan@example.com
 - 店舗代表者：tenpo@example.com
 - サイト管理者：admin@example.com
-- 
+  
 ※PWは0000
