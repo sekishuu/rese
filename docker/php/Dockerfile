@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libfreetype6-dev \
     libzip-dev \
-    libonig-dev \ 
+    libonig-dev \
     locales \
     zip \
     jpegoptim optipng pngquant gifsicle \

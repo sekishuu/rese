@@ -2,8 +2,8 @@
 /public/hot
 /public/storage
 /storage/*.key
-!/storage/app/public
-!/storage/app/public/shop_images
+!/src/storage/app/public
+!/src/storage/app/public/shop_images
 /vendor
 .env
 .env.backup
