@@ -105,18 +105,23 @@
     ```bash
     php artisan key:generate
     ```
+    
+6. Doctrine DBAL パッケージのインストール
+    ```bash
+    composer require doctrine/dbal
+    ```
 
-6. マイグレーションの実行
+7. マイグレーションの実行
     ```bash
     php artisan migrate
     ```
 
-7. シーディングの実行
+8. シーディングの実行
     ```bash
     php artisan db:seed
     ```
 
-8. シンボリックリンクの作成
+9. シンボリックリンクの作成
     ```bash
     php artisan storage:link
     ```
