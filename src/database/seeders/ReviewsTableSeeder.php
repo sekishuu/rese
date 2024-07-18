@@ -16,6 +16,7 @@ class ReviewsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('reviews')->truncate();
 
         $users = User::all()->keyBy('name');
         $shops = Shop::all()->keyBy('shop_name');

@@ -17,6 +17,7 @@ class ShopsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('shops')->truncate();
 
         $areas = Area::all()->keyBy('area_name');
         $genres = Genre::all()->keyBy('genre_name');

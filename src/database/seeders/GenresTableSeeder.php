@@ -14,6 +14,8 @@ class GenresTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('genres')->truncate();
+
         $genres = [
             ['genre_name' => '寿司'],
             ['genre_name' => '焼肉'],

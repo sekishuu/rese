@@ -14,6 +14,8 @@ class AreasTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('areas')->truncate();
+
         $areas = [
             ['area_name' => '北海道'],
             ['area_name' => '青森県'],
