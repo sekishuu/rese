@@ -16,7 +16,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->truncate();
+        DB::table('favorites')->delete();
+        DB::table('users')->delete();
 
         User::create([
             'name' => '一般太郎',

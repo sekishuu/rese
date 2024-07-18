@@ -16,7 +16,7 @@ class ReservationsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('reservations')->truncate();
+        DB::table('reservations')->delete();
 
         $users = User::all()->keyBy('name');
         $shops = Shop::all()->keyBy('shop_name');
