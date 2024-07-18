@@ -32,10 +32,10 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 RUN mkdir -p /var/www/storage /var/www/bootstrap/cache
 
-COPY . /var/www
+COPY --chown=www-data:www-data . /var/www
 
-RUN chown -R www-data:www-data /var/www
-RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache && \
+    chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
 COPY ./docker/php/laravel-cron /etc/cron.d/laravel-cron
 
@@ -44,8 +44,6 @@ RUN chmod 0644 /etc/cron.d/laravel-cron
 RUN mkdir -p /var/run/cron && chmod 777 /var/run/cron && touch /var/run/cron/crond.pid
 
 RUN crontab /etc/cron.d/laravel-cron
-
-COPY --chown=www-data:www-data . /var/www
 
 EXPOSE 9000
 
