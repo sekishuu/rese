@@ -126,6 +126,12 @@
     php artisan storage:link
     ```
 
+10. ファイル権限の設定
+    ```bash
+    chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+    chmod -R 775 /var/www/storage /var/www/bootstrap/cache
+    ```
+
 ## タスクスケジュール（CRON）の設定
 
 1. サーバーで以下のコマンドを実行してCRONジョブを設定
