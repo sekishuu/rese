@@ -34,7 +34,7 @@ RUN mkdir -p /var/www/storage /var/www/bootstrap/cache
 
 COPY . /var/www
 
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+RUN chown -R www-data:www-data /var/www
 RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
 COPY ./docker/php/laravel-cron /etc/cron.d/laravel-cron
