@@ -57,13 +57,17 @@
                             <label for="area_id">エリア</label>
                             <select id="area_id" name="area_id" required>
                                 @foreach ($areas as $area)
-                                <option value="{{ $area->id }}" {{ old('area_id', $shop->area_id) == $area->id ? 'selected' : '' }}>{{ $area->area_name }}</option>
+                                <option value="{{ $area->id }}" {{ old('area_id', $shop->area_id) == $area->id ? 'selected' : '' }}>
+                                    {{ $area->area_name }}
+                                </option>
                                 @endforeach
                             </select>
                             <label for="genre_id">ジャンル</label>
                             <select id="genre_id" name="genre_id" required>
                                 @foreach ($genres as $genre)
-                                <option value="{{ $genre->id }}" {{ old('genre_id', $shop->genre_id) == $genre->id ? 'selected' : '' }}>{{ $genre->genre_name }}</option>
+                                <option value="{{ $genre->id }}" {{ old('genre_id', $shop->genre_id) == $genre->id ? 'selected' : '' }}>
+                                    {{ $genre->genre_name }}
+                                </option>
                                 @endforeach
                             </select>
                             <label for="shop_image">画像を選択</label>
@@ -111,13 +115,17 @@
             <label for="area_id">エリア</label>
             <select id="area_id" name="area_id" required>
                 @foreach ($areas as $area)
-                <option value="{{ $area->id }}" {{ old('area_id') == $area->id ? 'selected' : '' }}>{{ $area->area_name }}</option>
+                <option value="{{ $area->id }}" {{ old('area_id') == $area->id ? 'selected' : '' }}>
+                    {{ $area->area_name }}
+                </option>
                 @endforeach
             </select>
             <label for="genre_id">ジャンル</label>
             <select id="genre_id" name="genre_id" required>
                 @foreach ($genres as $genre)
-                <option value="{{ $genre->id }}" {{ old('genre_id') == $genre->id ? 'selected' : '' }}>{{ $genre->genre_name }}</option>
+                <option value="{{ $genre->id }}" {{ old('genre_id') == $genre->id ? 'selected' : '' }}>
+                    {{ $genre->genre_name }}
+                </option>
                 @endforeach
             </select>
             <label for="shop_image">画像を選択</label>

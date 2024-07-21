@@ -14,7 +14,9 @@
                 <select name="area" id="area-select">
                     <option value="">All area </option>
                     @foreach ($areas as $area)
-                        <option value="{{ $area->id }}" {{ request('area') == $area->id ? 'selected' : '' }}>{{ $area->area_name }}</option>
+                        <option value="{{ $area->id }}" {{ request('area') == $area->id ? 'selected' : '' }}>
+                            {{ $area->area_name }}
+                        </option>
                     @endforeach
                 </select>
             </div>
@@ -23,7 +25,9 @@
                 <select name="genre" id="genre-select">
                     <option value="">All genre</option>
                     @foreach ($genres as $genre)
-                        <option value="{{ $genre->id }}" {{ request('genre') == $genre->id ? 'selected' : '' }}>{{ $genre->genre_name }}</option>
+                        <option value="{{ $genre->id }}" {{ request('genre') == $genre->id ? 'selected' : '' }}>
+                            {{ $genre->genre_name }}
+                        </option>
                     @endforeach
                 </select>
             </div>

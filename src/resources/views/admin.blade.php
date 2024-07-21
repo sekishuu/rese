@@ -87,9 +87,15 @@
                                         <div class="admin-form-group">
                                             <label for="admin-user_type">User Type</label>
                                             <select id="admin-user_type" name="user_type" required>
-                                                <option value="general" {{ old('user_type', $user->user_type) == 'general' ? 'selected' : '' }}>General</option>
-                                                <option value="shop_owner" {{ old('user_type', $user->user_type) == 'shop_owner' ? 'selected' : '' }}>Shop Owner</option>
-                                                <option value="admin" {{ old('user_type', $user->user_type) == 'admin' ? 'selected' : '' }}>Admin</option>
+                                                <option value="general" {{ old('user_type', $user->user_type) == 'general' ? 'selected' : '' }}>
+                                                    General
+                                                </option>
+                                                <option value="shop_owner" {{ old('user_type', $user->user_type) == 'shop_owner' ? 'selected' : '' }}>
+                                                    Shop Owner
+                                                </option>
+                                                <option value="admin" {{ old('user_type', $user->user_type) == 'admin' ? 'selected' : '' }}>
+                                                    Admin
+                                                </option>
                                             </select>
                                         </div>
                                         <div class="admin-modal-actions">
@@ -119,9 +125,15 @@
                             <div class="admin-form-group">
                                 <label for="admin-user_type">User Type</label>
                                 <select id="admin-user_type" name="user_type" required>
-                                    <option value="general" {{ old('user_type') == 'general' ? 'selected' : '' }}>General</option>
-                                    <option value="shop_owner" {{ old('user_type') == 'shop_owner' ? 'selected' : '' }}>Shop Owner</option>
-                                    <option value="admin" {{ old('user_type') == 'admin' ? 'selected' : '' }}>Admin</option>
+                                    <option value="general" {{ old('user_type') == 'general' ? 'selected' : '' }}>
+                                        General
+                                    </option>
+                                    <option value="shop_owner" {{ old('user_type') == 'shop_owner' ? 'selected' : '' }}>
+                                        Shop Owner
+                                    </option>
+                                    <option value="admin" {{ old('user_type') == 'admin' ? 'selected' : '' }}>
+                                        Admin
+                                    </option>
                                 </select>
                             </div>
                             <input type="hidden" name="is_admin_request" value="true">
@@ -181,7 +193,9 @@
                                             <label for="admin-area_id">Area</label>
                                             <select id="admin-area_id" name="area_id" required>
                                                 @foreach ($areas as $area)
-                                                <option value="{{ $area->id }}" {{ old('area_id', $shop->area_id) == $area->id ? 'selected' : '' }}>{{ $area->area_name }}</option>
+                                                <option value="{{ $area->id }}" {{ old('area_id', $shop->area_id) == $area->id ? 'selected' : '' }}>
+                                                    {{ $area->area_name }}
+                                                </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -189,7 +203,9 @@
                                             <label for="admin-genre_id">Genre</label>
                                             <select id="admin-genre_id" name="genre_id" required>
                                                 @foreach ($genres as $genre)
-                                                <option value="{{ $genre->id }}" {{ old('genre_id', $shop->genre_id) == $genre->id ? 'selected' : '' }}>{{ $genre->genre_name }}</option>
+                                                <option value="{{ $genre->id }}" {{ old('genre_id', $shop->genre_id) == $genre->id ? 'selected' : '' }}>
+                                                    {{ $genre->genre_name }}
+                                                </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -197,7 +213,9 @@
                                             <label for="admin-user_id">User</label>
                                             <select id="admin-user_id" name="user_id" required>
                                                 @foreach ($shopOwners as $shopOwner)
-                                                <option value="{{ $shopOwner->id }}" {{ old('user_id', $shop->user_id) == $shopOwner->id ? 'selected' : '' }}>{{ $shopOwner->name }}</option>
+                                                <option value="{{ $shopOwner->id }}" {{ old('user_id', $shop->user_id) == $shopOwner->id ? 'selected' : '' }}>
+                                                    {{ $shopOwner->name }}
+                                                </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -225,7 +243,9 @@
                                 <label for="admin-area_id">Area</label>
                                 <select id="admin-area_id" name="area_id" required>
                                     @foreach ($areas as $area)
-                                    <option value="{{ $area->id }}" {{ old('area_id') == $area->id ? 'selected' : '' }}>{{ $area->area_name }}</option>
+                                    <option value="{{ $area->id }}" {{ old('area_id') == $area->id ? 'selected' : '' }}>
+                                        {{ $area->area_name }}
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -233,7 +253,9 @@
                                 <label for="admin-genre_id">Genre</label>
                                 <select id="admin-genre_id" name="genre_id" required>
                                     @foreach ($genres as $genre)
-                                    <option value="{{ $genre->id }}" {{ old('genre_id') == $genre->id ? 'selected' : '' }}>{{ $genre->genre_name }}</option>
+                                    <option value="{{ $genre->id }}" {{ old('genre_id') == $genre->id ? 'selected' : '' }}>
+                                        {{ $genre->genre_name }}
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -241,7 +263,9 @@
                                 <label for="admin-user_id">User</label>
                                 <select id="admin-user_id" name="user_id" required>
                                     @foreach ($shopOwners as $shopOwner)
-                                    <option value="{{ $shopOwner->id }}" {{ old('user_id') == $shopOwner->id ? 'selected' : '' }}>{{ $shopOwner->name }}</option>
+                                    <option value="{{ $shopOwner->id }}" {{ old('user_id') == $shopOwner->id ? 'selected' : '' }}>
+                                        {{ $shopOwner->name }}
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -357,7 +381,9 @@
                                             <label for="admin-genre_name">Genre Name</label>
                                             <select id="admin-genre_name" name="genre_name" required>
                                                 @foreach ($genres as $g)
-                                                <option value="{{ $g->id }}" {{ old('genre_name', $genre->id) == $g->id ? 'selected' : '' }}>{{ $g->genre_name }}</option>
+                                                <option value="{{ $g->id }}" {{ old('genre_name', $genre->id) == $g->id ? 'selected' : '' }}>
+                                                    {{ $g->genre_name }}
+                                                </option>
                                                 @endforeach
                                             </select>
                                         </div>

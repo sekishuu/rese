@@ -56,8 +56,12 @@
                                 <label for="reserve_time-{{ $reservation->id }}">時間</label>
                                 <select id="reserve_time-{{ $reservation->id }}" name="reserve_time" required>
                                     @for ($i = 0; $i < 24; $i++)
-                                        <option value="{{ sprintf('%02d:00:00', $i) }}" {{ old('reserve_time', $reservation->reserve_time) == sprintf('%02d:00:00', $i) ? 'selected' : '' }}>{{ sprintf('%02d:00', $i) }}</option>
-                                        <option value="{{ sprintf('%02d:30:00', $i) }}" {{ old('reserve_time', $reservation->reserve_time) == sprintf('%02d:30:00', $i) ? 'selected' : '' }}>{{ sprintf('%02d:30', $i) }}</option>
+                                        <option value="{{ sprintf('%02d:00:00', $i) }}" {{ old('reserve_time', $reservation->reserve_time) == sprintf('%02d:00:00', $i) ? 'selected' : '' }}>
+                                            {{ sprintf('%02d:00', $i) }}
+                                        </option>
+                                        <option value="{{ sprintf('%02d:30:00', $i) }}" {{ old('reserve_time', $reservation->reserve_time) == sprintf('%02d:30:00', $i) ? 'selected' : '' }}>
+                                            {{ sprintf('%02d:30', $i) }}
+                                        </option>
                                     @endfor
                                 </select>
                             </div>
@@ -65,7 +69,9 @@
                                 <label for="number_of_people-{{ $reservation->id }}">人数</label>
                                 <select id="number_of_people-{{ $reservation->id }}" name="number_of_people" required>
                                     @for ($i = 1; $i <= 10; $i++)
-                                        <option value="{{ $i }}" {{ old('number_of_people', $reservation->number_of_people) == $i ? 'selected' : '' }}>{{ $i }}人</option>
+                                        <option value="{{ $i }}" {{ old('number_of_people', $reservation->number_of_people) == $i ? 'selected' : '' }}>
+                                            {{ $i }}人
+                                        </option>
                                     @endfor
                                 </select>
                             </div>
@@ -114,7 +120,9 @@
                             <label for="evaluation-{{ $reservation->id }}">評価</label>
                             <select id="evaluation-{{ $reservation->id }}" name="evaluation" required>
                                 @for ($i = 1; $i <= 5; $i++)
-                                    <option value="{{ $i }}" {{ old('evaluation', $reservation->review->evaluation) == $i ? 'selected' : '' }}>{{ str_repeat('★', $i) }}</option>
+                                    <option value="{{ $i }}" {{ old('evaluation', $reservation->review->evaluation) == $i ? 'selected' : '' }}>
+                                        {{ str_repeat('★', $i) }}
+                                    </option>
                                 @endfor
                             </select>
                             <div class="review-label-text">
@@ -131,7 +139,9 @@
                             <label for="evaluation-{{ $reservation->id }}">評価</label>
                             <select id="evaluation-{{ $reservation->id }}" name="evaluation" required>
                                 @for ($i = 1; $i <= 5; $i++)
-                                    <option value="{{ $i }}" {{ old('evaluation') == $i ? 'selected' : '' }}>{{ str_repeat('★', $i) }}</option>
+                                    <option value="{{ $i }}" {{ old('evaluation') == $i ? 'selected' : '' }}>
+                                        {{ str_repeat('★', $i) }}
+                                    </option>
                                 @endfor
                             </select>
                             <label for="comment-{{ $reservation->id }}">コメント</label>

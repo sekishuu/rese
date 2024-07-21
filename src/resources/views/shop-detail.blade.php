@@ -33,16 +33,24 @@
                     <select id="reserve_time" name="reserve_time" required>
                         <option value="" disabled {{ old('reserve_time') ? '' : 'selected' }}>予約時間を選択してください</option>
                         @for ($i = 0; $i < 24; $i++)
-                            <option value="{{ sprintf('%02d:00:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:00:00', $i) ? 'selected' : '' }}>{{ sprintf('%02d:00', $i) }}</option>
-                            <option value="{{ sprintf('%02d:30:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:30:00', $i) ? 'selected' : '' }}>{{ sprintf('%02d:30', $i) }}</option>
+                            <option value="{{ sprintf('%02d:00:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:00:00', $i) ? 'selected' : '' }}>
+                                {{ sprintf('%02d:00', $i) }}
+                            </option>
+                            <option value="{{ sprintf('%02d:30:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:30:00', $i) ? 'selected' : '' }}>
+                                {{ sprintf('%02d:30', $i) }}
+                            </option>
                         @endfor
                     </select>
                 </div>
                 <div class="number-of-people">
                     <select id="number_of_people" name="number_of_people" required>
-                        <option value="" disabled {{ old('number_of_people') ? '' : 'selected' }}>予約人数を選択してください</option>
+                        <option value="" disabled {{ old('number_of_people') ? '' : 'selected' }}>
+                            予約人数を選択してください
+                        </option>
                         @for ($i = 1; $i <= 10; $i++)
-                            <option value="{{ $i }}" {{ old('number_of_people') == $i ? 'selected' : '' }}>{{ $i }}人</option>
+                            <option value="{{ $i }}" {{ old('number_of_people') == $i ? 'selected' : '' }}>
+                                {{ $i }}人
+                            </option>
                         @endfor
                     </select>
                 </div>
@@ -70,18 +78,28 @@
                 </div>
                 <div class="modal-reserve-time">
                     <select id="modal_reserve_time" name="reserve_time" required>
-                        <option value="" disabled {{ old('reserve_time') ? '' : 'selected' }}>予約時間を選択してください</option>
+                        <option value="" disabled {{ old('reserve_time') ? '' : 'selected' }}>
+                            予約時間を選択してください
+                        </option>
                         @for ($i = 0; $i < 24; $i++)
-                            <option value="{{ sprintf('%02d:00:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:00:00', $i) ? 'selected' : '' }}>{{ sprintf('%02d:00', $i) }}</option>
-                            <option value="{{ sprintf('%02d:30:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:30:00', $i) ? 'selected' : '' }}>{{ sprintf('%02d:30', $i) }}</option>
+                            <option value="{{ sprintf('%02d:00:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:00:00', $i) ? 'selected' : '' }}>
+                                {{ sprintf('%02d:00', $i) }}
+                            </option>
+                            <option value="{{ sprintf('%02d:30:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:30:00', $i) ? 'selected' : '' }}>
+                                {{ sprintf('%02d:30', $i) }}
+                            </option>
                         @endfor
                     </select>
                 </div>
                 <div class="modal-number-of-people">
                     <select id="modal_number_of_people" name="number_of_people" required>
-                        <option value="" disabled {{ old('number_of_people') ? '' : 'selected' }}>予約人数を選択してください</option>
+                        <option value="" disabled {{ old('number_of_people') ? '' : 'selected' }}>
+                            予約人数を選択してください
+                        </option>
                         @for ($i = 1; $i <= 10; $i++)
-                            <option value="{{ $i }}" {{ old('number_of_people') == $i ? 'selected' : '' }}>{{ $i }}人</option>
+                            <option value="{{ $i }}" {{ old('number_of_people') == $i ? 'selected' : '' }}>
+                                {{ $i }}人
+                            </option>
                         @endfor
                     </select>
                 </div>
