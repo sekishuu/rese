@@ -233,3 +233,20 @@
     background-color: #0056b3;
 }
 
+.label-comment-image{
+    font-size: 1.2vw;
+}
+
+@media (max-width: 768px) {
+    .assessment-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-left: 5vw;
+    }
+
+    .title-item::after {
+        content: none;
+        display: none;
+    }
+}

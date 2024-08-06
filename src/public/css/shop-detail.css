@@ -20,7 +20,7 @@
     background-color: #007bff;
     border-radius: 0.5vw;
     color: #fff;
-    margin-top: -6.5vw;
+    margin-top: 2vw;
     height: 45vw;
 }
 
@@ -206,13 +206,13 @@
 
 .all-reviews-button {
     display: block;
-    width: 100%;
+    width: 95%;
     margin: 1vw 0;
-    padding: 1vw;
+    padding: 0.5vw;
     background-color: #007bff;
     color: #fff;
     border: none;
-    font-size: 1.2vw;
+    font-size: 1vw;
     cursor: pointer;
     transition: background-color 0.3s ease;
     border-radius: 0.5vw;
@@ -282,10 +282,59 @@
     border-bottom: 0.1vw solid #ccc;
 }
 
-.review-item-image {
+.review-image {
     max-width: 20vw;
-    max-height: 10vw;
+    max-height: 15vw;
     margin-top: 1vw;
+}
+
+.review-comment {
+    font-size:1.3vw
+}
+
+.review-evaluation {
+    font-size: 1.5vw;
+    color: #007bff;
+}
+
+.star-rating {
+    display: inline-block;
+    font-size: 3vw;
+    color: #007bff;
+}
+
+.star {
+    color: #ccc;
+}
+
+.star.filled {
+    color: #007bff;
+}
+
+.link-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+    margin-left: 1.5vw;
+}
+
+.link-button:hover {
+    color: #0056b3;
+}
+.edit-delete{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.2vw;
+}
+.review-box{
+    margin: 2vw 0;
+    padding: 1vw 0;
+    border-top: 0.1vw solid #9e9e9e;
+    border-bottom: 0.1vw solid #9e9e9e;
 }
 
 @media (max-width: 768px) {
@@ -333,4 +382,22 @@
         padding-right: 1vw;
     }
 
+    .all-reviews-button {
+        font-size: 2vw;
+    }
+    .edit-delete {
+        font-size: 2vw;
+    }
+
+    .review-comment {
+        font-size: 2vw;
+    }
+    .star-rating {
+        font-size: 4vw;
+    }
+    .review-image {
+        max-width: 25vw;
+        max-height: 20vw;
+        margin-top: 1vw;
+    }
 }

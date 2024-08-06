@@ -59,14 +59,14 @@
             </div>
         </div>
         <div class="assessment-comment">
-            <label for="comment">口コミを投稿:</label>
+            <label for="comment" class="label-comment-image">口コミを投稿</label>
             <textarea name="comment" id="comment" rows="4" cols="50" class="assessment-textarea" placeholder="カジュアルな夜のお出かけにおすすめのスポット">{{ $review ? $review->comment : '' }}</textarea>
             <div id="char-count" class="assessment-char-count">0/400 最大文字数</div>
         </div>
 
 
         <div class="assessment-image-upload">
-            <label for="image">画像の追加:</label>
+            <label for="image" class="label-comment-image">画像の追加</label>
             <div class="drop-area" onclick="document.getElementById('image').click();">
                 <p>クリックして写真を追加<br>またはドラッグアンドドロップ</p>
                 <input type="file" name="image" id="image" class="assessment-file-input" style="display: none;">
