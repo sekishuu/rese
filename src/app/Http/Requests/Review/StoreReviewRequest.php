@@ -26,7 +26,8 @@ class StoreReviewRequest extends FormRequest
         return [
             'shop_id' => 'required|exists:shops,id',
             'evaluation' => 'required|integer|min:1|max:5',
-            'comment' => 'nullable|string|max:255',
+            'comment' => 'nullable|string|max:400',
+            'image' => 'nullable|image|mimes:jpeg,png|max:10240'
         ];
     }
 
@@ -45,7 +46,10 @@ class StoreReviewRequest extends FormRequest
             'evaluation.min' => '評価は1以上である必要があります。',
             'evaluation.max' => '評価は5以下である必要があります。',
             'comment.string' => 'コメントは文字列である必要があります。',
-            'comment.max' => 'コメントは最大255文字までです。',
+            'comment.max' => 'コメントは最大400文字までです。',
+            'image.image' => 'アップロードされたファイルは画像である必要があります。',
+            'image.mimes' => '画像の形式はjpegまたはpngである必要があります。',
+            'image.max' => '画像のサイズは最大10MBまでです。'
         ];
     }
 }

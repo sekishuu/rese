@@ -30,8 +30,6 @@ RUN docker-php-ext-install gd
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN mkdir -p /var/www/storage /var/www/bootstrap/cache
-
 COPY --chown=www-data:www-data . /var/www
 
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache && \

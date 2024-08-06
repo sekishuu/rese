@@ -204,6 +204,90 @@
     display: none;
 }
 
+.all-reviews-button {
+    display: block;
+    width: 100%;
+    margin: 1vw 0;
+    padding: 1vw;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    font-size: 1.2vw;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 0.5vw;
+    text-align: center;
+    text-decoration: none;
+}
+
+.all-reviews-button:hover {
+    background-color: #0056b3;
+}
+
+.reviews-modal {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: visibility 0s, opacity 0.5s;
+    z-index: 9999;
+}
+
+.reviews-modal:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.reviews-modal .reviews-modal-content {
+    background-color: #fff;
+    padding: 2vw;
+    border-radius: 1vw;
+    width: 80vw;
+    max-width: 50vw;
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10000;
+    text-align: center;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+.reviews-modal .reviews-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+}
+
+.reviews-modal .reviews-modal-close {
+    position: absolute;
+    top: 1vw;
+    right: 1vw;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.review-item {
+    margin-bottom: 2vw;
+    padding: 1vw;
+    border-bottom: 0.1vw solid #ccc;
+}
+
+.review-item-image {
+    max-width: 20vw;
+    max-height: 10vw;
+    margin-top: 1vw;
+}
+
 @media (max-width: 768px) {
     .shop-detail-main {
         flex-direction: column;

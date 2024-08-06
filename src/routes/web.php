@@ -20,6 +20,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StripeAccountController;
 use App\Http\Controllers\DoneController;
 use App\Http\Controllers\ThanksController;
+use App\Http\Controllers\AssessmentController;
 
 
 /*
@@ -52,6 +53,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/create-stripe-account-link/{shop}', [StripeAccountController::class, 'createLink'])->name('stripe.createLink');
     Route::get('/stripe-account-created/{shop}', [StripeAccountController::class, 'accountCreated'])->name('stripe.accountCreated');
     Route::get('/stripe-account-login/{shop}', [StripeAccountController::class, 'accountLogin'])->name('stripe.accountLogin');
+    Route::get('/assessment/{shop}', [AssessmentController::class, 'show'])->name('assessment.show');
+    Route::post('/assessment/{shop}', [AssessmentController::class, 'store'])->name('assessment.store');
+    Route::put('/assessment/{id}', [AssessmentController::class, 'update'])->name('assessment.update');
+    Route::delete('/assessment/{id}', [AssessmentController::class, 'destroy'])->name('assessment.destroy');
 });
 
 Route::middleware(['auth','admin'])->group(function () {

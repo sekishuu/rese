@@ -8,6 +8,7 @@ use App\Models\Area;
 use App\Models\Genre;
 use App\Http\Requests\Shop\StoreShopRequest;
 use App\Http\Requests\Shop\UpdateShopRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
@@ -36,7 +37,10 @@ class ShopController extends Controller
     public function show(Shop $shop)
         {
             $today = date('Y-m-d');
-            return view('shop-detail', compact('shop', 'today'));
+            $review = $shop->reviews()->where('user_id', Auth::id())->first();
+            $allReviews = $shop->reviews()->get();
+            $isAdmin = Auth::check() && Auth::user()->user_type === 'admin';
+        return view('shop-detail', compact('shop', 'today','review','allReviews', 'isAdmin'));
         }
 
     public function update(UpdateShopRequest $request, $id)

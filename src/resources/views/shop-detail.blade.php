@@ -18,6 +18,31 @@
         <div class="shop-info">
             <p>{{ $shop->shop_info }}</p>
         </div>
+
+        <a href="#reviews-modal" class="all-reviews-button">全ての口コミ情報</a>
+
+        @if ($review)
+        <a href="{{ route('assessment.show', ['shop' => $shop->id]) }}">
+            <button>口コミを編集</button>
+        </a>
+        <form action="{{ route('assessment.destroy', ['id' => $review->id]) }}" method="POST" style="display:inline;">
+            @csrf
+            @method('DELETE')
+            <button type="submit" onclick="return confirm('本当に削除しますか？')">口コミを削除</button>
+        </form>
+        <div class="review-info">
+            <p>評価: {{ $review->evaluation }}</p>
+            <p>コメント: {{ $review->comment }}</p>
+            @if ($review->image)
+            <img src="{{ asset('images/' . $review->image) }}" alt="口コミ画像" class="review-image">
+            @endif
+        </div>
+        @else
+        <a href="{{ route('assessment.show', ['shop' => $shop->id]) }}">
+            <button>口コミを投稿する</button>
+        </a>
+        @endif
+
         <a href="#reserve-modal" class="reserve-button-mobile">予約</a>
     </div>
     <div class="shop-detail-right">
@@ -32,14 +57,13 @@
                 <div class="reserve-time">
                     <select id="reserve_time" name="reserve_time" required>
                         <option value="" disabled {{ old('reserve_time') ? '' : 'selected' }}>予約時間を選択してください</option>
-                        @for ($i = 0; $i < 24; $i++)
-                            <option value="{{ sprintf('%02d:00:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:00:00', $i) ? 'selected' : '' }}>
-                                {{ sprintf('%02d:00', $i) }}
+                        @for ($i = 0; $i < 24; $i++) <option value="{{ sprintf('%02d:00:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:00:00', $i) ? 'selected' : '' }}>
+                            {{ sprintf('%02d:00', $i) }}
                             </option>
                             <option value="{{ sprintf('%02d:30:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:30:00', $i) ? 'selected' : '' }}>
                                 {{ sprintf('%02d:30', $i) }}
                             </option>
-                        @endfor
+                            @endfor
                     </select>
                 </div>
                 <div class="number-of-people">
@@ -47,11 +71,10 @@
                         <option value="" disabled {{ old('number_of_people') ? '' : 'selected' }}>
                             予約人数を選択してください
                         </option>
-                        @for ($i = 1; $i <= 10; $i++)
-                            <option value="{{ $i }}" {{ old('number_of_people') == $i ? 'selected' : '' }}>
-                                {{ $i }}人
+                        @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" {{ old('number_of_people') == $i ? 'selected' : '' }}>
+                            {{ $i }}人
                             </option>
-                        @endfor
+                            @endfor
                     </select>
                 </div>
                 <div class="reservation-summary">
@@ -65,6 +88,31 @@
         </form>
     </div>
 </main>
+
+<div id="reviews-modal" class="reviews-modal">
+    <div class="reviews-modal-content">
+        <a href="#" class="reviews-modal-close">&times;</a>
+        <h3>全ての口コミ情報</h3>
+        @foreach ($allReviews as $allReview)
+        <div class="review-item">
+            <p>評価: {{ $allReview->evaluation }}</p>
+            <p>コメント: {{ $allReview->comment }}</p>
+            @if ($allReview->image)
+            <img src="{{ asset('images/' . $allReview->image) }}" alt="口コミ画像" class="review-item-image">
+            @endif
+            @if ($isAdmin)
+            <form action="{{ route('assessment.destroy', ['id' => $allReview->id]) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" onclick="return confirm('本当に削除しますか？')">口コミを削除</button>
+            </form>
+            @endif
+        </div>
+        @endforeach
+    </div>
+    <a href="#" class="reviews-modal-overlay"></a>
+</div>
+
 <div id="reserve-modal" class="shop-detail-modal">
     <div class="modal-content">
         <a href="#" class="modal-close">&times;</a>
@@ -81,14 +129,13 @@
                         <option value="" disabled {{ old('reserve_time') ? '' : 'selected' }}>
                             予約時間を選択してください
                         </option>
-                        @for ($i = 0; $i < 24; $i++)
-                            <option value="{{ sprintf('%02d:00:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:00:00', $i) ? 'selected' : '' }}>
-                                {{ sprintf('%02d:00', $i) }}
+                        @for ($i = 0; $i < 24; $i++) <option value="{{ sprintf('%02d:00:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:00:00', $i) ? 'selected' : '' }}>
+                            {{ sprintf('%02d:00', $i) }}
                             </option>
                             <option value="{{ sprintf('%02d:30:00', $i) }}" {{ old('reserve_time') == sprintf('%02d:30:00', $i) ? 'selected' : '' }}>
                                 {{ sprintf('%02d:30', $i) }}
                             </option>
-                        @endfor
+                            @endfor
                     </select>
                 </div>
                 <div class="modal-number-of-people">
@@ -96,11 +143,10 @@
                         <option value="" disabled {{ old('number_of_people') ? '' : 'selected' }}>
                             予約人数を選択してください
                         </option>
-                        @for ($i = 1; $i <= 10; $i++)
-                            <option value="{{ $i }}" {{ old('number_of_people') == $i ? 'selected' : '' }}>
-                                {{ $i }}人
+                        @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" {{ old('number_of_people') == $i ? 'selected' : '' }}>
+                            {{ $i }}人
                             </option>
-                        @endfor
+                            @endfor
                     </select>
                 </div>
                 <div class="modal-reservation-summary">
