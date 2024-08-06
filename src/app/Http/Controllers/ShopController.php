@@ -9,6 +9,7 @@ use App\Models\Genre;
 use App\Http\Requests\Shop\StoreShopRequest;
 use App\Http\Requests\Shop\UpdateShopRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
 {
@@ -26,12 +27,32 @@ class ShopController extends Controller
                 $query->where('shop_name', 'like', '%' . $request->keyword . '%');
             }
 
+            $query->leftJoin('reviews', 'shops.id', '=', 'reviews.shop_id')
+            ->select('shops.*', DB::raw('AVG(reviews.evaluation) as average_evaluation'))
+            ->groupBy('shops.id');
+
+            if ($request->has('sort')) {
+                if ($request->sort == 'high') {
+                    $query->orderBy('average_evaluation', 'desc');
+                } elseif ($request->sort == 'low') {
+                    $query->having('average_evaluation', '>', 0)
+                        ->orderBy('average_evaluation', 'asc');
+                } elseif ($request->sort == 'random') {
+                    $query->inRandomOrder();
+                }
+            }
+
             $shops = $query->get();
+
+            $shopsWithoutReviews = Shop::leftJoin('reviews', 'shops.id', '=', 'reviews.shop_id')
+            ->select('shops.*')
+            ->whereNull('reviews.shop_id')
+            ->get();
 
             $areas = Area::all();
             $genres = Genre::all();
 
-            return view('index', compact('shops', 'areas', 'genres'));
+            return view('index', compact('shops', 'shopsWithoutReviews', 'areas', 'genres'));
         }
 
     public function show(Shop $shop)
