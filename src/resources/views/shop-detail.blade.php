@@ -22,16 +22,18 @@
         <a href="#reviews-modal" class="all-reviews-button">全ての口コミ情報</a>
         <div class="review-box">
             @if ($review)
-            <dev class="edit-delete">
-                <a href="{{ route('assessment.show', ['shop' => $shop->id]) }}">
-                    口コミを編集
-                </a>
-                <form action="{{ route('assessment.destroy', ['id' => $review->id]) }}" method="POST" style="display:inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="link-button" onclick="return confirm('本当に削除しますか？')">口コミを削除</button>
-                </form>
-            </dev>
+                @if (Auth::check() && (Auth::user()->user_type !== 'shop_owner' && Auth::user()->user_type !== 'admin'))
+                    <dev class="edit-delete">
+                        <a href="{{ route('assessment.show', ['shop' => $shop->id]) }}">
+                            口コミを編集
+                        </a>
+                        <form action="{{ route('assessment.destroy', ['id' => $review->id]) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="link-button" onclick="return confirm('本当に削除しますか？')">口コミを削除</button>
+                        </form>
+                    </dev>
+                @endif
             <div class="review-info">
                 <div class="review-evaluation">
                     <span class="star-rating">
@@ -45,13 +47,17 @@
                 </div>
                 <p class="review-comment">{{ $review->comment }}</p>
                 @if ($review->image)
-                <img src="{{ asset('images/' . $review->image) }}" alt="口コミ画像" class="review-image">
+                <div class="review-image-box">
+                    <img src="{{ asset('images/' . $review->image) }}" alt="口コミ画像" class="review-image">
+                </div>
                 @endif
             </div>
             @else
-            <a href="{{ route('assessment.show', ['shop' => $shop->id]) }}">
-                口コミを投稿する
-            </a>
+                @if (Auth::check() && (Auth::user()->user_type !== 'shop_owner' && Auth::user()->user_type !== 'admin'))
+                    <a href="{{ route('assessment.show', ['shop' => $shop->id]) }}">
+                        口コミを投稿する
+                    </a>
+                @endif
             @endif
         </div>
         <a href="#reserve-modal" class="reserve-button-mobile">予約</a>
@@ -106,10 +112,21 @@
         <h3>全ての口コミ情報</h3>
         @foreach ($allReviews as $allReview)
         <div class="review-item">
-            <p>評価: {{ $allReview->evaluation }}</p>
-            <p>コメント: {{ $allReview->comment }}</p>
+            <div class="review-evaluation">
+                <span class="star-rating">
+                    @for ($i = 1; $i <= 5; $i++) @if ($i <=$allReview->evaluation)
+                        <span class="star filled">&#9733;</span>
+                        @else
+                        <span class="star">&#9733;</span>
+                        @endif
+                        @endfor
+                </span>
+            </div>
+            <p class="review-comment">{{ $allReview->comment }}</p>
             @if ($allReview->image)
-            <img src="{{ asset('images/' . $allReview->image) }}" alt="口コミ画像" class="review-item-image">
+            <div class="review-image-box">
+                <img src="{{ asset('images/' . $allReview->image) }}" alt="口コミ画像" class="review-image">
+            </div>
             @endif
             @if ($isAdmin)
             <form action="{{ route('assessment.destroy', ['id' => $allReview->id]) }}" method="POST" style="display:inline;">

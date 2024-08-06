@@ -235,6 +235,7 @@
 
 .label-comment-image{
     font-size: 1.2vw;
+    font-weight: bold;
 }
 
 @media (max-width: 768px) {
