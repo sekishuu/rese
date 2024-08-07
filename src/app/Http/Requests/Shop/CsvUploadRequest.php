@@ -46,8 +46,8 @@ class CsvUploadRequest extends FormRequest
 
                     $rowValidator = Validator::make($data, [
                         '店舗名' => 'required|string|max:50',
-                        '地域' => 'required|exists:areas,area_name',
-                        'ジャンル' => 'required|exists:genres,genre_name',
+                        '地域' => 'required|in:東京都,大阪府,福岡県',
+                        'ジャンル' =>'required|in:寿司,焼肉,イタリアン,居酒屋,ラーメン',
                         '店舗概要' => 'required|string|max:400',
                         '画像URL' =>['required', 'url', 'regex:/\.(jpeg|png)$/i'],
                     ], $this->messages());
@@ -75,9 +75,9 @@ class CsvUploadRequest extends FormRequest
             '店舗名.string' => '店舗名は文字列でなければなりません。',
             '店舗名.max' => '店舗名は50文字以内で入力してください。',
             '地域.required' => '地域を選択してください。',
-            '地域.exists' => '地域は東京都、大阪府、福岡県のいずれかを選択してください。',
+            '地域.in' => '地域は東京都、大阪府、福岡県のいずれかを選択してください。',
             'ジャンル.required' => 'ジャンルを選択してください。',
-            'ジャンル.exists' => 'ジャンルは寿司、焼肉、イタリアン、居酒屋、ラーメンのいずれかを選択してください。',
+            'ジャンル.in' => 'ジャンルは寿司、焼肉、イタリアン、居酒屋、ラーメンのいずれかを選択してください。',
             '店舗概要.required' => '店舗概要を入力してください。',
             '店舗概要.string' => '店舗概要は文字列でなければなりません。',
             '店舗概要.max' => '店舗概要は400文字以内で入力してください。',
