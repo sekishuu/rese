@@ -202,11 +202,12 @@
 
 以下のように項目を入力してください。
 
-| 店舗名  | 地域   | ジャンル | 店舗概要                | 画像URL                                   |
-| ------- | ------ | -------- | ---------------------- | ---------------------------------------- |
-| 寿司一番 | 東京都 | 寿司     | 新鮮なネタを提供する寿司店 | http://example.com/sushi.jpg              |
-| 焼肉大王 | 大阪府 | 焼肉     | 美味しい焼肉を提供します   | http://example.com/yakiniku.png          |
-| イタリアンの店 | 福岡県 | イタリアン | 本格イタリアン料理を提供します | http://example.com/italian.jpeg          |
+店舗名,地域,ジャンル,店舗概要,画像URL
+寿司一番,東京都,寿司,新鮮なネタを提供する老舗寿司店,http://example.com/images/sushi.jpg
+焼肉太郎,大阪府,焼肉,厳選された和牛を楽しめる焼肉店,http://example.com/images/yakiniku.png
+ラーメン花子,福岡県,ラーメン,濃厚な豚骨スープが自慢のラーメン店,http://example.com/images/ramen.jpeg
+イタリアン山田,東京都,イタリアン,本格的なイタリアン料理を提供するレストラン,http://example.com/images/italian.jpg
+居酒屋佐藤,大阪府,居酒屋,地元で愛されるアットホームな居酒屋,http://example.com/images/izakaya.png
 
 1. **ExcelやGoogleスプレッドシートを使用する場合**:
    - Excelを使用する場合：「ファイル」→「名前を付けて保存」→「ファイルの種類」で「CSV (コンマ区切り) (*.csv)」を選択して保存。
