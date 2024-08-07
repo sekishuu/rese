@@ -201,12 +201,12 @@
 #### CSVファイルの作成例
 
 以下のように項目を入力してください。
-
+```
 店舗名,地域,ジャンル,店舗概要,画像URL
 寿司一番,東京都,寿司,新鮮なネタを提供する老舗寿司店,http://example.com/images/sushi.jpeg
 焼肉太郎,大阪府,焼肉,厳選された和牛を楽しめる焼肉店,http://example.com/images/yakiniku.png
 ラーメン花子,福岡県,ラーメン,濃厚な豚骨スープが自慢のラーメン店,http://example.com/images/ramen.jpeg
-
+```
 
 1. **ExcelやGoogleスプレッドシートを使用する場合**:
    - Excelを使用する場合：「ファイル」→「名前を付けて保存」→「ファイルの種類」で「CSV (コンマ区切り) (*.csv)」を選択して保存。
