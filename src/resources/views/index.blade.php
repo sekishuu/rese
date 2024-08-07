@@ -77,31 +77,33 @@
     </div>
     @endforeach
 
-    @foreach ($shopsWithoutReviews as $shop)
-    <div class="shop-item">
-        <div class="image-container">
-            <img src="{{ asset('storage/shop_images/' . $shop->shop_image) }}" alt="{{ $shop->shop_name }}" class="shop-image">
+    @if (request('sort') == 'low')
+        @foreach ($shopsWithoutReviews as $shop)
+        <div class="shop-item">
+            <div class="image-container">
+                <img src="{{ asset('storage/shop_images/' . $shop->shop_image) }}" alt="{{ $shop->shop_name }}" class="shop-image">
+            </div>
+            <div class="shop-details">
+                <div class="shop-name">
+                    <h2>{{ $shop->shop_name }}</h2>
+                </div>
+                <div class="area-genre-name">
+                    <p>#{{ $shop->area->area_name }} #{{ $shop->genre->genre_name }}</p>
+                </div>
+                <div class="button-container">
+                    <a href="{{ route('shops.show', $shop->id) }}" class="detail-link">詳しくみる</a>
+                    <button class="favorite-btn" data-shop-id="{{ $shop->id }}">
+                        @if(Auth::check() && $shop->favorites->where('user_id', Auth::id())->isNotEmpty())
+                        <span class="heart active">&#x2764;</span>
+                        @else
+                        <span class="heart">&#x2764;</span>
+                        @endif
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="shop-details">
-            <div class="shop-name">
-                <h2>{{ $shop->shop_name }}</h2>
-            </div>
-            <div class="area-genre-name">
-                <p>#{{ $shop->area->area_name }} #{{ $shop->genre->genre_name }}</p>
-            </div>
-            <div class="button-container">
-                <a href="{{ route('shops.show', $shop->id) }}" class="detail-link">詳しくみる</a>
-                <button class="favorite-btn" data-shop-id="{{ $shop->id }}">
-                    @if(Auth::check() && $shop->favorites->where('user_id', Auth::id())->isNotEmpty())
-                    <span class="heart active">&#x2764;</span>
-                    @else
-                    <span class="heart">&#x2764;</span>
-                    @endif
-                </button>
-            </div>
-        </div>
-    </div>
-    @endforeach
+        @endforeach
+    @endif
 </div>
 
 @endsection
