@@ -89,3 +89,5 @@ Route::get('/email/verify', [EmailVerificationController::class, 'notice'])->nam
 Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
 Route::post('/email/verification-notification', [EmailVerificationController::class, 'resend'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 Route::get('/thanks', [ThanksController::class, 'index'])->name('thanks');
+Route::get('/admin/upload', [AdminController::class, 'uploadForm'])->name('admin.upload.form');
+Route::post('/admin/upload', [AdminController::class, 'upload'])->name('admin.upload');
