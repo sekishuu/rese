@@ -46,21 +46,21 @@
         <h2 class="assessment-title-sub">体験を評価してください</h2>
         <div class="rating-container">
             <div class="assessment-rating">
-                <input type="radio" name="evaluation" value="5" id="evaluation-5" class="assessment-radio" {{ $review && $review->evaluation == 5 ? 'checked' : '' }}>
+                <input type="radio" name="evaluation" value="5" id="evaluation-5" class="assessment-radio" {{ old('evaluation', $review ? $review->evaluation : '') == 5 ? 'checked' : '' }}>
                 <label for="evaluation-5" class="star">&#9733;</label>
-                <input type="radio" name="evaluation" value="4" id="evaluation-4" class="assessment-radio" {{ $review && $review->evaluation == 4 ? 'checked' : '' }}>
+                <input type="radio" name="evaluation" value="4" id="evaluation-4" class="assessment-radio" {{ old('evaluation', $review ? $review->evaluation : '') == 4 ? 'checked' : '' }}>
                 <label for="evaluation-4" class="star">&#9733;</label>
-                <input type="radio" name="evaluation" value="3" id="evaluation-3" class="assessment-radio" {{ $review && $review->evaluation == 3 ? 'checked' : '' }}>
+                <input type="radio" name="evaluation" value="3" id="evaluation-3" class="assessment-radio" {{ old('evaluation', $review ? $review->evaluation : '') == 3 ? 'checked' : '' }}>
                 <label for="evaluation-3" class="star">&#9733;</label>
-                <input type="radio" name="evaluation" value="2" id="evaluation-2" class="assessment-radio" {{ $review && $review->evaluation == 2 ? 'checked' : '' }}>
+                <input type="radio" name="evaluation" value="2" id="evaluation-2" class="assessment-radio" {{ old('evaluation', $review ? $review->evaluation : '') == 2 ? 'checked' : '' }}>
                 <label for="evaluation-2" class="star">&#9733;</label>
-                <input type="radio" name="evaluation" value="1" id="evaluation-1" class="assessment-radio" {{ $review && $review->evaluation == 1 ? 'checked' : '' }}>
+                <input type="radio" name="evaluation" value="1" id="evaluation-1" class="assessment-radio" {{ old('evaluation', $review ? $review->evaluation : '') == 1 ? 'checked' : '' }}>
                 <label for="evaluation-1" class="star">&#9733;</label>
             </div>
         </div>
         <div class="assessment-comment">
             <label for="comment" class="label-comment-image">口コミを投稿</label>
-            <textarea name="comment" id="comment" rows="4" cols="50" class="assessment-textarea" placeholder="カジュアルな夜のお出かけにおすすめのスポット">{{ $review ? $review->comment : '' }}</textarea>
+            <textarea name="comment" id="comment" rows="4" cols="50" class="assessment-textarea" placeholder="カジュアルな夜のお出かけにおすすめのスポット">{{ old('comment', $review ? $review->comment : '') }}</textarea>
             <div id="char-count" class="assessment-char-count">0/400 最大文字数</div>
         </div>
 
