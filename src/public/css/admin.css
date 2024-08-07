@@ -260,7 +260,28 @@ body {
     transform: scale(1.05);
 }
 
+.csv-upload {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+}
+
+.csv-upload form {
+    font-size: 1vw;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    gap: 1vw;
+}
+
+.csv-upload-input,
+.csv-upload-button {
+    font-size: 1vw;
+    box-sizing: border-box;
+}
+
 @media screen and (max-width: 768px) {
+
     .admin-table-container {
             width: 100%;
             overflow-x: auto;

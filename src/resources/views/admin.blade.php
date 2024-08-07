@@ -151,10 +151,9 @@
                     <div class="csv-upload">
                         <form action="{{ route('admin.upload') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <input type="file" name="csv_file" accept=".csv" class="csv-upload-input">
-                            <button type="submit" class="csv-upload-button">CSVファイルをアップロード</button>
+                                <input type="file" name="csv_file" accept=".csv" class="csv-upload-input">
+                                <button type="submit" class="csv-upload-button">CSVファイルをアップロード</button>
                         </form>
-
                     </div>
                     <a href="#admin-modal-add-shop" class="admin-button admin-button-create">＋新規追加</a>
                 </div>
