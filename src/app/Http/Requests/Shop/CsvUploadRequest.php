@@ -49,7 +49,7 @@ class CsvUploadRequest extends FormRequest
                         '地域' => 'required|exists:areas,area_name',
                         'ジャンル' => 'required|exists:genres,genre_name',
                         '店舗概要' => 'required|string|max:400',
-                        '画像URL' =>['required', 'url', 'regex:/\.(jpeg|jpg|png)$/i'],
+                        '画像URL' =>['required', 'url', 'regex:/\.(jpeg|png)$/i'],
                     ], $this->messages());
 
                     if ($rowValidator->fails()) {
